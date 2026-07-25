@@ -16,11 +16,11 @@
 // IMPORTS
 // ============================================================================
 
-import { PageController }       from "./_pageController.js";
+import { PageController }       from "/_pageController.js";
 
-import { COLUNAS_LANCAMENTOS }  from "../config/tabelas/lancamentos.js";
+import { COLUNAS_LANCAMENTOS }  from "/config/tabelas/lancamentos.js";
 
-import { STATUS }               from "../config/config.js";
+import { STATUS }               from "/config/config.js";
 
 import {
     obterLancamentos,
@@ -29,9 +29,9 @@ import {
     excluirLancamento
 } from "../services/lancamentos.js";
 
-import { obterVeiculos }        from "../services/veiculos.js";
+import { obterVeiculos }        from "/services/veiculos.js";
 
-import { obterEmpregados }      from "../services/empregados.js";
+import { obterEmpregados }      from "/services/empregados.js";
 
 import {
     obterDadosFormulario,
