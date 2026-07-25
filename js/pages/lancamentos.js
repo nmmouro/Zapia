@@ -16,7 +16,7 @@
 // IMPORTS
 // ============================================================================
 
-import { PageController }       from "_pageController.js";
+import { PageController }       from "./_pageController.js";
 
 import { COLUNAS_LANCAMENTOS }  from "config/tabelas/lancamentos.js";
 
