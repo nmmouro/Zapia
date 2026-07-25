@@ -21,30 +21,8 @@ const lancamentos = criarCrud(ABAS.LANCAMENTOS);
 // API PÚBLICA
 // ============================================================================
 
-export function obterLancamentos() {
-
-    return lancamentos.listar();
-}
-
-export function obterLancamento(id) {
-
-    return lancamentos.buscar(id);
-}
-
-export function salvarLancamento(dados) {
-
-    return lancamentos.salvar(dados);
-
-}
-
-export function atualizarLancamento(id, dados) {
-
-    return lancamentos.editar(id, dados);
-
-}
-
-export function excluirLancamento(id) {
-
-    return lancamentos.excluir(id);
-
-}
+export const obterLancamentos    = ()            => _crud.listar();
+export const obterLancamento     = (id)          => _crud.buscar(id);
+export const salvarLancamento    = (dados)       => _crud.salvar(dados);
+export const atualizarLancamento = (id, dados)   => _crud.editar(id, dados);
+export const excluirLancamento   = (id)          => _crud.excluir(id);
