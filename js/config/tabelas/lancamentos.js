@@ -1,9 +1,22 @@
 // ============================================================================
-// CONFIGURAÇÃO DA TABELA DE LANÇAMENTOS
+// CONFIGURAÇÃO DE COLUNAS — LANÇAMENTOS
+// Painel Frota
 // Arquivo: js/config/tabelas/lancamentos.js
+//
+// Estende COLUNAS_BASE (ID, Data, Hora, Status) com os campos
+// específicos do módulo de lançamentos.
+// ============================================================================
+
+import { COLUNAS_BASE } from "../config.js";
+
+
+// ============================================================================
+// COLUNAS
 // ============================================================================
 
 export const COLUNAS_LANCAMENTOS = [
+
+    ...COLUNAS_BASE,
 
     {
         field: "ID",
