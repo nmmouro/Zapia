@@ -1,809 +1,195 @@
 // ============================================================================
-// LANÇAMENTOS
+// PAGE — LANÇAMENTOS
+// Painel Frota
 // Arquivo: js/pages/lancamentos.js
+//
+// Estende PageController.
+// Aqui ficam apenas as decisões específicas deste módulo:
+//   - Colunas da tabela
+//   - Mapeamento formulário ↔ API
+//   - Chamadas CRUD do service correto
+//   - Carregamento de selects dinâmicos (veículos, empregados, status)
 // ============================================================================
+
 
 // ============================================================================
 // IMPORTS
 // ============================================================================
 
+import { PageController }       from "./_pageController.js";
+
+import { COLUNAS_LANCAMENTOS }  from "../config/tabelas/lancamentos.js";
+
+import { STATUS }               from "../config/config.js";
+
 import {
-    COLUNAS_LANCAMENTOS
-} from "../config/tabelas/lancamentos.js";
-
-
-import {
-
     obterLancamentos,
-    obterLancamento,
     salvarLancamento,
     atualizarLancamento,
     excluirLancamento
-
 } from "../services/lancamentos.js";
 
+import { obterVeiculos }        from "../services/veiculos.js";
+
+import { obterEmpregados }      from "../services/empregados.js";
 
 import {
-
-    obterVeiculos
-
-} from "../services/veiculos.js";
-
-
-import {
-
-    obterEmpregados
-
-} from "../services/empregados.js";
-
-
-import {
-
-    renderTable
-
-} from "../ui/table.js";
-
-
-import {
-
-    mostrarLoading,
-    esconderLoading
-
-} from "../ui/loading.js";
-
-
-import {
-
-    dataInput,
-    dataParaInput,
-    horaInput,
-    horaParaInput
-
-} from "../utils/datas.js";
-
-import {
-
+    obterDadosFormulario,
+    preencherFormulario,
     preencherSelect
-
 } from "../utils/formulario.js";
 
 
 // ============================================================================
-// ELEMENTOS
+// MAPEAMENTO FORMULÁRIO ↔ API
+// chave  = atributo name do <input> / <select> no HTML
+// valor  = nome do campo retornado / esperado pela API
 // ============================================================================
 
-const formulario =
-document.querySelector("#formLancamento");
+const MAPA_CAMPOS = {
+    data:        "Data",
+    hora:        "Hora",
+    empregado:   "Empregado / Matrícula",
+    veiculo:     "Veículo",
+    passageiro:  "Passageiro / Setor / Motivo",
+    itinerario:  "Itinerário",
+    status:      "Status"
+};
 
-const tabela =
-document.querySelector("#tabelaLancamentos");
-
-const btnNovo =
-document.querySelector("#btnNovo");
-
-const campoData =
-document.querySelector("#data");
-
-const campoHora =
-document.querySelector("#hora");
-
-const selectVeiculo =
-document.querySelector("#veiculo");
-
-const selectEmpregado =
-document.querySelector("#empregado");
-
-const selectStatus =
-document.querySelector("#status");
 
 // ============================================================================
-// CONFIGURAÇÃO DA TABELA
+// STATUS DISPONÍVEIS PARA LANÇAMENTOS
 // ============================================================================
 
-let registros = [];
+const STATUS_LANCAMENTOS = [
+    STATUS.AGENDADO,
+    STATUS.EM_ANDAMENTO,
+    STATUS.VIAGEM,
+    STATUS.MANUTENCAO,
+    STATUS.FINALIZADO,
+    STATUS.CANCELADO
+];
 
-let registroEditando = null;
 
 // ============================================================================
-// INICIALIZAÇÃO
+// CLASSE DA PÁGINA
 // ============================================================================
 
-document.addEventListener(
-
-"DOMContentLoaded",
-
-init
-
-);
+class LancamentosPage extends PageController {
 
 
-async function init(){
+    // =========================================================================
+    // TABELA
+    // =========================================================================
 
-    try{
-
-        mostrarLoading();
-        preencherDataHoraAtual();
-        registrarEventos();
-        await carregarVeiculos();
-        await carregarEmpregados();
-        await carregarTabela();
-        esconderLoading();
-
-    }
-    catch(erro){
-
-        tratarErro(erro);
-    }
-    finally{
-
-        esconderLoading();
-
+    getTabela() {
+        return document.querySelector("#tabelaLancamentos");
     }
 
-}
-
-// ============================================================================
-// EVENTOS
-// ============================================================================
-
-function registrarEventos(){
-
-    formulario?.addEventListener(
-
-        "submit",
-
-        salvar
-
-    );
-
-    btnNovo?.addEventListener(
-
-        "click",
-
-        novo
-
-    );
-
-}
+    getColunas() {
+        return COLUNAS_LANCAMENTOS;
+    }
 
 
-// ============================================================================
-// LISTAGEM
-// ============================================================================
+    // =========================================================================
+    // CRUD
+    // =========================================================================
 
-async function carregarTabela() {
+    carregarRegistros() {
+        return obterLancamentos();
+    }
 
-    const resposta = await obterLancamentos();
+    salvarRegistro(dados) {
+        return salvarLancamento(dados);
+    }
 
-    registros =
-        resposta?.dados ??
-        resposta;
+    editarRegistro(id, dados) {
+        return atualizarLancamento(id, dados);
+    }
 
-    renderizarTabela();
-
-}
-
-// ============================================================================
-// RENDER
-// ============================================================================
-
-
-function renderizarTabela(){
-
-    renderTable(
-       
-        tabela,
-        COLUNAS_LANCAMENTOS,
-        registros,
-        [
-
-            {
-                label:"Editar",
-                className:"btn-edit",
-                onClick:
-                registro =>
-                editarLancamento(registro.ID)
-            },
-
-            {
-                label:"Excluir",
-                className:"btn-delete",
-                onClick:
-                registro =>
-                remover(registro.ID)
-            }
-       ]
-    );
-}
+    excluirRegistro(id) {
+        return excluirLancamento(id);
+    }
 
 
-// ============================================================================
-// EDITAR LANÇAMENTO
-// ============================================================================
+    // =========================================================================
+    // FORMULÁRIO
+    // =========================================================================
 
-async function editarLancamento(id) {
+    coletarDados() {
+        return obterDadosFormulario(
+            this._formulario,
+            MAPA_CAMPOS
+        );
+    }
 
-    try {
-
-        // ====================================================================
-        // BUSCAR LANÇAMENTO COMPLETO NA API
-        // ====================================================================
-
-        const resposta =
-
-            await obterLancamento(id);
-
-
-        // ====================================================================
-        // NORMALIZAR RESPOSTA
-        // ====================================================================
-
-        const registro =
-
-            resposta?.dados ??
-
-            resposta;
-
-
-        // ====================================================================
-        // VALIDAR REGISTRO
-        // ====================================================================
-
-        if (!registro) {
-
-            throw new Error(
-
-                "Lançamento não encontrado."
-
-            );
-
-        }
-
-
-        // ====================================================================
-        // DEFINIR REGISTRO EM EDIÇÃO
-        // ====================================================================
-
-        registroEditando =
-
-            registro.ID;
-
-
-        // ====================================================================
-        // PREENCHER FORMULÁRIO
-        // ====================================================================
-
+    preencherCampos(registro) {
         preencherFormulario(
+            this._formulario,
+            registro,
+            MAPA_CAMPOS
+        );
+    }
 
-            registro
 
+    // =========================================================================
+    // DEPENDÊNCIAS — selects dinâmicos
+    // =========================================================================
+
+    async carregarDependencias() {
+
+        const [veiculos, empregados] = await Promise.all([
+            obterVeiculos(),
+            obterEmpregados()
+        ]);
+
+        preencherSelect(
+            this._formulario?.elements["veiculo"],
+            veiculos,
+            "ID",
+            "Modelo",
+            "Selecione o veículo"
         );
 
-
-        // ====================================================================
-        // ATUALIZAR INTERFACE
-        // ====================================================================
-
-        const titulo =
-
-            document.querySelector(
-
-                "#tituloFormulario"
-
-            );
-
-
-        if (titulo) {
-
-            titulo.textContent =
-
-                "Editar lançamento";
-
-        }
-
-
-        document.body.classList.add(
-
-            "modo-edicao"
-
+        preencherSelect(
+            this._formulario?.elements["empregado"],
+            empregados,
+            "ID",
+            "Empregado",
+            "Selecione o empregado"
         );
 
-
-    } catch (erro) {
-
-        console.error(
-
-            "Erro ao carregar lançamento para edição:",
-
-            erro
-
-        );
-
-
-        alert(
-
-            erro.message ||
-
-            "Não foi possível carregar o lançamento."
-
-        );
-
+        this._preencherStatus();
     }
 
-}
 
+    // =========================================================================
+    // PREENCHER SELECT DE STATUS
+    // =========================================================================
 
-window.editarLancamento =
+    _preencherStatus() {
 
-    editarLancamento;
+        const select = this._formulario?.elements["status"];
 
+        if (!select) return;
 
-// ============================================================================
-// SALVAR
-// ============================================================================
+        select.innerHTML = "";
 
-async function salvar(evento){
+        STATUS_LANCAMENTOS.forEach(valor => {
 
-    evento.preventDefault();
+            const opt = document.createElement("option");
+            opt.value       = valor;
+            opt.textContent = valor;
+            select.appendChild(opt);
 
-    try{
-
-        mostrarLoading();
-        const dados =
-        obterDadosFormulario();
-
-        if(registroEditando){
-
-            await atualizarLancamento(
-
-                registroEditando,
-                dados
-            );
-
-        }
-        else{
-
-            await salvarLancamento(
-                dados
-
-            );
-
-        }
-
-
-        formulario.reset();
-
-        preencherDataHoraAtual();
-
-        registroEditando = null;
-
-        await carregarTabela();
-
-    }
-    catch(erro){
-
-        tratarErro(erro);
-
-    }
-    finally{
-
-        esconderLoading();
-
+        });
     }
 
 }
 
 
 // ============================================================================
-// EXCLUIR
+// INICIALIZAR
 // ============================================================================
 
-async function remover(id){
-
-    if(!confirm("Excluir lançamento?")) {
-        return;
-    }
-
-    try{
-
-        mostrarLoading();
-
-       await excluirLancamento(id);
-
-        await carregarTabela();
-
-    }
-    catch(erro){
-
-        tratarErro(erro);
-
-    }
-    finally{
-
-        esconderLoading();
-
-    }
-
-}
-
-
-// ============================================================================
-// NOVO
-// ============================================================================
-
-function novo(){
-
-    registroEditando = null;
-
-    formulario.reset();
-
-    preencherDataHoraAtual();
-
-}
-
-
-// ============================================================================
-// FORMULÁRIO
-// ============================================================================
-
-function obterDadosFormulario() {
-
-    return {
-
-        Data:
-            campoData.value,
-
-        Hora:
-            campoHora.value,
-
-        "Empregado / Matrícula":
-            selectEmpregado.value,
-
-        Veículo:
-            selectVeiculo.value,
-
-        "Passageiro / Setor / Motivo":
-            [
-                formulario.passageiro?.value,
-                formulario.setor?.value,
-                formulario.motivo?.value
-            ]
-            .filter(Boolean)
-            .join(" / "),
-
-        Itinerário:
-            formulario.itinerario?.value || "",
-
-        Status:
-            formulario.status.value
-
-    };
-
-}
-
-// ============================================================
-// PREENCHER FORMULÁRIO
-// ============================================================
-
-function preencherFormulario(registro) {
-
-    console.log(
-        "Registro recebido para edição:",
-        registro
-    );
-
-
-    // ============================================================
-    // DATA
-    // ============================================================
-
-    campoData.value =
-
-        dataParaInput(
-
-            registro["Data"]
-
-        ) || "";
-
-
-    // ============================================================
-    // HORA
-    // ============================================================
-
-    campoHora.value =
-
-        horaParaInput(
-
-            registro["Hora"]
-
-        ) || "";
-
-
-    // ============================================================
-    // EMPREGADO / MATRÍCULA
-    // ============================================================
-
-    selectEmpregado.value =
-
-        registro["Empregado / Matrícula"]
-
-        || "";
-
-
-    // ============================================================
-    // VEÍCULO
-    // ============================================================
-
-    selectVeiculo.value =
-
-        registro["Veículo"]
-
-        || "";
-
-
-    // ============================================================
-    // PASSAGEIRO / SETOR / MOTIVO
-    // ============================================================
-
-    const partes = String(
-
-        registro["Passageiro / Setor / Motivo"]
-
-        || ""
-
-    )
-
-    .split(" / ");
-
-
-    formulario.passageiro.value =
-
-        partes[0]
-
-        || "";
-
-
-    formulario.setor.value =
-
-        partes[1]
-
-        || "";
-
-
-    formulario.motivo.value =
-
-        partes[2]
-
-        || "";
-
-
-    // ============================================================
-    // ITINERÁRIO
-    // ============================================================
-
-    formulario.itinerario.value =
-
-        registro["Itinerário"]
-
-        || "";
-
-
-    // ============================================================
-    // STATUS
-    // ============================================================
-
-    formulario.status.value =
-
-        registro["Status"]
-
-        || "";
-
-}
-
-// ============================================================================
-// CARREGAR VEÍCULOS
-// ============================================================================
-
-async function carregarVeiculos() {
-
-    const resposta =
-
-        await obterVeiculos();
-
-    const lista =
-
-        resposta.dados ?? resposta;
-
-    if (!Array.isArray(lista)) {
-
-        throw new Error(
-
-            "Resposta inválida ao carregar veículos."
-
-        );
-
-    }
-
-    selectVeiculo.innerHTML = `
-
-        <option value="">
-
-            Selecione o veículo
-
-        </option>
-
-    `;
-
-    lista.forEach(item => {
-
-        const option =
-
-            document.createElement(
-
-                "option"
-
-            );
-
-        option.value =
-
-            item.Placa || "";
-
-
-        option.textContent =
-
-            `${item.Placa || ""} - ${item.Modelo || ""}`;
-
-
-        selectVeiculo.appendChild(
-
-            option
-
-        );
-
-    });
-
-}
-
-
-// ============================================================================
-// CARREGAR EMPREGADOS
-// ============================================================================
-
-async function carregarEmpregados() {
-
-    const resposta =
-
-        await obterEmpregados();
-
-
-    const lista =
-
-        resposta?.dados ??
-
-        resposta;
-
-
-    if (!Array.isArray(lista)) {
-
-        throw new Error(
-
-            "Resposta inválida ao carregar empregados."
-
-        );
-
-    }
-
-
-    selectEmpregado.innerHTML = `
-
-        <option value="">
-
-            Selecione o empregado
-
-        </option>
-
-    `;
-
-
-    lista.forEach(item => {
-
-        const empregado =
-
-            item["Empregado"] ?? "";
-
-
-        const matricula =
-
-            item["Matrícula"] ?? "";
-
-
-        const valor =
-
-            [
-
-                empregado,
-
-                matricula
-
-            ]
-
-            .filter(Boolean)
-
-            .join(" / ");
-
-
-        const option =
-
-            document.createElement(
-
-                "option"
-
-            );
-
-
-        option.value = valor;
-
-
-        option.textContent = valor;
-
-
-        selectEmpregado.appendChild(
-
-            option
-
-        );
-
-    });
-
-}
-
-// ============================================================================
-// DATA / HORA AUTOMÁTICA
-// ============================================================================
-
-function preencherDataHoraAtual(){
-
-    const data =
-        document.querySelector("#data");
-
-    const hora =
-        document.querySelector("#hora");
-
-
-    if(data){
-
-        data.value =
-
-            dataInput();
-
-    }
-
-
-    if(hora){
-
-        hora.value =
-
-            horaInput();
-    }
-
-}
-
-
-// ============================================================================
-// ERROS
-// ============================================================================
-
-function tratarErro(erro){
-
-
-    console.error(erro);
-
-    alert(
-
-        erro.message ||
-
-        "Erro ao processar lançamento."
-
-    );
-
-}
+new LancamentosPage().init();
