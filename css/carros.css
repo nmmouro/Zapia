@@ -1,0 +1,520 @@
+/* ============================================================================
+   VEÍCULOS
+   ============================================================================ */
+
+
+.page-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 24px;
+
+    margin-bottom: 28px;
+
+}
+
+
+.page-kicker {
+
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    opacity: 0.55;
+
+}
+
+
+.page-header h1 {
+
+    margin: 4px 0;
+
+}
+
+
+.page-header p {
+
+    margin: 0;
+
+    opacity: 0.65;
+
+}
+
+
+
+/* ============================================================================
+   RESUMO
+   ============================================================================ */
+
+
+.veiculos-resumo {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(4, 1fr);
+
+    gap: 16px;
+
+    margin-bottom: 24px;
+
+}
+
+
+.resumo-card {
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    background:
+
+        rgba(255,255,255,0.05);
+
+    border:
+
+        1px solid rgba(255,255,255,0.08);
+
+}
+
+
+.resumo-card span {
+
+    display: block;
+
+    font-size: 13px;
+
+    opacity: 0.65;
+
+}
+
+
+.resumo-card strong {
+
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 28px;
+
+}
+
+
+
+/* ============================================================================
+   FILTROS
+   ============================================================================ */
+
+
+.veiculos-filtros {
+
+    display: flex;
+
+    align-items: end;
+
+    gap: 16px;
+
+    margin-bottom: 24px;
+
+}
+
+
+.veiculos-filtros > div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+}
+
+
+.veiculos-filtros .campo-busca {
+
+    flex: 1;
+
+}
+
+
+.veiculos-filtros label {
+
+    font-size: 12px;
+
+    opacity: 0.65;
+
+}
+
+
+.veiculos-filtros input,
+
+.veiculos-filtros select {
+
+    height: 42px;
+
+    padding: 0 14px;
+
+    border-radius: 10px;
+
+    border:
+
+        1px solid rgba(255,255,255,0.1);
+
+    background:
+
+        rgba(255,255,255,0.05);
+
+    color: inherit;
+
+}
+
+
+
+/* ============================================================================
+   GRID DE VEÍCULOS
+   ============================================================================ */
+
+
+.veiculos-grid {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(
+
+            auto-fill,
+
+            minmax(280px, 1fr)
+
+        );
+
+    gap: 20px;
+
+}
+
+
+
+/* ============================================================================
+   CARD
+   ============================================================================ */
+
+
+.veiculo-card {
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background:
+
+        rgba(255,255,255,0.05);
+
+    border:
+
+        1px solid rgba(255,255,255,0.08);
+
+    transition:
+
+        transform 0.2s ease,
+
+        border-color 0.2s ease;
+
+}
+
+
+.veiculo-card:hover {
+
+    transform:
+
+        translateY(-3px);
+
+    border-color:
+
+        rgba(255,255,255,0.2);
+
+}
+
+
+
+/* ============================================================================
+   FOTO
+   ============================================================================ */
+
+
+.veiculo-foto {
+
+    position: relative;
+
+    height: 190px;
+
+    overflow: hidden;
+
+    background:
+
+        rgba(255,255,255,0.05);
+
+}
+
+
+.veiculo-foto img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+.veiculo-foto-placeholder {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 100%;
+
+    height: 100%;
+
+    font-size: 60px;
+
+    opacity: 0.35;
+
+}
+
+
+
+/* ============================================================================
+   STATUS
+   ============================================================================ */
+
+
+.veiculo-status {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 12px;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    background:
+
+        rgba(0,0,0,0.65);
+
+}
+
+
+
+/* ============================================================================
+   CONTEÚDO
+   ============================================================================ */
+
+
+.veiculo-conteudo {
+
+    padding: 18px;
+
+}
+
+
+.veiculo-placa {
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+
+    opacity: 0.6;
+
+}
+
+
+.veiculo-nome {
+
+    margin: 5px 0;
+
+    font-size: 20px;
+
+}
+
+
+.veiculo-info {
+
+    display: grid;
+
+    grid-template-columns:
+
+        1fr 1fr;
+
+    gap: 10px;
+
+    margin-top: 16px;
+
+}
+
+
+.veiculo-info-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.veiculo-info-item span {
+
+    font-size: 11px;
+
+    opacity: 0.5;
+
+}
+
+
+.veiculo-info-item strong {
+
+    font-size: 13px;
+
+}
+
+
+
+/* ============================================================================
+   AÇÕES
+   ============================================================================ */
+
+
+.veiculo-acoes {
+
+    display: grid;
+
+    grid-template-columns:
+
+        1fr 1fr;
+
+    gap: 8px;
+
+    margin-top: 18px;
+
+}
+
+
+.veiculo-acoes button,
+
+.veiculo-acoes a {
+
+    min-height: 38px;
+
+    border-radius: 9px;
+
+}
+
+
+
+/* ============================================================================
+   ESTADO VAZIO
+   ============================================================================ */
+
+
+.estado-vazio {
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+    opacity: 0.65;
+
+}
+
+
+.estado-icone {
+
+    font-size: 48px;
+
+    margin-bottom: 12px;
+
+}
+
+
+
+/* ============================================================================
+   RESPONSIVO
+   ============================================================================ */
+
+
+@media (
+
+    max-width: 800px
+
+) {
+
+
+    .veiculos-resumo {
+
+        grid-template-columns:
+
+            repeat(2, 1fr);
+
+    }
+
+
+    .veiculos-filtros {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .page-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+}
+
+
+@media (
+
+    max-width: 500px
+
+) {
+
+
+    .veiculos-resumo {
+
+        grid-template-columns:
+
+            1fr;
+
+    }
+
+
+}

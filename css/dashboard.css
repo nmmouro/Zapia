@@ -1,0 +1,722 @@
+/* ==========================================================================
+   PAINEL FROTA
+   DASHBOARD
+   Arquivo: css/dashboard.css
+========================================================================== */
+
+
+/* ==========================================================================
+   CONTAINER PRINCIPAL
+========================================================================== */
+
+
+.dashboard {
+
+
+    width:
+
+        100%;
+
+
+    height:
+
+        calc(100vh - var(--header-height));
+
+
+    display:
+
+        flex;
+
+
+    flex-direction:
+
+        column;
+
+
+    gap:
+
+        15px;
+
+
+    padding:
+
+        15px;
+
+
+    overflow:
+
+        hidden;
+
+
+}
+
+
+
+
+
+
+/* ==========================================================================
+   RESUMO SUPERIOR
+========================================================================== */
+
+
+.resumo-grid {
+
+
+    display:
+
+        grid;
+
+
+    grid-template-columns:
+
+        1fr 1fr;
+
+
+    gap:
+
+        15px;
+
+
+    height:
+
+        190px;
+
+
+}
+
+
+
+
+
+
+.resumo-grid .card {
+
+
+    height:
+
+        100%;
+
+
+    padding:
+
+        12px;
+
+
+    overflow:
+
+        hidden;
+
+
+}
+
+
+
+
+
+
+.resumo-grid h2 {
+
+
+    font-size:
+
+        1rem;
+
+
+    margin-bottom:
+
+        8px;
+
+
+}
+
+
+
+
+
+/* ==========================================================================
+   CARDS VEÍCULOS / EMPREGADOS
+========================================================================== */
+
+
+.cards-container {
+
+
+    height:
+
+        calc(100% - 35px);
+
+
+    overflow:
+
+        hidden;
+
+
+}
+
+
+
+
+.resumo-item {
+
+
+    height:
+
+        32px;
+
+
+    font-size:
+
+        .85rem;
+
+
+}
+
+
+
+
+.resumo-item strong {
+
+
+    color:
+
+        var(--primary);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   PAINEL PRINCIPAL
+========================================================================== */
+
+
+.painel-card {
+
+
+    flex:
+
+        1;
+
+
+    min-height:
+
+        0;
+
+
+    overflow:
+
+        hidden;
+
+
+}
+
+
+
+
+
+.painel-card .table-container {
+
+
+    height:
+
+        calc(100% - 45px);
+
+
+    overflow:
+
+        hidden;
+
+
+}
+
+
+
+
+
+.painel-card table {
+
+
+    table-layout:
+
+        fixed;
+
+
+}
+
+
+
+
+
+
+/* largura das colunas painel */
+
+
+.painel-card th:nth-child(1),
+.painel-card td:nth-child(1){
+
+
+    width:
+
+        7%;
+
+
+}
+
+
+
+
+.painel-card th:nth-child(2),
+.painel-card td:nth-child(2){
+
+
+    width:
+
+        6%;
+
+
+}
+
+
+
+
+
+.painel-card th:nth-child(3),
+.painel-card td:nth-child(3){
+
+
+    width:
+
+        18%;
+
+
+}
+
+
+
+
+
+.painel-card th:nth-child(4),
+.painel-card td:nth-child(4){
+
+
+    width:
+
+        12%;
+
+
+}
+
+
+
+
+
+.painel-card th:nth-child(5),
+.painel-card td:nth-child(5){
+
+
+    width:
+
+        22%;
+
+
+}
+
+
+
+
+
+.painel-card th:nth-child(6),
+.painel-card td:nth-child(6){
+
+
+    width:
+
+        23%;
+
+
+}
+
+
+
+
+
+.painel-card th:nth-child(7),
+.painel-card td:nth-child(7){
+
+
+    width:
+
+        12%;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   LINHAS DO PAINEL
+========================================================================== */
+
+
+.painel-card tbody tr {
+
+
+    height:
+
+        38px;
+
+
+}
+
+
+
+
+
+.painel-card tbody td {
+
+
+    font-size:
+
+        .85rem;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   AGENDA
+========================================================================== */
+
+
+.grid-agendas {
+
+
+    display:
+
+        grid;
+
+
+    grid-template-columns:
+
+        1fr 1fr;
+
+
+    gap:
+
+        15px;
+
+
+    height:
+
+        220px;
+
+
+}
+
+
+
+
+.grid-agendas .card {
+
+
+    height:
+
+        100%;
+
+
+    overflow:
+
+        hidden;
+
+
+}
+
+
+
+
+
+.grid-agendas .table-container {
+
+
+    height:
+
+        calc(100% - 45px);
+
+
+    overflow:
+
+        hidden;
+
+
+}
+
+
+
+
+.grid-agendas table {
+
+
+    table-layout:
+
+        fixed;
+
+
+}
+
+
+
+
+
+.grid-agendas tbody tr {
+
+
+    height:
+
+        32px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   CABEÇALHO DAS TABELAS
+========================================================================== */
+
+
+.dashboard table thead {
+
+
+    position:
+
+        sticky;
+
+
+    top:
+
+        0;
+
+
+    z-index:
+
+        5;
+
+
+}
+
+
+
+
+.dashboard table th {
+
+
+    font-size:
+
+        .8rem;
+
+
+}
+
+
+
+
+
+.dashboard table td {
+
+
+    font-size:
+
+        .78rem;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   STATUS NO DASHBOARD
+========================================================================== */
+
+
+.dashboard .status {
+
+
+    font-size:
+
+        .7rem;
+
+
+    padding:
+
+        4px 8px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   TV / GRANDES TELAS
+========================================================================== */
+
+
+@media(min-width:1600px){
+
+
+
+    .dashboard {
+
+
+        padding:
+
+            25px;
+
+
+        gap:
+
+            20px;
+
+
+    }
+
+
+
+
+    .resumo-grid {
+
+
+        height:
+
+            230px;
+
+
+    }
+
+
+
+
+
+    .grid-agendas {
+
+
+        height:
+
+            260px;
+
+
+    }
+
+
+
+
+
+    .painel-card tbody tr {
+
+
+        height:
+
+            45px;
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   MONITOR PEQUENO
+========================================================================== */
+
+
+@media(max-width:1100px){
+
+
+
+    .dashboard {
+
+
+        overflow:
+
+            auto;
+
+
+    }
+
+
+
+
+    .resumo-grid,
+
+
+    .grid-agendas {
+
+
+        grid-template-columns:
+
+            1fr;
+
+
+        height:
+
+            auto;
+
+
+    }
+
+
+
+
+
+    .painel-card {
+
+
+        height:
+
+            auto;
+
+
+    }
+
+
+
+}
