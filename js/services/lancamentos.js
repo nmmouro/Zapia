@@ -1,20 +1,21 @@
 // ============================================================================
-// SERVICES / LANÇAMENTOS
+// SERVICE — LANÇAMENTOS
+// Painel Frota
 // Arquivo: js/services/lancamentos.js
+//
+// Responsável pela comunicação CRUD com a aba LANCAMENTOS do Google Sheets.
+// Utiliza criarCrud() para evitar repetição de código.
 // ============================================================================
 
 import { criarCrud } from "./crudService.js";
-
-import {
-    ABAS
-} from "../config/config.js";
+import { ABAS }      from "../config/config.js";
 
 
 // ============================================================================
-// CRUD DE LANÇAMENTOS
+// INSTÂNCIA CRUD
 // ============================================================================
 
-const lancamentos = criarCrud(ABAS.LANCAMENTOS);
+const _crud = criarCrud(ABAS.LANCAMENTOS);
 
 
 // ============================================================================
