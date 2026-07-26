@@ -165,18 +165,39 @@ function registrarEventos() {
 
 async function carregarTabela() {
 
-    registros =
-    await obterVeiculos();
+    try {
 
-    if (!Array.isArray(registros)) {
+        const resposta =
+            await obterVeiculos();
 
-        throw new Error(
-
-            "Resposta inválida ao carregar veículos."
+        console.log(
+            "Veículos recebidos:",
+            resposta
         );
-    }
 
-    renderizarTabela();
+        if (!Array.isArray(resposta)) {
+
+            throw new Error(
+                "Resposta inválida ao carregar veículos."
+            );
+
+        }
+
+        veiculos =
+            resposta;
+
+        renderizarTabela();
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao carregar veículos:",
+            erro
+        );
+
+        throw erro;
+
+    }
 
 }
 
