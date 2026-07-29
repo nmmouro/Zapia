@@ -16,14 +16,14 @@ export function preencherDataAtual(){
 // TRATAMENTO DE ERROS
 // ============================================================================
 
-export function tratarErro(){
+export function tratarErro(
 
     erro
 
- {
+){
+
     console.error(erro);
 
     alert(erro?.message ||  "Erro ao processar veículo.");
 
-}
 }
