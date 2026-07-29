@@ -95,7 +95,6 @@ export async function editarVeiculo(id){
 window.editarVeiculo =
 
     editarVeiculo;
-}
 
 
 // ============================================================================
