@@ -19,11 +19,7 @@ export function preencherDataAtual(){
 // TRATAMENTO DE ERROS
 // ============================================================================
 
-export function tratarErro(
-
-    erro
-
-){
+export function tratarErro(erro){
 
     console.error(erro);
 
