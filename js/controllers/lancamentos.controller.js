@@ -23,6 +23,7 @@ import {
     esconderLoading
 } from "../ui/loading.js";
 
+
 export async function initLancamentos(){
 
     try{
