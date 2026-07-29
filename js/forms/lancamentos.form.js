@@ -5,24 +5,19 @@ export async function salvarFormulario(evento){
     try{
 
         mostrarLoading();
-        const dados =
-        obterDadosFormulario();
+        
+        const dados = obterDadosFormulario();
 
         if(registroEditando){
 
             await atualizarLancamento(
 
-                registroEditando,
-                dados
-            );
-
+                registroEditando, dados);
         }
+            
         else{
 
-            await salvarLancamento(
-                dados
-
-            );
+            await salvarLancamento(dados);
 
         }
 
@@ -45,10 +40,8 @@ export async function salvarFormulario(evento){
         esconderLoading();
 
     }
-
-
-  
 }
+
 
 export function novoFormulario(){
 
@@ -91,7 +84,7 @@ function obterDadosFormulario() {
 
         Status:
             formulario.status.value
-
+        
     };
 
 }
