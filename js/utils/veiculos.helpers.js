@@ -20,7 +20,7 @@ export function tratarErro(){
 
     erro
 
-) {
+ {
     console.error(erro);
 
     alert(erro?.message ||  "Erro ao processar veículo.");
