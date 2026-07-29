@@ -25,8 +25,11 @@ export async function initVeiculos(){
     try{
 
         mostrarLoading();
+        
         preencherDataAtual();
+        
         registrarEventos();
+        
         await carregarTabela();
     }
         
