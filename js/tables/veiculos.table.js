@@ -4,15 +4,9 @@
 
 export async function carregarTabela(){
 
-    const resposta =
+    const resposta = await obterVeiculos();
 
-        await obterVeiculos();
-
-    registros =
-
-        resposta?.dados ??
-
-        resposta;
+    registros =  resposta?.dados ?? resposta;
 
     renderizarTabela();
 }
