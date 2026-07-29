@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Frota - Lançamentos</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/lancamentos.css">
+
+</head>
+
+<body>
+
+<!-- =====================================================================
+HEADER
+===================================================================== -->
+
+      <header class="header">
+
+          <div class="header-logo">
+              <img src="assets/img/logo.png" alt="Logo Frota">
+          </div>
+
+          <div class="header-title">
+              <h1>LANÇAMENTOS</h1>
+          </div>
+
+          <div class="header-info">
+              <div id="clock" class="clock"></div>
+              <button id="btnFullscreen" class="btn-icon">⛶</button>
+          </div>
+
+        </header>
+
+<!-- =====================================================================
+MAIN
+===================================================================== -->
+
+        <main class="page-container">
+
+<!-- =====================================================================
+FORMULÁRIO
+===================================================================== -->
+
+              <section class="card">
+
+                  <h2>NOVO LANÇAMENTO</h2>
+
+                  <form id="formLancamento" class="form-grid">
+
+<!-- DATA -->
+                        <div class="form-group">
+
+
+<label>
+Data
+</label>
+
+
+<input
+
+type="date"
+
+id="data"
+
+name="data"
+
+required
+
+>
+
+
+</div>
+
+
+
+
+
+<!-- HORA -->
+
+
+<div class="form-group">
+
+
+<label>
+Hora
+</label>
+
+
+<input
+
+type="time"
+
+id="hora"
+
+name="hora"
+
+required
+
+>
+
+
+</div>
+
+
+
+
+
+
+<!-- EMPREGADO -->
+
+
+<div class="form-group">
+
+
+<label>
+EMPREGADO
+</label>
+
+
+<select
+
+id="empregado"
+
+name="empregado"
+
+required
+
+>
+
+
+<option value="">
+
+Selecione o empregado
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+<!-- VEÍCULO -->
+
+
+<div class="form-group">
+
+
+<label>
+Veículo
+</label>
+
+
+<select
+
+id="veiculo"
+
+name="veiculo"
+
+required
+
+>
+
+
+<option value="">
+
+Selecione o veículo
+
+</option>
+
+</select>
+
+</div>
+
+<!-- PASSAGEIRO -->
+
+<div class="form-group">
+
+<label>
+Passageiro
+</label>
+
+<input
+
+type="text"
+
+id="passageiro"
+
+name="passageiro"
+
+>
+
+</div>
+
+<!-- SETOR -->
+
+<div class="form-group">
+
+<label>
+Setor
+</label>
+
+<input
+
+type="text"
+
+id="setor"
+
+name="setor"
+
+>
+
+</div>
+
+<!-- MOTIVO -->
+
+<div class="form-group">
+
+<label>
+Motivo
+</label>
+
+<input
+
+type="text"
+
+id="motivo"
+
+name="motivo"
+>
+
+</div>
+
+<!-- ITINERÁRIO -->
+
+<div class="form-group">
+
+<label>
+Itinerário
+</label>
+
+<input
+
+type="text"
+
+id="itinerario"
+
+name="itinerario"
+
+>
+
+</div>
+
+<!-- STATUS -->
+
+                <div class="form-group">
+                    <label> Status</label>
+                    <select id="status" name="status">
+
+<option>
+
+AGENDADO
+
+</option>
+
+<option>
+
+EM ANDAMENTO
+
+</option>
+
+<option>
+
+VIAGEM
+
+</option>
+
+<option>
+
+MANUTENÇÃO
+
+</option>
+
+<option>
+
+FINALIZADO
+
+</option>
+
+<option>
+
+CANCELADO
+
+</option>
+
+</select>
+
+</div>
+
+<!-- AÇÕES -->
+
+                <div class="form-actions">
+                    <button type="submit"  id="btnSalvar" class="btn-primary">SALVAR</button>
+                    <button type="button"  id="btnNovo"   class="btn-secondary">NOVO</button>
+                    <button type="reset"                  class="btn-secondary">LIMPAR</button>
+                </div>
+
+</form>
+
+</section>
+
+<!-- =====================================================================
+TABELA
+===================================================================== -->
+
+<section class="card">
+
+<h2>
+
+LANÇAMENTOS REALIZADOS
+
+</h2>
+
+<div class="table-container">
+
+<div
+
+id="tabelaLancamentos">
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- =====================================================================
+LOADING
+===================================================================== -->
+
+<div
+
+id="loading"
+
+class="loading-overlay"
+
+hidden>
+
+</div>
+
+<!-- =====================================================================
+SCRIPT
+===================================================================== -->
+
+<script
+
+type="module"
+
+src="js/pages/lancamentos.js">
+
+</script>
+
+</body>
+
+</html>

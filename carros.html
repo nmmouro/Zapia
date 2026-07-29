@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Veículos | Painel Frota</title>
+
+
+    <!-- ================================================================ -->
+    <!-- CSS -->
+    <!-- ================================================================ -->
+
+    <link
+        rel="stylesheet"
+        href="css/stylecar.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/carros.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================================================ -->
+    <!-- HEADER -->
+    <!-- ================================================================ -->
+
+    <header class="page-header">
+
+        <div>
+
+            <span class="page-kicker">
+
+                PAINEL FROTA
+
+            </span>
+
+            <h1>
+
+                Veículos
+
+            </h1>
+
+            <p>
+
+                Gerenciamento da frota
+
+            </p>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="btn btn-primary"
+            id="btnNovoVeiculo"
+        >
+
+            <span>＋</span>
+
+            Novo veículo
+
+        </button>
+
+    </header>
+
+
+
+    <!-- ================================================================ -->
+    <!-- RESUMO -->
+    <!-- ================================================================ -->
+
+    <section class="veiculos-resumo">
+
+
+        <article class="resumo-card">
+
+            <span>Total de veículos</span>
+
+            <strong id="totalVeiculos">
+
+                0
+
+            </strong>
+
+        </article>
+
+
+
+        <article class="resumo-card">
+
+            <span>Ativos</span>
+
+            <strong id="veiculosAtivos">
+
+                0
+
+            </strong>
+
+        </article>
+
+
+
+        <article class="resumo-card">
+
+            <span>Em manutenção</span>
+
+            <strong id="veiculosManutencao">
+
+                0
+
+            </strong>
+
+        </article>
+
+
+
+        <article class="resumo-card">
+
+            <span>Inativos</span>
+
+            <strong id="veiculosInativos">
+
+                0
+
+            </strong>
+
+        </article>
+
+
+    </section>
+
+
+
+    <!-- ================================================================ -->
+    <!-- FILTROS -->
+    <!-- ================================================================ -->
+
+    <section class="veiculos-filtros">
+
+
+        <div class="campo-busca">
+
+            <label for="buscarVeiculo">
+
+                Buscar veículo
+
+            </label>
+
+            <input
+                type="search"
+                id="buscarVeiculo"
+                placeholder="Placa, modelo ou marca..."
+            >
+
+        </div>
+
+
+
+        <div>
+
+            <label for="filtroStatus">
+
+                Status
+
+            </label>
+
+            <select id="filtroStatus">
+
+                <option value="">
+
+                    Todos
+
+                </option>
+
+                <option value="ATIVO">
+
+                    Ativo
+
+                </option>
+
+                <option value="MANUTENÇÃO">
+
+                    Manutenção
+
+                </option>
+
+                <option value="INATIVO">
+
+                    Inativo
+
+                </option>
+
+            </select>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================================================================ -->
+    <!-- LOADING -->
+    <!-- ================================================================ -->
+
+    <div
+        id="loadingVeiculos"
+        class="loading"
+        hidden
+    >
+
+        Carregando veículos...
+
+    </div>
+
+
+
+    <!-- ================================================================ -->
+    <!-- GRID -->
+    <!-- ================================================================ -->
+
+    <main>
+
+        <section
+            id="gridVeiculos"
+            class="veiculos-grid"
+        >
+
+        </section>
+
+
+        <div
+            id="veiculosVazio"
+            class="estado-vazio"
+            hidden
+        >
+
+            <div class="estado-icone">
+
+                🚙
+
+            </div>
+
+            <h2>
+
+                Nenhum veículo encontrado
+
+            </h2>
+
+            <p>
+
+                Cadastre um novo veículo ou altere os filtros.
+
+            </p>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================================================================ -->
+    <!-- MODAL -->
+    <!-- ================================================================ -->
+
+    <dialog id="modalVeiculo">
+
+        <form
+            method="dialog"
+            id="formVeiculo"
+            class="modal-form"
+        >
+
+            <header class="modal-header">
+
+                <div>
+
+                    <span class="page-kicker">
+
+                        CADASTRO
+
+                    </span>
+
+                    <h2 id="tituloModal">
+
+                        Novo veículo
+
+                    </h2>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="btnFecharModal"
+                    class="btn-icon"
+                >
+
+                    ×
+
+                </button>
+
+            </header>
+
+
+            <input
+                type="hidden"
+                id="veiculoId"
+            >
+
+
+            <div class="form-grid">
+
+
+                <div class="campo">
+
+                    <label for="placa">
+
+                        Placa
+
+                    </label>
+
+                    <input
+                        id="placa"
+                        name="Placa"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="campo">
+
+                    <label for="modelo">
+
+                        Modelo
+
+                    </label>
+
+                    <input
+                        id="modelo"
+                        name="Modelo"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="campo">
+
+                    <label for="marca">
+
+                        Marca
+
+                    </label>
+
+                    <input
+                        id="marca"
+                        name="Marca"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="campo">
+
+                    <label for="ano">
+
+                        Ano
+
+                    </label>
+
+                    <input
+                        id="ano"
+                        name="Ano"
+                        type="number"
+                    >
+
+                </div>
+
+
+
+                <div class="campo">
+
+                    <label for="cor">
+
+                        Cor
+
+                    </label>
+
+                    <input
+                        id="cor"
+                        name="Cor"
+                    >
+
+                </div>
+
+
+
+                <div class="campo">
+
+                    <label for="combustivel">
+
+                        Combustível
+
+                    </label>
+
+                    <select
+                        id="combustivel"
+                        name="Combustivel"
+                    >
+
+                        <option value="">
+
+                            Selecione
+
+                        </option>
+
+                        <option value="Gasolina">
+
+                            Gasolina
+
+                        </option>
+
+                        <option value="Etanol">
+
+                            Etanol
+
+                        </option>
+
+                        <option value="Diesel">
+
+                            Diesel
+
+                        </option>
+
+                        <option value="Flex">
+
+                            Flex
+
+                        </option>
+
+                        <option value="Elétrico">
+
+                            Elétrico
+
+                        </option>
+
+                        <option value="Híbrido">
+
+                            Híbrido
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="campo">
+
+                    <label for="status">
+
+                        Status
+
+                    </label>
+
+                    <select
+                        id="status"
+                        name="Status"
+                    >
+
+                        <option value="ATIVO">
+
+                            Ativo
+
+                        </option>
+
+                        <option value="MANUTENÇÃO">
+
+                            Manutenção
+
+                        </option>
+
+                        <option value="INATIVO">
+
+                            Inativo
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <footer class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="btnCancelar"
+                >
+
+                    Cancelar
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+
+                    Salvar veículo
+
+                </button>
+
+            </footer>
+
+        </form>
+
+    </dialog>
+
+
+
+    <!-- ================================================================ -->
+    <!-- JS -->
+    <!-- ================================================================ -->
+
+    <script
+        type="module"
+        src="js/pages/carros.js"
+    ></script>
+
+
+</body>
+
+</html>

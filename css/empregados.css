@@ -1,0 +1,986 @@
+/* ==========================================================================
+   PAINEL FROTA
+   MOTORISTAS
+   Arquivo: css/empregados.css
+========================================================================== */
+
+
+/* ==========================================================================
+   CONTAINER DA PÁGINA
+========================================================================== */
+
+
+.empregados-page {
+
+
+    width:
+
+        100%;
+
+
+    min-height:
+
+        calc(100vh - var(--header-height));
+
+
+    padding:
+
+        20px;
+
+
+    display:
+
+        flex;
+
+
+    flex-direction:
+
+        column;
+
+
+    gap:
+
+        20px;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   CABEÇALHO
+========================================================================== */
+
+
+.empregados-header {
+
+
+    display:
+
+        flex;
+
+
+    justify-content:
+
+        space-between;
+
+
+    align-items:
+
+        center;
+
+
+}
+
+
+
+
+.empregados-header h1 {
+
+
+    color:
+
+        white;
+
+
+    font-size:
+
+        1.5rem;
+
+
+}
+
+
+
+
+
+
+/* ==========================================================================
+   ÁREA SUPERIOR - RESUMO
+========================================================================== */
+
+
+.empregados-resumo {
+
+
+    display:
+
+        grid;
+
+
+    grid-template-columns:
+
+        repeat(3,1fr);
+
+
+    gap:
+
+        15px;
+
+
+}
+
+
+
+
+
+.empregados-card {
+
+
+    background:
+
+        var(--bg-card);
+
+
+    border:
+
+        1px solid var(--border);
+
+
+    border-radius:
+
+        var(--radius);
+
+
+    padding:
+
+        18px;
+
+
+    display:
+
+        flex;
+
+
+    flex-direction:
+
+        column;
+
+
+    gap:
+
+        8px;
+
+
+}
+
+
+
+
+
+.empregado-card .titulo {
+
+
+    color:
+
+        var(--text-muted);
+
+
+    font-size:
+
+        .85rem;
+
+
+}
+
+
+
+
+
+.empregado-card .valor {
+
+
+    font-size:
+
+        1.8rem;
+
+
+    font-weight:
+
+        700;
+
+
+    color:
+
+        var(--primary);
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   FORMULÁRIO EMPREGADO
+========================================================================== */
+
+
+.empregado-form {
+
+
+    background:
+
+        var(--bg-card);
+
+
+    border:
+
+        1px solid var(--border);
+
+
+    border-radius:
+
+        var(--radius);
+
+
+    padding:
+
+        20px;
+
+
+    display:
+
+        grid;
+
+
+    grid-template-columns:
+
+        repeat(4,1fr);
+
+
+    gap:
+
+        15px;
+
+
+}
+
+
+
+
+
+.empregado-form .campo {
+
+
+    display:
+
+        flex;
+
+
+    flex-direction:
+
+        column;
+
+
+    gap:
+
+        6px;
+
+
+}
+
+
+
+
+
+.empregado-form label {
+
+
+    color:
+
+        var(--text-muted);
+
+
+    font-size:
+
+        .85rem;
+
+
+}
+
+
+
+
+
+
+.empregado-form input,
+.empregado-form select {
+
+
+    background:
+
+        #020617;
+
+
+    color:
+
+        white;
+
+
+    border:
+
+        1px solid var(--border);
+
+
+    border-radius:
+
+        8px;
+
+
+    padding:
+
+        10px;
+
+
+}
+
+
+
+
+
+/* campos maiores */
+
+
+.empregado-form .campo-full {
+
+
+    grid-column:
+
+        1 / -1;
+
+
+}
+
+
+
+
+
+.empregado-form .campo-duplo {
+
+
+    grid-column:
+
+        span 2;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   BOTÕES
+========================================================================== */
+
+
+.empregado-actions {
+
+
+    grid-column:
+
+        1 / -1;
+
+
+    display:
+
+        flex;
+
+
+    justify-content:
+
+        flex-end;
+
+
+    gap:
+
+        10px;
+
+
+}
+
+
+
+
+
+.btn-empregado-salvar {
+
+
+    background:
+
+        var(--primary);
+
+
+    color:
+
+        #052e16;
+
+
+    padding:
+
+        12px 25px;
+
+
+    border-radius:
+
+        8px;
+
+
+    font-weight:
+
+        700;
+
+
+}
+
+
+
+
+
+
+.btn-empregado-salvar:hover {
+
+
+    background:
+
+        var(--primary-dark);
+
+
+    color:
+
+        white;
+
+
+}
+
+
+
+
+
+
+.btn-empregado-cancelar {
+
+
+    background:
+
+        #334155;
+
+
+    color:
+
+        white;
+
+
+    padding:
+
+        12px 25px;
+
+
+    border-radius:
+
+        8px;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+      TABELA EMPREGADOS
+========================================================================== */
+
+
+.empregados-table {
+
+
+    flex:
+
+        1;
+
+
+    background:
+
+        var(--bg-card);
+
+
+    border:
+
+        1px solid var(--border);
+
+
+    border-radius:
+
+        var(--radius);
+
+
+    padding:
+
+        15px;
+
+
+    overflow:
+
+        hidden;
+
+
+}
+
+
+
+
+
+
+.empregados-table .table-container {
+
+
+    height:
+
+        100%;
+
+
+    overflow:
+
+        auto;
+
+
+}
+
+
+
+
+
+.empregados-table table {
+
+
+    table-layout:
+
+        fixed;
+
+
+}
+
+
+
+
+
+
+
+/* Colunas */
+
+
+.empregados-table th:nth-child(1),
+.empregados-table td:nth-child(1){
+
+
+    width:
+
+        40%;
+
+
+}
+
+
+
+
+
+.empregados-table th:nth-child(2),
+.empregados-table td:nth-child(2){
+
+
+    width:
+
+        25%;
+
+
+}
+
+
+
+
+
+.empregados-table th:nth-child(3),
+.empregados-table td:nth-child(3){
+
+
+    width:
+
+        20%;
+
+
+}
+
+
+
+
+
+.empregados-table th:nth-child(4),
+.empregados-table td:nth-child(4){
+
+
+    width:
+
+        15%;
+
+
+}
+
+
+
+
+
+
+
+
+/* Linhas */
+
+
+.empregados-table tbody tr {
+
+
+    height:
+
+        42px;
+
+
+}
+
+
+
+
+
+.empregados-table td {
+
+
+    font-size:
+
+        .9rem;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   STATUS EMPREGADOS
+========================================================================== */
+
+
+.empregados-status {
+
+
+    display:
+
+        inline-flex;
+
+
+    align-items:
+
+        center;
+
+
+    justify-content:
+
+        center;
+
+
+    padding:
+
+        5px 12px;
+
+
+    border-radius:
+
+        20px;
+
+
+    font-size:
+
+        .75rem;
+
+
+    font-weight:
+
+        700;
+
+
+}
+
+
+
+
+
+.empregado-livre {
+
+
+    background:
+
+        rgba(34,197,94,.15);
+
+
+    color:
+
+        #22c55e;
+
+
+}
+
+
+
+
+
+.empregado-ocupado {
+
+
+    background:
+
+        rgba(239,68,68,.15);
+
+
+    color:
+
+        #ef4444;
+
+
+}
+
+
+
+
+
+.empregado-ferias {
+
+
+    background:
+
+        rgba(245,158,11,.15);
+
+
+    color:
+
+        #f59e0b;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   AÇÕES
+========================================================================== */
+
+
+.empregado-acoes {
+
+
+    display:
+
+        flex;
+
+
+    justify-content:
+
+        center;
+
+
+    gap:
+
+        8px;
+
+
+}
+
+
+
+
+
+.empregado-acoes button {
+
+
+    width:
+
+        32px;
+
+
+    height:
+
+        32px;
+
+
+    border-radius:
+
+        6px;
+
+
+}
+
+
+
+
+
+
+.btn-editar-empregado {
+
+
+    background:
+
+        rgba(56,189,248,.15);
+
+
+    color:
+
+        #38bdf8;
+
+
+}
+
+
+
+
+
+.btn-excluir-empregado {
+
+
+    background:
+
+        rgba(239,68,68,.15);
+
+
+    color:
+
+        #ef4444;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   MODO TV
+========================================================================== */
+
+
+@media(min-width:1600px){
+
+
+    .empregados-table tbody tr {
+
+
+        height:
+
+            48px;
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   RESPONSIVO
+========================================================================== */
+
+
+@media(max-width:1100px){
+
+
+    .empregados-resumo {
+
+
+        grid-template-columns:
+
+            1fr;
+
+
+    }
+
+
+
+    .empregado-form {
+
+
+        grid-template-columns:
+
+            repeat(2,1fr);
+
+
+    }
+
+
+
+}
+
+
+
+
+
+@media(max-width:700px){
+
+
+    .empregado-form {
+
+
+        grid-template-columns:
+
+            1fr;
+
+
+    }
+
+
+
+    .empregados-header {
+
+
+        flex-direction:
+
+            column;
+
+
+        align-items:
+
+            flex-start;
+
+
+        gap:
+
+            10px;
+
+
+    }
+
+
+}

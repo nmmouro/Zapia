@@ -1,0 +1,1110 @@
+/* ==========================================================================
+   PAINEL FROTA
+   VEÍCULOS
+   Arquivo: css/veiculos.css
+========================================================================== */
+
+
+/* ==========================================================================
+   CONTAINER PRINCIPAL
+========================================================================== */
+
+
+.veiculos-page {
+
+
+    width:
+
+        100%;
+
+
+    min-height:
+
+        calc(100vh - var(--header-height));
+
+
+    padding:
+
+        20px;
+
+
+    display:
+
+        flex;
+
+
+    flex-direction:
+
+        column;
+
+
+    gap:
+
+        20px;
+
+
+}
+
+
+
+
+
+
+/* ==========================================================================
+   CABEÇALHO
+========================================================================== */
+
+
+.veiculos-header {
+
+
+    display:
+
+        flex;
+
+
+    justify-content:
+
+        space-between;
+
+
+    align-items:
+
+        center;
+
+
+}
+
+
+
+
+
+.veiculos-header h1 {
+
+
+    color:
+
+        white;
+
+
+    font-size:
+
+        1.5rem;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   RESUMO DOS VEÍCULOS
+========================================================================== */
+
+
+.veiculos-resumo {
+
+
+    display:
+
+        grid;
+
+
+    grid-template-columns:
+
+        repeat(4,1fr);
+
+
+    gap:
+
+        15px;
+
+
+}
+
+
+
+
+
+.veiculo-card {
+
+
+    background:
+
+        var(--bg-card);
+
+
+    border:
+
+        1px solid var(--border);
+
+
+    border-radius:
+
+        var(--radius);
+
+
+    padding:
+
+        18px;
+
+
+    display:
+
+        flex;
+
+
+    flex-direction:
+
+        column;
+
+
+    gap:
+
+        8px;
+
+
+}
+
+
+
+
+
+.veiculo-card .titulo {
+
+
+    color:
+
+        var(--text-muted);
+
+
+    font-size:
+
+        .85rem;
+
+
+}
+
+
+
+
+
+.veiculo-card .valor {
+
+
+    color:
+
+        var(--primary);
+
+
+    font-size:
+
+        1.8rem;
+
+
+    font-weight:
+
+        700;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   FORMULÁRIO VEÍCULOS
+========================================================================== */
+
+
+.veiculo-form {
+
+
+    background:
+
+        var(--bg-card);
+
+
+    border:
+
+        1px solid var(--border);
+
+
+    border-radius:
+
+        var(--radius);
+
+
+    padding:
+
+        20px;
+
+
+    display:
+
+        grid;
+
+
+    grid-template-columns:
+
+        repeat(4,1fr);
+
+
+    gap:
+
+        15px;
+
+
+}
+
+
+
+
+
+
+.veiculo-form .campo {
+
+
+    display:
+
+        flex;
+
+
+    flex-direction:
+
+        column;
+
+
+    gap:
+
+        6px;
+
+
+}
+
+
+
+
+
+
+.veiculo-form label {
+
+
+    color:
+
+        var(--text-muted);
+
+
+    font-size:
+
+        .85rem;
+
+
+}
+
+
+
+
+
+
+.veiculo-form input,
+.veiculo-form select {
+
+
+    background:
+
+        #020617;
+
+
+    color:
+
+        white;
+
+
+    border:
+
+        1px solid var(--border);
+
+
+    border-radius:
+
+        8px;
+
+
+    padding:
+
+        10px;
+
+
+}
+
+
+
+
+
+
+
+/* campos especiais */
+
+
+.veiculo-form .campo-full {
+
+
+    grid-column:
+
+        1 / -1;
+
+
+}
+
+
+
+
+
+.veiculo-form .campo-duplo {
+
+
+    grid-column:
+
+        span 2;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   AÇÕES FORMULÁRIO
+========================================================================== */
+
+
+.veiculo-actions {
+
+
+    grid-column:
+
+        1 / -1;
+
+
+    display:
+
+        flex;
+
+
+    justify-content:
+
+        flex-end;
+
+
+    gap:
+
+        10px;
+
+
+}
+
+
+
+
+
+.btn-veiculo-salvar {
+
+
+    background:
+
+        var(--primary);
+
+
+    color:
+
+        #052e16;
+
+
+    padding:
+
+        12px 25px;
+
+
+    border-radius:
+
+        8px;
+
+
+    font-weight:
+
+        700;
+
+
+}
+
+
+
+
+.btn-veiculo-salvar:hover {
+
+
+    background:
+
+        var(--primary-dark);
+
+
+    color:
+
+        white;
+
+
+}
+
+
+
+
+
+
+.btn-veiculo-cancelar {
+
+
+    background:
+
+        #334155;
+
+
+    color:
+
+        white;
+
+
+    padding:
+
+        12px 25px;
+
+
+    border-radius:
+
+        8px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   TABELA VEÍCULOS
+========================================================================== */
+
+
+.veiculos-table {
+
+
+    flex:
+
+        1;
+
+
+    background:
+
+        var(--bg-card);
+
+
+    border:
+
+        1px solid var(--border);
+
+
+    border-radius:
+
+        var(--radius);
+
+
+    padding:
+
+        15px;
+
+
+    overflow:
+
+        hidden;
+
+
+}
+
+
+
+
+
+
+
+.veiculos-table .table-container {
+
+
+    height:
+
+        100%;
+
+
+    overflow:
+
+        auto;
+
+
+}
+
+
+
+
+
+.veiculos-table table {
+
+
+    table-layout:
+
+        fixed;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   COLUNAS
+========================================================================== */
+
+
+.veiculos-table th:nth-child(1),
+.veiculos-table td:nth-child(1){
+
+
+    width:
+
+        15%;
+
+
+}
+
+
+
+
+
+.veiculos-table th:nth-child(2),
+.veiculos-table td:nth-child(2){
+
+
+    width:
+
+        25%;
+
+
+}
+
+
+
+
+
+.veiculos-table th:nth-child(3),
+.veiculos-table td:nth-child(3){
+
+
+    width:
+
+        15%;
+
+
+}
+
+
+
+
+
+.veiculos-table th:nth-child(4),
+.veiculos-table td:nth-child(4){
+
+
+    width:
+
+        20%;
+
+
+}
+
+
+
+
+
+.veiculos-table th:nth-child(5),
+.veiculos-table td:nth-child(5){
+
+
+    width:
+
+        15%;
+
+
+}
+
+
+
+
+
+.veiculos-table th:nth-child(6),
+.veiculos-table td:nth-child(6){
+
+
+    width:
+
+        10%;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   LINHAS
+========================================================================== */
+
+
+.veiculos-table tbody tr {
+
+
+    height:
+
+        42px;
+
+
+}
+
+
+
+
+
+.veiculos-table td {
+
+
+    font-size:
+
+        .9rem;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   STATUS VEÍCULO
+========================================================================== */
+
+
+.veiculo-status {
+
+
+    display:
+
+        inline-flex;
+
+
+    align-items:
+
+        center;
+
+
+    justify-content:
+
+        center;
+
+
+    padding:
+
+        5px 12px;
+
+
+    border-radius:
+
+        20px;
+
+
+    font-size:
+
+        .75rem;
+
+
+    font-weight:
+
+        700;
+
+
+}
+
+
+
+
+
+
+.veiculo-livre {
+
+
+    background:
+
+        rgba(34,197,94,.15);
+
+
+    color:
+
+        #22c55e;
+
+
+}
+
+
+
+
+
+.veiculo-viagem {
+
+
+    background:
+
+        rgba(56,189,248,.15);
+
+
+    color:
+
+        #38bdf8;
+
+
+}
+
+
+
+
+
+.veiculo-manutencao {
+
+
+    background:
+
+        rgba(245,158,11,.15);
+
+
+    color:
+
+        #f59e0b;
+
+
+}
+
+
+
+
+
+.veiculo-inativo {
+
+
+    background:
+
+        rgba(239,68,68,.15);
+
+
+    color:
+
+        #ef4444;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   AÇÕES TABELA
+========================================================================== */
+
+
+.veiculo-acoes {
+
+
+    display:
+
+        flex;
+
+
+    justify-content:
+
+        center;
+
+
+    gap:
+
+        8px;
+
+
+}
+
+
+
+
+
+.veiculo-acoes button {
+
+
+    width:
+
+        32px;
+
+
+    height:
+
+        32px;
+
+
+    border-radius:
+
+        6px;
+
+
+}
+
+
+
+
+
+.btn-editar-veiculo {
+
+
+    background:
+
+        rgba(56,189,248,.15);
+
+
+    color:
+
+        #38bdf8;
+
+
+}
+
+
+
+
+
+.btn-excluir-veiculo {
+
+
+    background:
+
+        rgba(239,68,68,.15);
+
+
+    color:
+
+        #ef4444;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   DASHBOARD - STATUS COMPARTILHADO
+========================================================================== */
+
+
+.veiculo-disponivel {
+
+
+    color:
+
+        #22c55e;
+
+
+}
+
+
+
+
+.veiculo-ocupado {
+
+
+    color:
+
+        #ef4444;
+
+
+}
+
+
+
+
+.veiculo-manutencao-texto {
+
+
+    color:
+
+        #f59e0b;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   MODO TV
+========================================================================== */
+
+
+@media(min-width:1600px){
+
+
+    .veiculos-table tbody tr {
+
+
+        height:
+
+            48px;
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   RESPONSIVO
+========================================================================== */
+
+
+@media(max-width:1100px){
+
+
+    .veiculos-resumo {
+
+
+        grid-template-columns:
+
+            repeat(2,1fr);
+
+
+    }
+
+
+
+
+
+    .veiculo-form {
+
+
+        grid-template-columns:
+
+            repeat(2,1fr);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+@media(max-width:700px){
+
+
+    .veiculos-resumo {
+
+
+        grid-template-columns:
+
+            1fr;
+
+
+    }
+
+
+
+
+    .veiculo-form {
+
+
+        grid-template-columns:
+
+            1fr;
+
+
+    }
+
+
+
+
+    .veiculos-header {
+
+
+        flex-direction:
+
+            column;
+
+
+        align-items:
+
+            flex-start;
+
+
+        gap:
+
+            10px;
+
+
+    }
+
+
+}
