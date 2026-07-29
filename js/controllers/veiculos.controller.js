@@ -19,19 +19,17 @@ import {
     esconderLoading
 } from "../ui/loading.js";
 
+
 export async function initVeiculos(){
 
     try{
 
         mostrarLoading();
-
         preencherDataAtual();
-
         registrarEventos();
-
         await carregarTabela();
-
     }
+        
     catch(erro){
 
         tratarErro(erro);
@@ -40,10 +38,9 @@ export async function initVeiculos(){
     finally{
 
         esconderLoading();
-
     }
-
 }
+
 
 function registrarEventos(){
 
@@ -60,7 +57,6 @@ function registrarEventos(){
             "click",
             novoFormulario
         );
-
 }
 
 window.editarVeiculo = editarVeiculo;
