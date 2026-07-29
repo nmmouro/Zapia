@@ -1,3 +1,58 @@
+// ============================================================================
+// IMPORTS
+// ============================================================================
+
+import {
+
+    obterVeiculos,
+    obterVeiculo,
+    excluirVeiculo
+
+} from "../services/veiculos.service.js";
+
+import {
+
+    preencherFormulario
+
+} from "../forms/veiculos.form.js";
+
+import {
+
+    tratarErro
+
+} from "../utils/veiculos.helpers.js";
+
+import {
+
+    mostrarLoading,
+    esconderLoading
+
+} from "../ui/loading.js";
+
+import {
+
+    renderTable
+
+} from "../ui/table.js";
+
+import {
+
+    COLUNAS_VEICULOS
+
+} from "../config/colunas.js";
+
+
+// ============================================================================
+// ESTADO
+// ============================================================================
+
+let registros = [];
+
+let registroEditando = null;
+
+const tabela = document.querySelector("#tabelaVeiculos");
+
+
 // ====================================================================
 // RECARREGAR TABELA
 // ====================================================================
@@ -38,7 +93,7 @@ function renderizarTabela(){
                 className: "btn-delete",
                 onClick:
 
-                    registro => remover(registro.ID)
+                    registro => removerVeiculo(registro.ID)
             }
         ]
     );
