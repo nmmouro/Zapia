@@ -11,6 +11,7 @@ import {
 
 import {
     preencherDataAtual,
+    tratarErro
 } from "../utils/veiculos.helpers.js";
 
 import {
