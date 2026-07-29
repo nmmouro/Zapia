@@ -10,9 +10,7 @@ export async function salvarFormulario(evento){
 
         if(registroEditando){
 
-            await atualizarLancamento(
-
-                registroEditando, dados);
+            await atualizarLancamento(registroEditando, dados);
         }
             
         else{
