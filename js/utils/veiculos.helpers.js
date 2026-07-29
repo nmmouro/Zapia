@@ -4,15 +4,13 @@
 
 export function preencherDataAtual(){
 
-    const campoData = document.getElementById("data");
-
-    if (!campoData){
+    if (!campoData) {
 
         return;
 
     }
 
-    campoData.value = dataInput();
+    campoData.value =  dataInput();
 
 }
 
