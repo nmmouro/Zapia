@@ -6,9 +6,11 @@ import {
 
     obterVeiculos,
     obterVeiculo,
+    salvarVeiculo,
+    atualizarVeiculo,
     excluirVeiculo
 
-} from "../services/veiculos.service.js";
+} from "../services/veiculos.js";
 
 import {
 
