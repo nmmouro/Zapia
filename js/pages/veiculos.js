@@ -1,3 +1,8 @@
+// ============================================================================
+// VEÍCULOS
+// Arquivo: js/pages/veiculos.js
+// ============================================================================
+
 import {
     carregarTabela
 } from "../controllers/veiculos.controller.js";
