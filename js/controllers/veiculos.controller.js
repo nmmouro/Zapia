@@ -7,10 +7,8 @@ import {
 } from "../services/veiculos.js";
 
 import {
-
-    preencherFormulario
-
-} from "../forms/veiculos.fields.js";
+    renderTable
+} from "../ui/table.js";
 
 import {
 
@@ -18,6 +16,17 @@ import {
     esconderLoading
 
 } from "../ui/loading.js";
+
+import {
+    COLUNAS_VEICULOS
+} from "../config/tabelas/veiculos.js";
+
+import {
+
+    preencherFormulario
+
+} from "../forms/veiculos.fields.js";
+
 
 import {
 
