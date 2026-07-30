@@ -1,4 +1,5 @@
 import { renderTable } from "../ui/table.js";
+
 import { COLUNAS_VEICULOS } from "../config/tabelas/veiculos.js";
 
 import {
@@ -10,6 +11,7 @@ import {
     editarVeiculo,
     removerVeiculo
 } from "./veiculos.controller.js";
+
 
 export function renderizarTabela() {
 
