@@ -1,17 +1,25 @@
 import {
-
     carregarTabela
-
 } from "../controllers/veiculos.controller.js";
 
-document.addEventListener(
+import {
+    salvarFormulario,
+    novoFormulario
+} from "../forms/veiculos.form.js";
 
-    "DOMContentLoaded",
+document.addEventListener("DOMContentLoaded", async () => {
 
-    async () => {
+    const formulario = document.querySelector("#formVeiculo");
+    const btnNovo = document.querySelector("#btnNovo");
 
-        await carregarTabela();
+    formulario.addEventListener("submit", salvarFormulario);
 
-    }
+    btnNovo.addEventListener("click", () => {
 
-);
+        novoFormulario(formulario);
+
+    });
+
+    await carregarTabela();
+
+});
