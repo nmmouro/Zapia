@@ -9,7 +9,7 @@ import {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    const formulario = document.querySelector("#formVeiculo");
+    const formulario = document.querySelector("#formveiculo");
     const btnNovo = document.querySelector("#btnNovo");
 
     console.log(formulario);
