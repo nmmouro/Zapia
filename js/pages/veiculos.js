@@ -10,20 +10,19 @@ import {
 document.addEventListener("DOMContentLoaded", async () => {
 
     const formulario = document.querySelector("#formveiculo");
-    const btnNovo = document.querySelector("#btnNovo");
+const btnNovo = document.querySelector("#btnNovo");
 
-    console.log(formulario);
-    console.log(btnNovo);
+formulario.addEventListener("submit", (evento) => {
 
-    
+    salvarFormulario(evento, formulario);
 
-    formulario.addEventListener("submit", salvarFormulario);
+});
 
-    btnNovo.addEventListener("click", () => {
+btnNovo.addEventListener("click", () => {
 
-        novoFormulario(formulario);
+    novoFormulario(formulario);
 
-    });
+});
 
     await carregarTabela();
 
