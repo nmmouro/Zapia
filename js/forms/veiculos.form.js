@@ -1,3 +1,9 @@
+import {
+    salvarFormulario,
+    novoFormulario
+} from "../forms/veiculos.actions.js";
+
+
 export function limparFormulario(formulario) {
 
     console.log("limparFormulario executou");
