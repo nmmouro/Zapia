@@ -1,11 +1,17 @@
-// ============================================================================
-// VEÍCULOS
-// Arquivo: js/pages/veiculos.js
-// ============================================================================
+import {
 
-import { initVeiculos } from "../controllers/veiculos.controller.js";
+    carregarTabela
+
+} from "../controllers/veiculos.controller.js";
 
 document.addEventListener(
+
     "DOMContentLoaded",
-    initVeiculos
+
+    async () => {
+
+        await carregarTabela();
+
+    }
+
 );
