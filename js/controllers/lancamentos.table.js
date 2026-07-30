@@ -1,25 +1,10 @@
-// ============================================================================
-// CARREGAR TABELA
-// ============================================================================
-
-export async function carregarTabela() {
-
-    const resposta = await obterLancamentos();
-
-    registros =
-        resposta?.dados ??
-        resposta;
-
-    renderizarTabela();
-
-}
 
 
 // ============================================================================
 // RENDER
 // ============================================================================
 
-function renderizarTabela() {
+export function renderizarTabela() {
 
     renderTable(
 
