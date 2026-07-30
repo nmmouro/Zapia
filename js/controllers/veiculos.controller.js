@@ -36,7 +36,7 @@ import {
 
     renderizarTabela
 
-} from "./veiculos.table.js";
+} from "./controllers/veiculos.table.js";
 
 export async function carregarTabela() {
 
