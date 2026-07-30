@@ -41,7 +41,7 @@ import {
 
     COLUNAS_VEICULOS
 
-} from "../config/colunas.js";
+} from "../config/tabelas/veiculos.js";
 
 
 // ============================================================================
