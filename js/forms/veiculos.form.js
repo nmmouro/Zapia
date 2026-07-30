@@ -4,7 +4,7 @@ export function limparFormulario(formulario) {
 
     formulario.reset();
 
-    preencherDataAtual();
+    preencherDataAtual(formulario.elements["data"]);
 
     document.body.classList.remove("modo-edicao");
 
