@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const formulario = document.querySelector("#formVeiculo");
     const btnNovo = document.querySelector("#btnNovo");
 
+    console.log(formulario);
+    console.log(btnNovo);
+
+    
+
     formulario.addEventListener("submit", salvarFormulario);
 
     btnNovo.addEventListener("click", () => {
