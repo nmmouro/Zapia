@@ -52,7 +52,7 @@ let registros = [];
 
 let registroEditando = null;
 
-const tabela = document.querySelector("#tabelaVeiculos");
+const tabela = document.querySelector("#tabelaveiculos");
 
 
 // ====================================================================
