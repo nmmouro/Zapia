@@ -1,7 +1,7 @@
 import {
 
-    salvarlancamentos,
-    atualizarlancamentos
+    salvarLancamento,
+    atualizarLancamento
 
 } from "../services/lancamentos.js";
 
