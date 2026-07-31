@@ -64,55 +64,6 @@ export async function carregarTabela() {
 
 
 // ============================================================================
-// RENDER
-// ============================================================================
-
-function renderizarTabela() {
-
-    renderTable(
-
-        tabela,
-
-        COLUNAS_LANCAMENTOS,
-
-        getregistros(),
-
-        acoes
-
-        [
-
-            {
-
-                label: "Editar",
-
-                className: "btn-edit",
-
-                onClick:
-
-                    registro => editarLancamento(registro.ID)
-
-            },
-
-            {
-
-                label: "Excluir",
-
-                className: "btn-delete",
-
-                onClick:
-
-                    registro => removerLancamento(registro.ID)
-
-            }
-
-        ]
-
-    );
-
-}
-
-
-// ============================================================================
 // EDITAR
 // ============================================================================
 
