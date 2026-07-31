@@ -54,11 +54,25 @@ export async function carregarTabela() {
 
     const resposta = await obterLancamentos();
 
-      setRegistros(
-        resposta?.dados ??
-        resposta);
+    setRegistros(
+        resposta?.dados ?? resposta
+    );
 
-    renderizarTabela();
+    renderizarTabela([
+
+        {
+            label: "Editar",
+            className: "btn-edit",
+            onClick: registro => editarLancamento(registro.ID)
+        },
+
+        {
+            label: "Excluir",
+            className: "btn-delete",
+            onClick: registro => removerLancamento(registro.ID)
+        }
+
+    ]);
 
 }
 
