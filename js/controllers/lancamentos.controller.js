@@ -26,12 +26,17 @@ import {
     preencherFormulario
 } from "../forms/lancamentos.fields.js";
 
-let registros = [];
+import {
 
-let registroEditando = null;
+    tabela,
 
-const tabela =
-    document.querySelector("#tabelalancamentos");
+    getRegistros,
+    setRegistros,
+
+    getRegistroEditando,
+    setRegistroEditando
+
+} from "./lancamentos.state.js";
 
 
 // ============================================================================
@@ -59,9 +64,9 @@ export async function carregarTabela() {
 
     const resposta = await obterLancamentos();
 
-    registros =
+      setregistros(
         resposta?.dados ??
-        resposta;
+        resposta);
 
     renderizarTabela();
 
@@ -80,7 +85,9 @@ function renderizarTabela() {
 
         COLUNAS_LANCAMENTOS,
 
-        registros,
+        getregistros(),
+
+        acoes
 
         [
 
@@ -136,8 +143,7 @@ export async function editarLancamento(id) {
 
         }
 
-        registroEditando =
-            registro.ID;
+        setRegistroEditando(registro.ID);
 
         preencherFormulario(registro);
 
