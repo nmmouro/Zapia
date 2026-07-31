@@ -19,8 +19,8 @@ import {
 } from "./lancamentos.state.js";
 
 import {
-    editarVeiculo,
-    removerVeiculo
+    editarlancamentos,
+    removerlancamentos
 } from "./lancamentos.controller.js";
 
 
