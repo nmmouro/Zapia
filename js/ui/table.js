@@ -31,9 +31,7 @@ export function renderTable(
 ) {
 
     if (!tabela) {
-        console.warn(
-            "Container da tabela não encontrado."
-        );
+        
         return;
     }
 
