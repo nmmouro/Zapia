@@ -13,6 +13,10 @@
 // ============================================================================
 
 
+// ============================================================================
+// PREENCHER SELECT
+// ============================================================================
+
 export function preencherSelect(
 
     select,
@@ -25,70 +29,50 @@ export function preencherSelect(
 
     textoInicial = "Selecione"
 
-){
+) {
 
-
-    if(!select) return;
-
-
+    if (!select) return;
 
     select.innerHTML = "";
 
-
-
     const opcaoInicial =
-
         document.createElement("option");
 
-
-
     opcaoInicial.value = "";
-
     opcaoInicial.textContent = textoInicial;
 
-
-
-    select.appendChild(
-
-        opcaoInicial
-
-    );
-
-
-
+    select.appendChild(opcaoInicial);
 
     dados.forEach(item => {
 
-
-
         const option =
-
             document.createElement("option");
 
+        const valor =
 
+            typeof valueField === "function"
+
+                ? valueField(item)
+
+                : item[valueField];
+
+        const texto =
+
+            typeof textField === "function"
+
+                ? textField(item)
+
+                : item[textField];
 
         option.value =
-
-            item[valueField] ?? "";
-
-
+            valor ?? "";
 
         option.textContent =
+            texto ?? "";
 
-            item[textField] ?? "";
-
-
-
-        select.appendChild(
-
-            option
-
-        );
-
-
+        select.appendChild(option);
 
     });
-
 
 }
 
