@@ -108,7 +108,13 @@ export function novoFormulario(formulario) {
 
     formulario.reset();
 
-    preencherDataHoraAtual();
+    preencherDataHoraAtual(
+
+    formulario.elements["data"],
+
+    formulario.elements["hora"]
+
+);
 
     document.body.classList.remove("modo-edicao");
 
