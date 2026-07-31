@@ -19,8 +19,8 @@ import {
 } from "./lancamentos.state.js";
 
 import {
-    editarlancamentos,
-    removerlancamentos
+    editarLancamento,
+    removerLancamento
 } from "./lancamentos.controller.js";
 
 
