@@ -4,7 +4,9 @@
 // ============================================================================
 
 import {
-    carregarTabela
+    carregarTabela,
+    carregarVeiculos,
+    carregarEmpregados
 } from "../controllers/lancamentos.controller.js";
 
 
