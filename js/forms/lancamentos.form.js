@@ -1,5 +1,49 @@
 import {
 
+    salvarlancamentos,
+    atualizarlancamentos
+
+} from "../services/lancamentos.js";
+
+
+import {
+
+    mostrarLoading,
+    esconderLoading
+
+} from "../ui/loading.js";
+
+
+import {
+
+    tratarErro
+
+} from "../utils/lancamentos.helpers.js";
+
+
+import {
+
+    obterDadosFormulario
+
+} from "./lancamentos.fields.js";
+
+
+import {
+
+    carregarTabela
+
+} from "../controllers/lancamentos.controller.js";
+
+
+import {
+
+    preencherDataHoraAtual
+
+} from "../utils/datas.js";
+
+
+import {
+
     getRegistroEditando,
     setRegistroEditando
 
