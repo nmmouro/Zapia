@@ -71,25 +71,36 @@ export async function editarVeiculo(id) {
 
     try {
 
-        const resposta = await obterVeiculo(id);
+        const resposta =
+            await obterVeiculo(id);
 
-        const registro = resposta?.dados ?? resposta;
-       
-        if (!registro)
+        const registro =
+            resposta?.dados ?? resposta;
+
+        if (!registro) {
+
             throw new Error("Veículo não encontrado.");
-    }
+
+        }
 
         setRegistroEditando(registro.ID);
 
-     const formulario = document.querySelector("#formveiculo");
+        const formulario =
+            document.querySelector("#formveiculo");
 
-        preencherFormulario(formulario, registro);
+        preencherFormulario(
+            formulario,
+            registro
+        );
 
         const titulo =
             document.querySelector("#tituloFormulario");
 
-        if (titulo)
+        if (titulo) {
+
             titulo.textContent = "Editar veículo";
+
+        }
 
         document.body.classList.add("modo-edicao");
 
@@ -99,7 +110,10 @@ export async function editarVeiculo(id) {
 
         console.error(erro);
 
-        alert(erro.message);
+        alert(
+            erro.message ||
+            "Não foi possível carregar o veículo."
+        );
 
     }
 
