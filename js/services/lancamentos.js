@@ -5,9 +5,7 @@
 
 import { criarCrud } from "./crudService.js";
 
-import {
-    ABAS
-} from "../config/config.js";
+import { ABAS } from "../config/config.js";
 
 
 // ============================================================================
