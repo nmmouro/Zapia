@@ -163,25 +163,24 @@ export async function removerLancamento(id) {
 
 export async function carregarVeiculos() {
 
-    const resposta = await obterVeiculos();
+    const resposta =
+        await obterVeiculos();
 
-    const lista = (resposta?.dados ?? resposta).map(item => ({
+    const lista =
+        resposta?.dados ?? resposta;
 
-        ...item,
-
-        Descricao: `${item.Placa} - ${item.Modelo}`
-
-    }));
+    const selectVeiculo =
+        document.querySelector("#veiculo");
 
     preencherSelect(
 
-        document.querySelector("#veiculo"),
+        selectVeiculo,
 
         lista,
 
-        "Placa",
+        item => item.Placa,
 
-        "Descricao",
+        item => `${item.Placa} - ${item.Modelo}`,
 
         "Selecione o veículo"
 
@@ -195,25 +194,24 @@ export async function carregarVeiculos() {
 
 export async function carregarEmpregados() {
 
-    const resposta = await obterEmpregados();
+    const resposta =
+        await obterEmpregados();
 
-    const lista = (resposta?.dados ?? resposta).map(item => ({
+    const lista =
+        resposta?.dados ?? resposta;
 
-        ...item,
-
-        Descricao: `${item.Empregado} / ${item.Matrícula}`
-
-    }));
+    const selectEmpregado =
+        document.querySelector("#empregado");
 
     preencherSelect(
 
-        document.querySelector("#empregado"),
+        selectEmpregado,
 
         lista,
 
-        "Descricao",
+        item => item.ID,
 
-        "Descricao",
+        item => `${item.Empregado} - ${item.Matrícula}`,
 
         "Selecione o empregado"
 
