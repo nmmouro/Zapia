@@ -54,7 +54,7 @@ export async function carregarTabela() {
 
     const resposta = await obterLancamentos();
 
-      setregistros(
+      setRegistros(
         resposta?.dados ??
         resposta);
 
