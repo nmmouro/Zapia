@@ -165,20 +165,25 @@ export async function carregarVeiculos() {
 
     const resposta = await obterVeiculos();
 
-    const lista = resposta?.dados ?? resposta;
+    const lista = (resposta?.dados ?? resposta).map(item => ({
 
-    const select =
-        document.querySelector("#veiculo");
+        ...item,
+
+        Descricao: `${item.Placa} - ${item.Modelo}`
+
+    }));
 
     preencherSelect(
 
-        select,
+        document.querySelector("#veiculo"),
 
         lista,
 
-        item => item.Placa,
+        "Placa",
 
-        item => `${item.Placa} - ${item.Modelo}`
+        "Descricao",
+
+        "Selecione o veículo"
 
     );
 
@@ -192,25 +197,29 @@ export async function carregarEmpregados() {
 
     const resposta = await obterEmpregados();
 
-    const lista = resposta?.dados ?? resposta;
+    const lista = (resposta?.dados ?? resposta).map(item => ({
 
-    const select =
-        document.querySelector("#empregado");
+        ...item,
+
+        Descricao: `${item.Empregado} / ${item.Matrícula}`
+
+    }));
 
     preencherSelect(
 
-        select,
+        document.querySelector("#empregado"),
 
         lista,
 
-        item => item["Empregado / Matrícula"],
+        "Descricao",
 
-        item => item["Empregado / Matrícula"]
+        "Descricao",
+
+        "Selecione o empregado"
 
     );
 
 }
-
 
 // ============================================================================
 // GLOBAL
