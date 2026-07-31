@@ -1,56 +1,80 @@
-export async function salvarFormulario(evento){
+import {
+
+    getRegistroEditando,
+    setRegistroEditando
+
+} from "../controllers/lancamentos.state.js";
+
+
+export async function salvarFormulario(evento, formulario) {
 
     evento.preventDefault();
 
-    try{
+    try {
 
         mostrarLoading();
-        
-        const dados = obterDadosFormulario();
 
-        if(registroEditando){
+        const dados =
+            obterDadosFormulario(formulario);
 
-            await atualizarLancamento(registroEditando, dados);
+        if (getRegistroEditando()) {
+
+            await atualizarLancamento(
+
+                getRegistroEditando(),
+
+                dados
+
+            );
+
         }
-            
-        else{
+
+        else {
 
             await salvarLancamento(dados);
 
         }
 
-        formulario.reset();
+        limparFormulario(formulario);
 
-        preencherDataHoraAtual();
-
-        registroEditando = null;
+        setRegistroEditando(null);
 
         await carregarTabela();
 
     }
-    catch(erro){
+
+    catch (erro) {
 
         tratarErro(erro);
 
     }
-    finally{
+
+    finally {
 
         esconderLoading();
 
     }
+
 }
 
 
-export function novoFormulario(){
+export function novoFormulario(formulario) {
 
-    registroEditando = null;
+    setRegistroEditando(null);
 
     formulario.reset();
 
     preencherDataHoraAtual();
 
+    document.body.classList.remove("modo-edicao");
+
 }
   
+
+
+
+
+
 
 function obterDadosFormulario() {
 
