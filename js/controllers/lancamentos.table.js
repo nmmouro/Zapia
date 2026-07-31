@@ -23,23 +23,7 @@ import {
 // RENDER
 // ============================================================================
 
-export function renderizarTabela() {
-
-    const acoes = [
-
-        {
-            label: "Editar",
-            className: "btn-edit",
-            onClick: registro => editarLancamento(registro.ID)
-        },
-
-        {
-            label: "Excluir",
-            className: "btn-delete",
-            onClick: registro => removerLancamento(registro.ID)
-        }
-
-    ];
+export function renderizarTabela(acoes) {
 
     renderTable(
 
