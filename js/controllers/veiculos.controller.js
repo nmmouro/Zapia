@@ -41,7 +41,12 @@ import {
 
 import {
 
+    tabela,
+
+    getRegistros,
     setRegistros,
+
+    getRegistroEditando,
     setRegistroEditando
 
 } from "./veiculos.state.js";
