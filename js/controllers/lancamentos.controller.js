@@ -38,22 +38,12 @@ import {
 
 } from "./lancamentos.state.js";
 
+import {
 
-// ============================================================================
-// ESTADO
-// ============================================================================
+    renderizarTabela
 
-export function getRegistroEditando() {
+} from "./lancamentos.table.js";
 
-    return registroEditando;
-
-}
-
-export function setRegistroEditando(id) {
-
-    registroEditando = id;
-
-}
 
 
 // ============================================================================
