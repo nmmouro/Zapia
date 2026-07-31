@@ -27,6 +27,9 @@ import {
     renderizarTabela
 } from "./lancamentos.table.js";
 
+import { obterVeiculos } from "../services/veiculos.js";
+import { preencherSelect } from "../utils/formulario.js";
+import { obterEmpregados } from "../services/empregados.js";
 
 // ============================================================================
 // CARREGAR TABELA
@@ -151,6 +154,60 @@ export async function removerLancamento(id) {
         esconderLoading();
 
     }
+
+}
+
+// ============================================================================
+// CARREGAR VEÍCULOS
+// ============================================================================
+
+export async function carregarVeiculos() {
+
+    const resposta = await obterVeiculos();
+
+    const lista = resposta?.dados ?? resposta;
+
+    const select =
+        document.querySelector("#veiculo");
+
+    preencherSelect(
+
+        select,
+
+        lista,
+
+        item => item.Placa,
+
+        item => `${item.Placa} - ${item.Modelo}`
+
+    );
+
+}
+
+// ============================================================================
+// CARREGAR EMPREGADOS
+// ============================================================================
+
+export async function carregarEmpregados() {
+
+    const resposta = await obterEmpregados();
+
+    const lista = resposta?.dados ?? resposta;
+
+    const select =
+        document.querySelector("#empregado");
+
+    preencherSelect(
+
+        select,
+
+        lista,
+
+        item => item["Empregado / Matrícula"],
+
+        item => item["Empregado / Matrícula"]
+
+    );
 
 }
 
