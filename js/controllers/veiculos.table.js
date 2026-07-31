@@ -1,20 +1,23 @@
 import { renderTable } from "../ui/table.js";
 
-
 import { COLUNAS_VEICULOS } from "../config/tabelas/veiculos.js";
 
-
 import {
-    registros,
-    tabela
-} from "./veiculos.state.js";
 
+    tabela,
+
+    getRegistros,
+    setRegistros,
+
+    getRegistroEditando,
+    setRegistroEditando
+
+} from "./veiculos.state.js";
 
 import {
     editarVeiculo,
     removerVeiculo
 } from "./veiculos.controller.js";
-
 
 
 export function renderizarTabela() {
