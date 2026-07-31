@@ -7,7 +7,6 @@
 // ESTADO
 // ============================================================================
 
-
 export let registros = [];
 
 export let registroEditando = null;
@@ -26,7 +25,7 @@ export const tabela =
 export function setRegistros(lista) {
 
     	 registros = lista ?? [];
-
+}
 
 export function getRegistros() {
 
