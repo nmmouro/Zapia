@@ -74,13 +74,16 @@ export async function editarVeiculo(id) {
         const resposta = await obterVeiculo(id);
 
         const registro = resposta?.dados ?? resposta;
-
+       
         if (!registro)
             throw new Error("Veículo não encontrado.");
+    }
 
         setRegistroEditando(registro.ID);
 
-        preencherFormulario(registro);
+     const formulario = document.querySelector("#formveiculo");
+
+        preencherFormulario(formulario, registro);
 
         const titulo =
             document.querySelector("#tituloFormulario");
