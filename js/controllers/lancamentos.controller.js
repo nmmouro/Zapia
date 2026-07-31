@@ -10,40 +10,22 @@ import {
 } from "../services/lancamentos.js";
 
 import {
-    renderTable
-} from "../ui/table.js";
-
-import {
     mostrarLoading,
     esconderLoading
 } from "../ui/loading.js";
-
-import {
-    COLUNAS_LANCAMENTOS
-} from "../config/tabelas/lancamentos.js";
 
 import {
     preencherFormulario
 } from "../forms/lancamentos.fields.js";
 
 import {
-
-    tabela,
-
-    getRegistros,
     setRegistros,
-
-    getRegistroEditando,
     setRegistroEditando
-
 } from "./lancamentos.state.js";
 
 import {
-
     renderizarTabela
-
 } from "./lancamentos.table.js";
-
 
 
 // ============================================================================
@@ -59,19 +41,16 @@ export async function carregarTabela() {
     );
 
     renderizarTabela([
-
         {
             label: "Editar",
             className: "btn-edit",
             onClick: registro => editarLancamento(registro.ID)
         },
-
         {
             label: "Excluir",
             className: "btn-delete",
             onClick: registro => removerLancamento(registro.ID)
         }
-
     ]);
 
 }
@@ -89,8 +68,7 @@ export async function editarLancamento(id) {
             await obterLancamento(id);
 
         const registro =
-            resposta?.dados ??
-            resposta;
+            resposta?.dados ?? resposta;
 
         if (!registro) {
 
@@ -100,15 +78,20 @@ export async function editarLancamento(id) {
 
         setRegistroEditando(registro.ID);
 
-        preencherFormulario(registro);
+        const formulario =
+            document.querySelector("#formlancamento");
+
+        preencherFormulario(
+            formulario,
+            registro
+        );
 
         const titulo =
             document.querySelector("#tituloFormulario");
 
         if (titulo) {
 
-            titulo.textContent =
-                "Editar lançamento";
+            titulo.textContent = "Editar lançamento";
 
         }
 
@@ -121,11 +104,8 @@ export async function editarLancamento(id) {
         console.error(erro);
 
         alert(
-
             erro.message ||
-
             "Não foi possível carregar o lançamento."
-
         );
 
     }
@@ -160,11 +140,8 @@ export async function removerLancamento(id) {
         console.error(erro);
 
         alert(
-
             erro.message ||
-
             "Erro ao excluir lançamento."
-
         );
 
     }
@@ -178,5 +155,8 @@ export async function removerLancamento(id) {
 }
 
 
-window.editarLancamento =
-    editarLancamento;
+// ============================================================================
+// GLOBAL
+// ============================================================================
+
+window.editarLancamento = editarLancamento;
