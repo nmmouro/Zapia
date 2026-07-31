@@ -6,6 +6,22 @@ import {
     COLUNAS_LANCAMENTOS
 } from "../config/tabelas/lancamentos.js";
 
+import {
+
+    tabela,
+
+    getRegistros,
+    setRegistros,
+
+    getRegistroEditando,
+    setRegistroEditando
+
+} from "./lancamentos.state.js";
+
+import {
+    editarVeiculo,
+    removerVeiculo
+} from "./lancamentos.controller.js";
 
 
 // ============================================================================
