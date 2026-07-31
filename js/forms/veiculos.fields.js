@@ -1,5 +1,6 @@
 import { dataParaInput } from "../utils/datas.js";
 
+
 export function obterDadosFormulario(formulario) {
 
     return {
