@@ -6,9 +6,11 @@ import {
 
 } from "../services/veiculos.js";
 
+
 import {
     renderTable
 } from "../ui/table.js";
+
 
 import {
 
@@ -17,9 +19,11 @@ import {
 
 } from "../ui/loading.js";
 
+
 import {
     COLUNAS_VEICULOS
 } from "../config/tabelas/veiculos.js";
+
 
 import {
 
@@ -34,6 +38,7 @@ import {
 
 } from "../utils/veiculos.helpers.js";
 
+
 import {
 
     setRegistros,
@@ -41,11 +46,14 @@ import {
 
 } from "./veiculos.state.js";
 
+
 import {
 
     renderizarTabela
 
 } from "./veiculos.table.js";
+
+
 
 export async function carregarTabela() {
 
