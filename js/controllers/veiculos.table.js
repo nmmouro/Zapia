@@ -20,27 +20,37 @@ import {
 } from "./veiculos.controller.js";
 
 
+// ============================================================================
+// RENDER
+// ============================================================================
+
 export function renderizarTabela() {
+
+    const acoes = [
+
+        {
+            label: "Editar",
+            className: "btn-edit",
+            onClick: registro => editarveiculos(registro.ID)
+        },
+
+        {
+            label: "Excluir",
+            className: "btn-delete",
+            onClick: registro => removerveiculos(registro.ID)
+        }
+
+    ];
 
     renderTable(
 
         tabela,
+
         COLUNAS_VEICULOS,
-        registros,
 
-        [
-            {
-                label: "Editar",
-                className: "btn-edit",
-                onClick: registro => editarVeiculo(registro.ID)
-            },
+        getRegistros(),
 
-            {
-                label: "Excluir",
-                className: "btn-delete",
-                onClick: registro => removerVeiculo(registro.ID)
-            }
-        ]
+        acoes
 
     );
 
