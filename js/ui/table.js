@@ -56,9 +56,6 @@ export function limparTabela(tabela) {
     
     if (!tabela) {
         
-        console.warn(
-            "Container da tabela não encontrado."
-        );
         return;
     }
     tabela.innerHTML = "";
@@ -77,9 +74,7 @@ export function atualizarTabela(
 ) {
 
    if (!tabela) {
-       console.warn(
-           "Container da tabela não encontrado."
-       );
+       
        return;
    }
 
