@@ -16,7 +16,7 @@ import {
 
     document.addEventListener("DOMContentLoaded", async () => {
 
-    const formulario = document.querySelector("#formlancamentos");
+    const formulario = document.querySelector("#formlancamento");
     const btnNovo = document.querySelector("#btnNovo");
 
     formulario.addEventListener("submit", (evento) => {
