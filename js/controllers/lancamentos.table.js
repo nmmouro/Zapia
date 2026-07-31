@@ -18,11 +18,6 @@ import {
 
 } from "./lancamentos.state.js";
 
-import {
-    editarLancamento,
-    removerLancamento
-} from "./lancamentos.controller.js";
-
 
 // ============================================================================
 // RENDER
