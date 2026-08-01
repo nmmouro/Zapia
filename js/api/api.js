@@ -60,12 +60,12 @@ async function request(url, options = {}) {
     ) {
 
         throw new Error(
-
+console.log("API.JS NOVO");
+    console.log(json);
             json.message ||
             json.erro ||
             "Erro desconhecido na API."
-            console.log("API.JS NOVO");
-
+            
         );
 
     }
