@@ -123,21 +123,23 @@ function createRow(item, columns, actions) {
 
         const value = getValue(item, col.field);
 
-        if (typeof col.render === "function") {
+        if (col.type === "status") {
 
-            td.innerHTML = col.render(value, item);
+            td.innerHTML = renderStatus(value);
 
         }
 
-        else if (col.type === "status") {
+        else if (typeof col.render === "function") {
 
-            td.innerHTML = renderStatus(value);
+            td.innerHTML = col.render(value, item);
 
         }
 
         else {
 
             td.textContent = value ?? "";
+
+        }
 
         }
 
