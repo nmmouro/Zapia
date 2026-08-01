@@ -35,37 +35,35 @@ export function obterDadosFormulario(formulario) {
 }
 
 
-export function preencherFormulario(registro){
+import { dataParaInput } from "../utils/datas.js";
 
+export function preencherFormulario(formulario, lancamento) {
 
-    campoData.value = dataParaInput(registro["Data"]) || "";
+    formulario.elements["data"].value =
+        dataParaInput(lancamento.Data) || "";
 
+    formulario.elements["hora"].value =
+        lancamento.Hora || "";
 
-  
-    campoHora.value = horaParaInput(registro["Hora"]) || "";
+    formulario.elements["empregado"].value =
+        lancamento["Empregado / Matrícula"] || "";
 
+    formulario.elements["veiculo"].value =
+        lancamento["Veículo"] || "";
 
-  selectEmpregado.value = registro["Empregado / Matrícula"] || "";
-    
+    formulario.elements["passageiro"].value =
+        lancamento["Passageiro"] || "";
 
-  selectVeiculo.value = registro["Veículo"] || "";
+    formulario.elements["setor"].value =
+        lancamento["Setor"] || "";
 
-   
-    const partes = String(registro["Passageiro / Setor / Motivo"]  || "").split(" / ");
+    formulario.elements["motivo"].value =
+        lancamento["Motivo"] || "";
 
+    formulario.elements["itinerario"].value =
+        lancamento["Itinerário"] || "";
 
-    formulario.passageiro.value = partes[0] || "";
-
-
-    formulario.setor.value = partes[1] || "";
-
-
-    formulario.motivo.value = partes[2] || "";
-
-   
-    formulario.itinerario.value = registro["Itinerário"] || "";
-
-   
-    formulario.status.value = registro["Status"] || "";
+    formulario.elements["status"].value =
+        lancamento.Status || "";
 
 }
