@@ -1,17 +1,28 @@
 import { dataParaInput } from "../utils/datas.js";
 
-
 export function obterDadosFormulario(formulario) {
+
+    const empregado =
+        formulario.elements["empregado"]
+            .selectedOptions[0]?.textContent || "";
+
+    const veiculo =
+        formulario.elements["veiculo"]
+            .selectedOptions[0]?.textContent || "";
 
     return {
 
-        Data: formulario.elements["data"].value,
+        Data:
+            formulario.elements["data"].value,
 
-        Hora: formulario.elements["hora"].value,
+        Hora:
+            formulario.elements["hora"].value,
 
-        "Empregado / Matrícula": formulario.elements["empregado"].value,
+        "Empregado / Matrícula":
+            empregado,
 
-        Veículo:  formulario.elements["veiculo"].value,
+        Veículo:
+            veiculo,
 
         "Passageiro / Setor / Motivo":
             [
@@ -22,14 +33,15 @@ export function obterDadosFormulario(formulario) {
             .filter(Boolean)
             .join(" / "),
 
-        Itinerário: formulario.elements["itinerario"].value,
+        Itinerário:
+            formulario.elements["itinerario"].value,
 
-        Status: formulario.elements["status"].value
+        Status:
+            formulario.elements["status"].value
 
     };
 
 }
-
 
 export function preencherFormulario(formulario, lancamento) {
 
