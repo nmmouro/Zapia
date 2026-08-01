@@ -49,12 +49,12 @@ export async function salvarFormulario(evento, formulario) {
     evento.preventDefault();
 
     try {
-
+                                                                        console.log("ID edição:", id);
         mostrarLoading();
 
         const dados =
             obterDadosFormulario(formulario);
-
+                                                    console.log("Dados:", dados);
         if (getRegistroEditando) {
 
             await atualizarVeiculo(
@@ -72,7 +72,7 @@ export async function salvarFormulario(evento, formulario) {
         setRegistroEditando(null);
 
         await carregarTabela();
-
+                                            console.log("Resposta salvar:", resposta);
     }
 
     catch (erro) {
