@@ -55,7 +55,7 @@ export async function salvarFormulario(evento, formulario) {
         const dados =
             obterDadosFormulario(formulario);
 
-        if (registroEditando) {
+        if (getRegistroEditando) {
 
             await atualizarVeiculo(
                 getRegistroEditando,
