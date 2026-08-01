@@ -91,13 +91,10 @@ export async function salvarFormulario(evento, formulario) {
 
 export function limparFormulario(formulario) {
 
-    console.log("limparFormulario executou");
-
-    registroEditando = null;
+   
+    setRegistroEditando = null;
 
     formulario.reset();
-
-    console.log(formulario.elements["data"]);
 
     preencherDataAtual(formulario.elements["data"]);
 
