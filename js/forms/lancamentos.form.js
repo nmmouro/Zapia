@@ -123,19 +123,7 @@ export function limparFormulario(formulario) {
 
 export function novoFormulario(formulario) {
 
-    setRegistroEditando(null);
-
-    formulario.reset();
-
-    preencherDataHoraAtual(
-
-    formulario.elements["data"],
-
-    formulario.elements["hora"]
-
-);
-
-    document.body.classList.remove("modo-edicao");
+    limparFormulario(formulario);
 
 }
 
