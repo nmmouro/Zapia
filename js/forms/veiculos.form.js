@@ -54,11 +54,8 @@ export async function salvarFormulario(evento, formulario) {
 
         const dados =
             obterDadosFormulario(formulario);
-                                                         const id = getRegistroEditando();
-                                                        console.log("ID edição:", id);
-                                                            console.log("Dados:", dados);
-        
-        if (id) {
+                                                                 
+        if (getRegistroEditando) {
 
             await atualizarVeiculo(
                 getRegistroEditando,
