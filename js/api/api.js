@@ -53,7 +53,7 @@ async function request(url, options = {}) {
         );
 
     }
-console.log("Resposta da API:", json);
+
     if (
         json.success === false ||
         json.sucesso === false
