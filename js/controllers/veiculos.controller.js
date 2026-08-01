@@ -42,6 +42,9 @@ import {
 } from "./veiculos.table.js";
 
 
+// ============================================================================
+// CARREGAR TABELA
+// ============================================================================
 
 export async function carregarTabela() {
 
@@ -51,9 +54,26 @@ export async function carregarTabela() {
         resposta?.dados ?? resposta
     );
 
-    renderizarTabela();
+    renderizarTabela([
+        {
+            label: "Editar",
+            className: "btn-edit",
+            onClick: registro => editarVeiculo(registro.ID)
+        },
+        {
+            label: "Excluir",
+            className: "btn-delete",
+            onClick: registro => removerVeiculo(registro.ID)
+        }
+    ]);
+
 
 }
+
+
+// ============================================================================
+// EDITAR
+// ============================================================================
 
 export async function editarVeiculo(id) {
 
@@ -107,6 +127,10 @@ export async function editarVeiculo(id) {
 
 }
 
+// ============================================================================
+// EXCLUIR
+// ============================================================================
+
 export async function removerVeiculo(id) {
 
     if (!confirm("Excluir veículo?"))
@@ -135,5 +159,9 @@ export async function removerVeiculo(id) {
     }
 
 }
+
+// ============================================================================
+// GLOBAL
+// ============================================================================
 
 window.editarVeiculo = editarVeiculo;
