@@ -53,15 +53,14 @@ async function request(url, options = {}) {
         );
 
     }
-
+console.log("Resposta da API:", json);
     if (
         json.success === false ||
         json.sucesso === false
     ) {
 
         throw new Error(
-console.log("API.JS NOVO");
-    console.log(json);
+
             json.message ||
             json.erro ||
             "Erro desconhecido na API."
