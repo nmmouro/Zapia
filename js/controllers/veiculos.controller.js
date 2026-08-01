@@ -8,11 +8,6 @@ import {
 
 
 import {
-    renderTable
-} from "../ui/table.js";
-
-
-import {
 
     mostrarLoading,
     esconderLoading
@@ -21,22 +16,10 @@ import {
 
 
 import {
-    COLUNAS_VEICULOS
-} from "../config/tabelas/veiculos.js";
-
-
-import {
 
     preencherFormulario
 
 } from "../forms/veiculos.fields.js";
-
-
-import {
-
-    tratarErro
-
-} from "../utils/veiculos.helpers.js";
 
 
 import {
