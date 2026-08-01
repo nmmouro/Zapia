@@ -58,7 +58,7 @@ async function request(url, options = {}) {
         json.success === false ||
         json.sucesso === false
     ) {
-
+console.log("API.JS NOVO");
         throw new Error(
 
             json.message ||
