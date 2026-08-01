@@ -1,13 +1,12 @@
 // ============================================================================
 // TABLE COMPONENT
-// Painel Frota
 // Arquivo: js/components/table.js
 // ============================================================================
 
 import { renderStatus } from "../ui/status.js";
 
 // ============================================================================
-// COMPONENTE
+// CRIAR TABELA
 // ============================================================================
 
 export function createTable({
@@ -24,13 +23,9 @@ export function createTable({
 
     table.className = "table";
 
-    table.appendChild(
+    table.append(
 
-        createHeader(columns, actions)
-
-    );
-
-    table.appendChild(
+        createHeader(columns, actions),
 
         createBody(columns, data, actions)
 
@@ -44,13 +39,7 @@ export function createTable({
 // CABEÇALHO
 // ============================================================================
 
-function createHeader(
-
-    columns,
-
-    actions
-
-) {
+function createHeader(columns, actions) {
 
     const thead = document.createElement("thead");
 
@@ -60,9 +49,7 @@ function createHeader(
 
         const th = document.createElement("th");
 
-        th.textContent =
-
-            col.label || col.field;
+        th.textContent = col.label ?? col.field;
 
         tr.appendChild(th);
 
@@ -88,27 +75,17 @@ function createHeader(
 // CORPO
 // ============================================================================
 
-function createBody(
-
-    columns,
-
-    data,
-
-    actions
-
-) {
+function createBody(columns, data, actions) {
 
     const tbody = document.createElement("tbody");
 
-    if (!data.length) {
+    if (!Array.isArray(data) || data.length === 0) {
 
         tbody.appendChild(
 
             createEmptyRow(
 
-                columns.length +
-
-                (actions.length ? 1 : 0)
+                columns.length + (actions.length ? 1 : 0)
 
             )
 
@@ -122,15 +99,7 @@ function createBody(
 
         tbody.appendChild(
 
-            createRow(
-
-                item,
-
-                columns,
-
-                actions
-
-            )
+            createRow(item, columns, actions)
 
         );
 
@@ -144,15 +113,7 @@ function createBody(
 // LINHA
 // ============================================================================
 
-function createRow(
-
-    item,
-
-    columns,
-
-    actions
-
-) {
+function createRow(item, columns, actions) {
 
     const tr = document.createElement("tr");
 
@@ -160,43 +121,23 @@ function createRow(
 
         const td = document.createElement("td");
 
-        const value =
+        const value = getValue(item, col.field);
 
-            item[col.field];
+        if (typeof col.render === "function") {
 
-console.log(
-
-    "TABELA:",
-
-    col.field,
-
-    "VALOR:",
-
-    value
-
-);
-
-        if (col.type === "status") {
-
-            td.innerHTML =
-
-                renderStatus(value);
+            td.innerHTML = col.render(value, item);
 
         }
 
-        else if (typeof col.render === "function") {
+        else if (col.type === "status") {
 
-            td.innerHTML =
-
-                col.render(value, item);
+            td.innerHTML = renderStatus(value);
 
         }
 
         else {
 
-            td.textContent =
-
-                value ?? "";
+            td.textContent = value ?? "";
 
         }
 
@@ -208,13 +149,7 @@ console.log(
 
         tr.appendChild(
 
-            createActions(
-
-                item,
-
-                actions
-
-            )
+            createActions(item, actions)
 
         );
 
@@ -225,16 +160,10 @@ console.log(
 }
 
 // ============================================================================
-// AÇÕES
+// BOTÕES
 // ============================================================================
 
-function createActions(
-
-    item,
-
-    actions
-
-) {
+function createActions(item, actions) {
 
     const td = document.createElement("td");
 
@@ -242,19 +171,13 @@ function createActions(
 
     actions.forEach(action => {
 
-        const button =
-
-            document.createElement("button");
+        const button = document.createElement("button");
 
         button.type = "button";
 
-        button.className =
+        button.className = action.className ?? "";
 
-            action.className || "";
-
-        button.textContent =
-
-            action.label;
+        button.textContent = action.label;
 
         button.addEventListener(
 
@@ -276,27 +199,17 @@ function createActions(
 // SEM DADOS
 // ============================================================================
 
-function createEmptyRow(
+function createEmptyRow(colspan) {
 
-    colspan
+    const tr = document.createElement("tr");
 
-) {
-
-    const tr =
-
-        document.createElement("tr");
-
-    const td =
-
-        document.createElement("td");
+    const td = document.createElement("td");
 
     td.colSpan = colspan;
 
     td.className = "table-empty";
 
-    td.textContent =
-
-        "Nenhum registro encontrado.";
+    td.textContent = "Nenhum registro encontrado.";
 
     tr.appendChild(td);
 
@@ -305,16 +218,33 @@ function createEmptyRow(
 }
 
 // ============================================================================
+// OBTER VALOR
+// Suporta campos aninhados: "cliente.nome"
+// ============================================================================
+
+function getValue(obj, path) {
+
+    if (!path) return "";
+
+    return path
+
+        .split(".")
+
+        .reduce(
+
+            (acc, key) => acc?.[key],
+
+            obj
+
+        );
+
+}
+
+// ============================================================================
 // RENDER
 // ============================================================================
 
-export function renderTable(
-
-    container,
-
-    options
-
-) {
+export function renderTable(container, options) {
 
     if (!container) return;
 
