@@ -201,41 +201,23 @@ export async function carregarEmpregados() {
         resposta?.dados ?? resposta;
 
     const selectEmpregado =
-    formulario.elements["empregado"];
+        document.querySelector("#empregado");
 
-const empregado =
-    selectEmpregado.selectedOptions[0]?.textContent || "";
+    preencherSelect(
 
-return {
+        selectEmpregado,
 
-    Data:
-        formulario.elements["data"].value,
+        lista,
 
-    Hora:
-        formulario.elements["hora"].value,
+        item => item.ID,
 
-    "Empregado / Matrícula":
-        empregado,
+        item => `${item.Empregado} - ${item.Matrícula}`,
 
-    Veículo:
-        formulario.elements["veiculo"].value,
+        "Selecione o empregado"
 
-    "Passageiro / Setor / Motivo":
-        [
-            formulario.elements["passageiro"].value,
-            formulario.elements["setor"].value,
-            formulario.elements["motivo"].value
-        ]
-        .filter(Boolean)
-        .join(" / "),
+    );
 
-    Itinerário:
-        formulario.elements["itinerario"].value,
-
-    Status:
-        formulario.elements["status"].value
-
-};
+}
 
 // ============================================================================
 // GLOBAL
