@@ -31,13 +31,13 @@ export function renderizarTabela() {
         {
             label: "Editar",
             className: "btn-edit",
-            onClick: registro => editarveiculos(registro.ID)
+            onClick: registro => editarveiculo(registro.ID)
         },
 
         {
             label: "Excluir",
             className: "btn-delete",
-            onClick: registro => removerveiculos(registro.ID)
+            onClick: registro => removerveiculo(registro.ID)
         }
 
     ];
