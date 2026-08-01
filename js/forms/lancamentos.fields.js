@@ -30,7 +30,6 @@ export function obterDadosFormulario(formulario) {
 
 }
 
-import { dataParaInput } from "../utils/datas.js";
 
 export function preencherFormulario(formulario, lancamento) {
 
