@@ -141,8 +141,6 @@ function createRow(item, columns, actions) {
 
         }
 
-        }
-
         tr.appendChild(td);
 
     });
