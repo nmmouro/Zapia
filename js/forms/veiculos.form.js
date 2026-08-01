@@ -36,13 +36,13 @@ import {
 
 } from "../utils/datas.js";
 
-let registroEditando = null;
+import {
 
-export function setRegistroEditando(id) {
+    getRegistroEditando,
+    setRegistroEditando
 
-    registroEditando = id;
+} from "../controllers/lancamentos.state.js";
 
-}
 
 export async function salvarFormulario(evento, formulario) {
 
@@ -58,7 +58,7 @@ export async function salvarFormulario(evento, formulario) {
         if (registroEditando) {
 
             await atualizarVeiculo(
-                registroEditando,
+                getRegistroEditando,
                 dados
             );
 
@@ -69,6 +69,7 @@ export async function salvarFormulario(evento, formulario) {
         }
 
         limparFormulario(formulario);
+        setRegistroEditando(null);
 
         await carregarTabela();
 
