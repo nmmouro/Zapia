@@ -26,16 +26,6 @@ import Validator from "../validators/validator.js";
 
 async function request(url, options = {}) {
 
-//    console.log(
-//        "API Request:",
-//        url
-//    );
-
-//    console.log(
-//        "API Options:",
-//        options
-//    );
-
     const resposta =
         await fetch(
             url,
@@ -52,12 +42,7 @@ async function request(url, options = {}) {
 
     const json =
         await resposta.json();
-
- //   console.log(
- //       "Resposta bruta da API:",
-//        json
-//    );
-
+ 
     if (
         !json ||
         typeof json !== "object"
