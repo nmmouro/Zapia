@@ -34,5 +34,7 @@ btnNovo.addEventListener("click", () => {
 });
 
     await carregarTabela();
+    await carregarVeiculos();
+    await carregarEmpregados();
 
 });
