@@ -102,6 +102,25 @@ export async function salvarFormulario(evento, formulario) {
 }
 
 
+export function limparFormulario(formulario) {
+
+    setRegistroEditando(null);
+
+    formulario.reset();
+
+    preencherDataHoraAtual(
+
+        formulario.elements["data"],
+
+        formulario.elements["hora"]
+
+    );
+
+    document.body.classList.remove("modo-edicao");
+
+}
+
+
 export function novoFormulario(formulario) {
 
     setRegistroEditando(null);
