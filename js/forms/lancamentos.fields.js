@@ -5,35 +5,30 @@ export function obterDadosFormulario(formulario) {
 
     return {
 
-        Data:  campoData.value,
+        Data: formulario.elements["data"].value,
 
-        Hora:  campoHora.value,
+        Hora: formulario.elements["hora"].value,
 
-        "Empregado / Matrícula":
-            selectEmpregado.value,
+        "Empregado / Matrícula": formulario.elements["empregado"].value,
 
-        Veículo:
-            selectVeiculo.value,
+        Veículo:  formulario.elements["veiculo"].value,
 
         "Passageiro / Setor / Motivo":
             [
-                formulario.passageiro?.value,
-                formulario.setor?.value,
-                formulario.motivo?.value
+                formulario.elements["passageiro"].value,
+                formulario.elements["setor"].value,
+                formulario.elements["motivo"].value
             ]
             .filter(Boolean)
             .join(" / "),
 
-        Itinerário:
-            formulario.itinerario?.value || "",
+        Itinerário: formulario.elements["itinerario"].value,
 
-        Status:
-            formulario.status.value
-        
+        Status: formulario.elements["status"].value
+
     };
 
 }
-
 
 import { dataParaInput } from "../utils/datas.js";
 
