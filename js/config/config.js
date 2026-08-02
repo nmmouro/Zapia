@@ -2,358 +2,72 @@
 // CONFIG
 // Painel Frota
 // Arquivo: js/config/config.js
-//
-// Configurações globais da aplicação
+// Configurações gerais da aplicação.
 // ============================================================================
 
+export const CONFIG = Object.freeze({
 
-// ============================================================================
-// APLICAÇÃO
-// ============================================================================
-
-export const CONFIG = {
+    // ========================================================================
+    // API
+    // ========================================================================
 
     API_URL:
-
         "https://script.google.com/macros/s/AKfycbzwyrOh5l5SpSuVNDkzBqbmruSoA14hYFPb0DsG2vhTYAqeb2VpFZPOsnKwrbgXxfyNcQ/exec",
 
-    UPDATE_INTERVAL: 30000,
+    // ========================================================================
+    // APLICAÇÃO
+    // ========================================================================
 
-    DATE_FORMAT: "pt-BR",
+    APP_NAME:
+        "Painel Frota",
 
-    TIME_FORMAT: "pt-BR"
+    APP_VERSION:
+        "1.0.0",
 
-};
+    // ========================================================================
+    // TABELAS
+    // ========================================================================
 
+    PAGE_SIZE:
+        20,
 
+    // ========================================================================
+    // DATAS
+    // ========================================================================
 
-// ============================================================================
-// ABAS GOOGLE SHEETS
-// ============================================================================
+    LOCALE:
+        "pt-BR",
 
-export const ABAS = {
+    TIMEZONE:
+        "America/Sao_Paulo",
 
-    LANCAMENTOS:
+    // ========================================================================
+    // MENSAGENS
+    // ========================================================================
 
-        "LANCAMENTOS",
+    MESSAGES: {
 
-    VEICULOS:
+        SAVE_SUCCESS:
+            "Registro salvo com sucesso.",
 
-        "VEÍCULOS",
+        UPDATE_SUCCESS:
+            "Registro atualizado com sucesso.",
 
-    EMPREGADOS:
+        DELETE_SUCCESS:
+            "Registro excluído com sucesso.",
 
-        "EMPREGADOS",
+        CONFIRM_DELETE:
+            "Deseja realmente excluir este registro?",
 
-    AGENDA:
+        LOAD_ERROR:
+            "Erro ao carregar dados.",
 
-        "AGENDA DO DIA",
+        SAVE_ERROR:
+            "Erro ao salvar registro.",
 
-    SOCIAL:
-
-        "AGENDA SERVIÇO SOCIAL"
-
-};
-
-
-
-// ============================================================================
-// STATUS DO SISTEMA
-// ============================================================================
-
-export const STATUS = {
-
-    AGENDADO:
-
-        "AGENDADO",
-
-    EM_ANDAMENTO:
-
-        "EM ANDAMENTO",
-
-    VIAGEM:
-
-        "VIAGEM",
-
-    MANUTENCAO:
-
-        "MANUTENÇÃO",
-
-    CONCLUIDO:
-
-        "CONCLUÍDO",
-
-    FINALIZADO:
-
-        "FINALIZADO",
-
-    CANCELADO:
-
-        "CANCELADO",
-
-    LIVRE:
-
-        "LIVRE",
-
-    OCUPADO:
-
-        "OCUPADO"
-
-};
-
-
-
-// ============================================================================
-// CLASSES CSS STATUS
-// ============================================================================
-
-export const STATUS_CLASS = {
-
-    AGENDADO:
-
-        "status-agendado",
-
-    "EM ANDAMENTO":
-
-        "status-andamento",
-
-    VIAGEM:
-
-        "status-viagem",
-
-    MANUTENCAO:
-
-        "status-manutencao",
-
-    FINALIZADO:
-
-        "status-finalizado",
-
-    CANCELADO:
-
-        "status-cancelado"
-
-};
-
-
-
-// ============================================================================
-// ÍCONES STATUS
-// ============================================================================
-
-export const STATUS_ICON = {
-
-    AGENDADO:
-
-        "🟡",
-
-    "EM ANDAMENTO":
-
-        "🟢",
-
-    VIAGEM:
-
-        "✈️",
-
-    MANUTENCAO:
-
-        "🔵",
-
-    FINALIZADO:
-
-        "✅",
-
-    CONCLUIDO:
-
-        "✅",
-
-    CANCELADO:
-
-        "🔴",
-
-    LIVRE:
-
-        "🟢",
-
-    OCUPADO:
-
-        "🔴"
-
-};
-
-
-
-// ============================================================================
-// CAMPOS PADRÃO
-// ============================================================================
-
-export const CAMPOS = {
-
-
-    // ==========================================================================
-    // LANÇAMENTOS
-    // ==========================================================================
-
-    LANCAMENTOS: {
-
-        ID:
-            "ID",
-
-        DATA:
-            "Data",
-
-        HORA:
-            "Hora",
-
-        EMPREGADO:
-            "Empregado / Matrícula",
-
-        VEICULO:
-            "Veículo",
-
-        PASSAGEIRO:
-            "Passageiro / Setor / Motivo",
-
-        ITINERARIO:
-            "Itinerário",
-
-        STATUS:
-            "Status"
-
-    },
-
-
-    // ==========================================================================
-    // EMPREGADOS
-    // ==========================================================================
-
-    EMPREGADOS: {
-
-        ID:
-            "ID",
-
-        DATA:
-            "Data",
-
-        HORA:
-            "Hora",
-
-        FOTO:
-            "Foto",
-
-        EMPREGADO:
-            "Empregado",
-
-        MATRICULA:
-            "Matrícula",
-
-        DIRETORIA:
-            "Diretoria",
-
-        SETOR:
-            "Setor",
-
-        USUARIO:
-            "Usuário",
-
-        CONDICAO:
-            "Condição",
-
-        STATUS:
-            "Status"
-
-    },
-
-
-    // ==========================================================================
-    // VEÍCULOS
-    // ==========================================================================
-
-    VEICULOS: {
-
-        ID:
-            "ID",
-
-        DATA:
-            "Data",
-
-        HORA:
-            "Hora",
-
-        FOTO:
-            "Foto",
-
-        PLACA:
-            "Placa",
-
-        MODELO:
-            "Modelo",
-
-        MARCA:
-            "Marca",
-
-        ANO:
-            "Ano",
-
-        COR:
-            "Cor",
-
-        COMBUSTIVEL:
-            "Combustível",
-
-        STATUS:
-            "Status"
+        API_ERROR:
+            "Erro de comunicação com o servidor."
 
     }
 
-};
-
-
-
-// ============================================================================
-// CORES DA INTERFACE
-// ============================================================================
-
-export const CORES = {
-
-    VERDE:
-        "#16A34A",
-
-    AZUL:
-        "#2563EB",
-
-    VERMELHO:
-        "#DC2626",
-
-    AMARELO:
-        "#FACC15",
-
-    CINZA:
-        "#6B7280"
-
-};
-
-
-
-// ============================================================================
-// MENSAGENS PADRÃO
-// ============================================================================
-
-export const MENSAGENS = {
-
-    SALVO:
-        "Registro salvo com sucesso.",
-
-    EXCLUIDO:
-        "Registro excluído com sucesso.",
-
-    ALTERADO:
-        "Registro atualizado com sucesso.",
-
-    ERRO:
-        "Ocorreu um erro ao processar a solicitação.",
-
-    CARREGANDO:
-        "Carregando dados..."
-
-};
+});
