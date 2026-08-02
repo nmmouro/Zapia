@@ -1,107 +1,385 @@
 // ============================================================================
-// LANÇAMENTOS SERVICE
+// TABLE COMPONENT
 // Painel Frota
-// Arquivo: js/services/lancamentos.js
-// Responsável pela comunicação com a API de Lançamentos
+// Arquivo: js/components/table.js
+// Responsável pela renderização de tabelas.
 // ============================================================================
 
-import {
-
-    listar,
-    buscar,
-    salvar,
-    editar,
-    excluir
-
-} from "../api/api.js";
+import { renderStatus } from "../ui/status.js";
 
 // ============================================================================
-// CONSTANTES
+// CRIAR TABELA
 // ============================================================================
 
-const ABA = "LANCAMENTOS";
+export function createTable({
 
-// ============================================================================
-// LISTAR
-// ============================================================================
+    columns = [],
 
-export function obterLancamentos() {
+    data = [],
 
-    return listar(
+    actions = []
 
-        ABA
+} = {}) {
+
+    const table = document.createElement("table");
+
+    table.className = "table";
+
+    table.append(
+
+        createHeader(
+            columns,
+            actions
+        ),
+
+        createBody(
+            columns,
+            data,
+            actions
+        )
 
     );
+
+    return table;
 
 }
 
 // ============================================================================
-// BUSCAR
+// CABEÇALHO
 // ============================================================================
 
-export function obterLancamento(id) {
+function createHeader(
 
-    return buscar(
+    columns,
 
-        ABA,
-
-        id
-
-    );
-
-}
-
-// ============================================================================
-// SALVAR
-// ============================================================================
-
-export function salvarLancamento(dados) {
-
-    return salvar(
-
-        ABA,
-
-        dados
-
-    );
-
-}
-
-// ============================================================================
-// EDITAR
-// ============================================================================
-
-export function atualizarLancamento(
-
-    id,
-
-    dados
+    actions
 
 ) {
 
-    return editar(
+    const thead = document.createElement("thead");
 
-        ABA,
+    const tr = document.createElement("tr");
 
-        id,
+    columns.forEach(col => {
 
-        dados
+        const th = document.createElement("th");
 
-    );
+        th.textContent =
+
+            col.label ??
+            col.field;
+
+        tr.appendChild(th);
+
+    });
+
+    if (actions.length) {
+
+        const th = document.createElement("th");
+
+        th.textContent = "Ações";
+
+        tr.appendChild(th);
+
+    }
+
+    thead.appendChild(tr);
+
+    return thead;
 
 }
 
 // ============================================================================
-// EXCLUIR
+// CORPO
 // ============================================================================
 
-export function excluirLancamento(id) {
+function createBody(
 
-    return excluir(
+    columns,
 
-        ABA,
+    data,
 
-        id
+    actions
+
+) {
+
+    const tbody = document.createElement("tbody");
+
+    if (
+
+        !Array.isArray(data) ||
+
+        data.length === 0
+
+    ) {
+
+        tbody.appendChild(
+
+            createEmptyRow(
+
+                columns.length +
+
+                (actions.length ? 1 : 0)
+
+            )
+
+        );
+
+        return tbody;
+
+    }
+
+    data.forEach(item => {
+
+        tbody.appendChild(
+
+            createRow(
+
+                item,
+
+                columns,
+
+                actions
+
+            )
+
+        );
+
+    });
+
+    return tbody;
+
+}
+
+// ============================================================================
+// LINHA
+// ============================================================================
+
+function createRow(
+
+    item,
+
+    columns,
+
+    actions
+
+) {
+
+    const tr = document.createElement("tr");
+
+    columns.forEach(col => {
+
+        const td = document.createElement("td");
+
+        const value =
+
+            getValue(
+
+                item,
+
+                col.field
+
+            );
+
+        if (
+
+            typeof col.render === "function"
+
+        ) {
+
+            td.innerHTML =
+
+                col.render(
+
+                    value,
+
+                    item
+
+                );
+
+        }
+
+        else if (
+
+            col.type === "status"
+
+        ) {
+
+            td.innerHTML =
+
+                renderStatus(
+
+                    value
+
+                );
+
+        }
+
+        else {
+
+            td.textContent =
+
+                value ?? "";
+
+        }
+
+        tr.appendChild(td);
+
+    });
+
+    if (actions.length) {
+
+        tr.appendChild(
+
+            createActions(
+
+                item,
+
+                actions
+
+            )
+
+        );
+
+    }
+
+    return tr;
+
+}
+
+// ============================================================================
+// AÇÕES
+// ============================================================================
+
+function createActions(
+
+    item,
+
+    actions
+
+) {
+
+    const td = document.createElement("td");
+
+    td.className = "table-actions";
+
+    actions.forEach(action => {
+
+        const button =
+
+            document.createElement("button");
+
+        button.type = "button";
+
+        button.className =
+
+            action.className ?? "";
+
+        button.textContent =
+
+            action.label;
+
+        button.addEventListener(
+
+            "click",
+
+            () => action.onClick(item)
+
+        );
+
+        td.appendChild(button);
+
+    });
+
+    return td;
+
+}
+
+// ============================================================================
+// LINHA VAZIA
+// ============================================================================
+
+function createEmptyRow(
+
+    colspan
+
+) {
+
+    const tr = document.createElement("tr");
+
+    const td = document.createElement("td");
+
+    td.colSpan = colspan;
+
+    td.className = "table-empty";
+
+    td.textContent =
+
+        "Nenhum registro encontrado.";
+
+    tr.appendChild(td);
+
+    return tr;
+
+}
+
+// ============================================================================
+// OBTER VALOR
+// Suporta propriedades aninhadas:
+// exemplo: "veiculo.placa"
+// ============================================================================
+
+function getValue(
+
+    objeto,
+
+    caminho
+
+) {
+
+    if (!caminho) {
+
+        return "";
+
+    }
+
+    return caminho
+
+        .split(".")
+
+        .reduce(
+
+            (valor, chave) =>
+
+                valor?.[chave],
+
+            objeto
+
+        );
+
+}
+
+// ============================================================================
+// RENDERIZAR
+// ============================================================================
+
+export function renderTable(
+
+    container,
+
+    options
+
+) {
+
+    if (!container) {
+
+        return;
+
+    }
+
+    container.replaceChildren(
+
+        createTable(options)
 
     );
 
