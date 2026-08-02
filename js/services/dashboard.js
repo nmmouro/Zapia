@@ -47,7 +47,7 @@ export async function obterMotoristas() {
 
     return await listar(
 
-        ABAS.MOTORISTAS
+        ABAS.EMPREGADOS
 
     );
 
@@ -84,7 +84,7 @@ export async function carregarDashboard() {
 
         painel,
         veiculos,
-        motoristas,
+        empregados,
         agenda,
         social
 
@@ -92,7 +92,7 @@ export async function carregarDashboard() {
 
         obterPainel(),
         obterVeiculos(),
-        obterMotoristas(),
+        obterEmpregados(),
         obterAgenda(),
         obterAgendaSocial()
 
@@ -102,7 +102,7 @@ export async function carregarDashboard() {
 
         painel,
         veiculos,
-        motoristas,
+        empregados,
         agenda,
         social
 
