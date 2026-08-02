@@ -1,48 +1,108 @@
 // ============================================================================
-// SERVICES / LANÇAMENTOS
+// LANÇAMENTOS SERVICE
+// Painel Frota
 // Arquivo: js/services/lancamentos.js
+// Responsável pela comunicação com a API de Lançamentos
 // ============================================================================
 
-import { criarCrud } from "./crudService.js";
+import {
 
-import { ABAS } from "../config/config.js";
+    listar,
+    buscar,
+    salvar,
+    editar,
+    excluir
 
-
-// ============================================================================
-// CRUD DE LANÇAMENTOS
-// ============================================================================
-
-const lancamentos = criarCrud(ABAS.LANCAMENTOS);
-
+} from "../api/api.js";
 
 // ============================================================================
-// API PÚBLICA
+// CONSTANTES
+// ============================================================================
+
+const ABA = "LANCAMENTOS";
+
+// ============================================================================
+// LISTAR
 // ============================================================================
 
 export function obterLancamentos() {
 
-    return lancamentos.listar();
+    return listar(
+
+        ABA
+
+    );
+
 }
+
+// ============================================================================
+// BUSCAR
+// ============================================================================
 
 export function obterLancamento(id) {
 
-    return lancamentos.buscar(id);
+    return buscar(
+
+        ABA,
+
+        id
+
+    );
+
 }
+
+// ============================================================================
+// SALVAR
+// ============================================================================
 
 export function salvarLancamento(dados) {
 
-    return lancamentos.salvar(dados);
+    return salvar(
+
+        ABA,
+
+        dados
+
+    );
 
 }
 
-export function atualizarLancamento(id, dados) {
+// ============================================================================
+// EDITAR
+// ============================================================================
 
-    return lancamentos.editar(id, dados);
+export function atualizarLancamento(
+
+    id,
+
+    dados
+
+) {
+
+    return editar(
+
+        ABA,
+
+        id,
+
+        dados
+
+    );
 
 }
+
+// ============================================================================
+// EXCLUIR
+// ============================================================================
 
 export function excluirLancamento(id) {
 
-    return lancamentos.excluir(id);
+    return excluir(
+
+        ABA,
+
+        id
+
+    );
 
 }
