@@ -1,369 +1,199 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Painel Frota - Dashboard</title>
 
+    <link
+        rel="stylesheet"
+        href="css/style.css">
 
-    <!-- ================= CSS ================= -->
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <link rel="stylesheet" href="css/dashboard.css">
-
-    <link rel="stylesheet" href="css/components.css">
-
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css">
 
 </head>
 
-
 <body>
 
+    <!-- =============================================================== -->
+    <!-- CABEÇALHO -->
+    <!-- =============================================================== -->
 
-<!-- ======================================================================
-     HEADER
-====================================================================== -->
+    <header class="page-header">
 
-<header class="header">
-
-
-    <div class="page-header">
-
-        <img 
-            src="assets/img/logo.png"
-            alt="Logo Frota"
+        <img
+            src="assets/logo.png"
+            alt="Logo Painel Frota"
             class="logo">
 
-    </div>
+        <div>
 
+            <h1>
 
-    <div class="header-title">
+                Painel Frota
 
-        <h1>
+            </h1>
 
-            MOVIMENTAÇÃO DIÁRIA
+            <p>
 
-        </h1>
+                Sistema de Controle de Veículos e Lançamentos
 
-    </div>
-
-
-    <div class="header-info">
-
-
-        <div 
-            id="clock"
-            class="clock"
-        >
+            </p>
 
         </div>
 
+    </header>
 
-        <button 
-            id="btnAudio"
-            class="btn-icon"
-        >
+    <main class="container">
 
-            🔊
+        <!-- =========================================================== -->
+        <!-- MENU -->
+        <!-- =========================================================== -->
 
-        </button>
+        <section class="card">
 
+            <h2>
 
-        <button 
-            id="btnFullscreen"
-            class="btn-icon"
-        >
+                Módulos
 
-            ⛶
+            </h2>
 
-        </button>
+            <div class="dashboard-grid">
 
+                <a
+                    class="dashboard-card"
+                    href="lancamentos.html">
 
-    </div>
+                    <h3>
 
+                        🚗 Lançamentos
 
-</header>
+                    </h3>
 
+                    <p>
 
+                        Registrar saídas, retornos e utilização dos veículos.
 
-<!-- ======================================================================
-     MAIN
-====================================================================== -->
+                    </p>
 
+                </a>
 
-<main class="dashboard">
+                <a
+                    class="dashboard-card"
+                    href="veiculos.html">
 
+                    <h3>
 
-<!-- ================= RESUMO ================= -->
+                        🚙 Veículos
 
+                    </h3>
 
-<section class="resumo-grid">
+                    <p>
 
+                        Cadastro e gerenciamento da frota.
 
-    <div class="card">
+                    </p>
 
-        <h2>
+                </a>
 
-            VEÍCULOS
+                <a
+                    class="dashboard-card"
+                    href="empregados.html">
 
-        </h2>
+                    <h3>
 
+                        👤 Empregados
 
-        <div 
-            id="veiculosData"
-            class="cards-container"
-        >
+                    </h3>
 
-        </div>
+                    <p>
 
+                        Cadastro dos empregados autorizados.
 
-    </div>
+                    </p>
 
+                </a>
 
+            </div>
 
-    <div class="card">
+        </section>
 
-        <h2>
+        <!-- =========================================================== -->
+        <!-- INDICADORES -->
+        <!-- =========================================================== -->
 
-            EMPREGADOS
+        <section class="card">
 
-        </h2>
+            <h2>
 
+                Indicadores
 
-        <div 
-            id="empregadosData"
-            class="cards-container"
-        >
+            </h2>
 
-        </div>
+            <div class="dashboard-grid">
 
+                <div class="dashboard-card">
 
-    </div>
+                    <h3 id="totalVeiculos">
 
+                        --
 
-</section>
+                    </h3>
 
+                    <p>
 
+                        Veículos cadastrados
 
-<!-- ================= PAINEL ================= -->
+                    </p>
 
+                </div>
 
-<section class="card painel-card">
+                <div class="dashboard-card">
 
+                    <h3 id="totalEmpregados">
 
-    <h2>
+                        --
 
-        PAINEL
+                    </h3>
 
-    </h2>
+                    <p>
 
+                        Empregados cadastrados
 
-    <div class="table-container">
+                    </p>
 
+                </div>
 
-        <table>
+                <div class="dashboard-card">
 
+                    <h3 id="totalLancamentos">
 
-            <thead>
+                        --
 
+                    </h3>
 
-                <tr>
+                    <p>
 
-                    <th>Data</th>
+                        Lançamentos
 
-                    <th>Hora</th>
+                    </p>
 
-                    <th>Empregado / Matrícula</th>
+                </div>
 
-                    <th>Veículo</th>
+            </div>
 
-                    <th>Passageiro / Setor</th>
+        </section>
 
-                    <th>Itinerário</th>
-
-                    <th>Status</th>
-
-
-                </tr>
-
-
-            </thead>
-
-
-            <tbody 
-                id="painelData"
-            >
-
-            </tbody>
-
-
-        </table>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- ================= AGENDA ================= -->
-
-
-<section class="grid-agendas">
-
-
-    <div class="card">
-
-
-        <h2>
-
-            AGENDA DO DIA
-
-        </h2>
-
-
-        <div class="table-container">
-
-
-            <table>
-
-
-                <thead>
-
-
-                    <tr>
-
-                        <th>Hora</th>
-
-                        <th>Passageiro</th>
-
-                        <th>Setor</th>
-
-                        <th>Motivo</th>
-
-                        <th>Itinerário</th>
-
-                        <th>Status</th>
-
-
-                    </tr>
-
-
-                </thead>
-
-
-                <tbody 
-                    id="agendaData"
-                >
-
-                </tbody>
-
-
-            </table>
-
-
-        </div>
-
-
-    </div>
-
-
-
-
-    <div class="card">
-
-
-        <h2>
-
-            AGENDA SERVIÇO SOCIAL
-
-        </h2>
-
-
-        <div class="table-container">
-
-
-            <table>
-
-
-                <thead>
-
-
-                    <tr>
-
-
-                        <th>Período</th>
-
-                        <th>Passageiro</th>
-
-                        <th>Motivo</th>
-
-                        <th>Itinerário</th>
-
-                        <th>Status</th>
-
-
-                    </tr>
-
-
-                </thead>
-
-
-                <tbody 
-                    id="socialData"
-                >
-
-                </tbody>
-
-
-            </table>
-
-
-        </div>
-
-
-    </div>
-
-
-
-</section>
-
-
-</main>
-
-
-
-<!-- ======================================================================
-     LOADING
-====================================================================== -->
-
-
-<div 
-    id="loading"
-    class="loading-overlay"
->
-
-</div>
-
-
-
-<!-- ======================================================================
-     JAVASCRIPT
-====================================================================== -->
-
-
-<script 
-    type="module"
-    src="js/pages/dashboard.js"
-></script>
-
-
+    </main>
 
 </body>
 
