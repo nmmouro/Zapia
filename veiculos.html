@@ -1,439 +1,311 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <title>
-        Painel Frota - Veículos
-    </title>
+    <title>Painel Frota - Veículos</title>
 
+    <link
+        rel="stylesheet"
+        href="css/style.css">
 
-    <!-- ================= CSS ================= -->
+    <link
+        rel="stylesheet"
+        href="css/table.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/forms.css">
 
-    <link rel="stylesheet" href="css/veiculos.css">
-
-    <link rel="stylesheet" href="css/components.css">
+    <link
+        rel="stylesheet"
+        href="css/loading.css">
 
 </head>
 
 <body>
 
-<!-- ======================================================================
-     HEADER
-====================================================================== -->
+    <!-- =============================================================== -->
+    <!-- CABEÇALHO -->
+    <!-- =============================================================== -->
 
-<header class="header">
-
-    <div class="header-logo">
+    <header class="page-header">
 
         <img
-
-            src="assets/img/logo.png"
-
-            alt="Logo Frota"
-
-        >
-
-    </div>
-
-    <div class="header-title">
+            src="assets/logo.png"
+            alt="Logo Painel Frota"
+            class="logo">
 
         <h1>
 
-            VEÍCULOS
+            Veículos
 
         </h1>
 
-    </div>
+    </header>
 
-    <div class="header-info">
+    <main class="container">
 
-        <div
+        <!-- =========================================================== -->
+        <!-- FORMULÁRIO -->
+        <!-- =========================================================== -->
 
-            id="clock"
+        <section class="card">
 
-            class="clock"
+            <h2 id="tituloFormulario">
 
-        >
+                Novo veículo
 
-        </div>
+            </h2>
 
-        <button
+            <form id="formVeiculo">
 
-            id="btnFullscreen"
+                <div class="grid">
 
-            class="btn-icon"
+                    <div class="field">
 
-        >
+                        <label for="data">
 
-            ⛶
+                            Data
 
-        </button>
+                        </label>
 
-    </div>
+                        <input
+                            type="date"
+                            id="data"
+                            required>
 
-</header>
+                    </div>
 
-<!-- ======================================================================
-     CONTEÚDO
-====================================================================== -->
+                    <div class="field">
 
-<main class="page-container">
+                        <label for="placa">
 
-<!-- ======================================================================
-     FORMULÁRIO
-====================================================================== -->
+                            Placa
 
-    <section class="card">
+                        </label>
 
-    <h2>
+                        <input
+                            type="text"
+                            id="placa"
+                            maxlength="8"
+                            required>
 
-        CADASTRO DE VEÍCULO
+                    </div>
 
-    </h2>
+                    <div class="field">
 
-    <form
+                        <label for="modelo">
 
-        id="formveiculo"
+                            Modelo
 
-        class="form-grid"
+                        </label>
 
-    >
+                        <input
+                            type="text"
+                            id="modelo"
+                            required>
 
-        <div class="form-group">
+                    </div>
 
- <label for="data">
-Data
-</label>
+                    <div class="field">
 
-<input
+                        <label for="marca">
 
-type="date"
+                            Marca
 
-id="data"
+                        </label>
 
-name="data"
+                        <input
+                            type="text"
+                            id="marca"
+                            required>
 
-required
+                    </div>
 
->
+                    <div class="field">
 
-</div>
+                        <label for="ano">
 
-        <!-- PLACA -->
+                            Ano
 
-        <div class="form-group">
+                        </label>
 
-            <label for="placa">
+                        <input
+                            type="number"
+                            id="ano"
+                            min="1900"
+                            max="2100">
 
-                Placa
+                    </div>
 
-            </label>
+                    <div class="field">
 
-            <input
+                        <label for="combustivel">
 
-                type="text"
-                
-                id="placa"
+                            Combustível
 
-                name="placa"
+                        </label>
 
-                placeholder="Ex: ABC1D23"
+                        <select
+                            id="combustivel">
 
-                required
+                            <option value="">
 
-            >
+                                Selecione
 
-        </div>
+                            </option>
 
-        <!-- MODELO -->
+                            <option value="GASOLINA">
 
-        <div class="form-group">
+                                GASOLINA
 
-            <label for="modelo">
+                            </option>
 
-                Modelo
+                            <option value="ETANOL">
 
-            </label>
+                                ETANOL
 
-            <input
+                            </option>
 
-                type="text"
-                id="modelo"
-                name="modelo"
+                            <option value="FLEX">
 
-                required
+                                FLEX
 
-            >
+                            </option>
 
-        </div>
+                            <option value="DIESEL">
 
-        <!-- MARCA -->
+                                DIESEL
 
-        <div class="form-group">
+                            </option>
 
-             <label for="marca">
+                            <option value="ELÉTRICO">
 
-                Marca
+                                ELÉTRICO
 
-            </label>
+                            </option>
 
-            <input
+                            <option value="HÍBRIDO">
 
-                type="text"
-                id="marca"
-                name="marca"
+                                HÍBRIDO
 
-            >
+                            </option>
 
-        </div>
+                        </select>
 
-        <!-- ANO -->
+                    </div>
 
-        <div class="form-group">
+                    <div class="field">
 
-            <label for="ano">
+                        <label for="km">
 
-                Ano
+                            KM
 
-            </label>
+                        </label>
 
-            <input
+                        <input
+                            type="number"
+                            id="km"
+                            min="0">
 
-                type="number"
-                id="ano"
-                name="ano"
+                    </div>
 
-                min="1900"
+                    <div class="field">
 
-            >
+                        <label for="status">
 
-        </div>
+                            Status
 
-        <!-- COR -->
+                        </label>
 
-        <div class="form-group">
+                        <select
+                            id="status">
 
-            <label for="cor">
+                            <option value="ATIVO">
 
-                Cor
+                                ATIVO
 
-            </label>
+                            </option>
 
-            <input
+                            <option value="MANUTENÇÃO">
 
-                type="text"
-                id="cor"
-                name="cor"
+                                MANUTENÇÃO
 
-            >
+                            </option>
 
-        </div>
+                            <option value="INATIVO">
 
-        <!-- COMBUSTÍVEL -->
+                                INATIVO
 
-        <div class="form-group">
+                            </option>
 
-            <label for="combustivel">
+                        </select>
 
-                Combustível
+                    </div>
 
-            </label>
+                </div>
 
-            <select
+                <div class="buttons">
 
-                id="combustivel"
-                name="combustivel"
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
 
-            >
+                        Salvar
 
-                <option>
+                    </button>
 
-                    GASOLINA
+                    <button
+                        type="button"
+                        id="btnNovo"
+                        class="btn">
 
-                </option>
+                        Novo
 
-                <option>
+                    </button>
 
-                    ETANOL
+                </div>
 
-                </option>
+            </form>
 
-                <option>
+        </section>
 
-                    DIESEL
+        <!-- =========================================================== -->
+        <!-- TABELA -->
+        <!-- =========================================================== -->
 
-                </option>
+        <section class="card">
 
+            <h2>
 
-                <option>
+                Veículos cadastrados
 
-                    FLEX
+            </h2>
 
-                </option>
+            <div id="tabelaVeiculos">
 
-                <option>
+            </div>
 
-                    ELÉTRICO
+        </section>
 
-                </option>
+    </main>
 
-            </select>
+    <!-- =============================================================== -->
+    <!-- SCRIPT -->
+    <!-- =============================================================== -->
 
-        </div>
-
-        <!-- STATUS -->
-
-        <div class="form-group">
-
-            <label for="status">
-
-                Status
-
-            </label>
-
-            <select
-
-                id="status"
-                
-                name="status"
-
-            >
-
-                <option>
-
-                    LIVRE
-
-                </option>
-
-                <option>
-
-                    OCUPADO
-
-                </option>
-
-
-                <option>
-
-                    MANUTENÇÃO
-
-                </option>
-
-                <option>
-
-                    INATIVO
-
-                </option>
-
-            </select>
-
-        </div>
-
-        <!-- BOTÕES -->
-
-        <div class="form-actions">
-
-            <button
-
-                type="submit"
-
-                id="btnSalvar"
-
-                class="btn-primary"
-
-            >
-
-                SALVAR
-
-            </button>
-
-<button
-
-type="button"
-
-id="btnNovo"
-
-class="btn-secondary">
-
-NOVO
-
-</button>
-
-            <button
-
-                type="reset"
-
-                class="btn-secondary"
-
-            >
-
-                LIMPAR
-
-            </button>
-
-        </div>
-
-    </form>
-
-</section>
-
-<!-- ======================================================================
-     LISTAGEM
-====================================================================== -->
-
-<section class="card">
-
-    <h2>
-
-        VEÍCULOS CADASTRADOS
-
-    </h2>
-
-    <div class="table-container">
-
-      <div
-
-        id="tabelaveiculos">
-
-    </div>
-
-    </div>
-
-</section>
-
-</main>
-
-<!-- ======================================================================
-     LOADING
-====================================================================== -->
-
-<div
-
-    id="loading"
-
-    class="loading-overlay"
-
->
-
-</div>
-
-<!-- ======================================================================
-     JAVASCRIPT
-====================================================================== -->
-
-<script
-
-    type="module"
-
-    src="js/pages/veiculos.js"
-
-></script>
+    <script
+        type="module"
+        src="js/pages/veiculos.js">
+    </script>
 
 </body>
 
