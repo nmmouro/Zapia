@@ -42,7 +42,7 @@ const cardVeiculos =
     document.querySelector("#veiculosData");
 
 const cardMotoristas =
-    document.querySelector("#motoristasData");
+    document.querySelector("#empregadosData");
 
 const tabelaPainel =
     document.querySelector("#painelData");
@@ -121,7 +121,7 @@ function renderizarDashboard(dados) {
 
         cardMotoristas,
 
-        dados.motoristas
+        dados.empregados
 
     );
 
