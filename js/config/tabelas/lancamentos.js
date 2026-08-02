@@ -17,7 +17,8 @@ export const COLUNAS_LANCAMENTOS = [
 
     {
         field: "Hora",
-        label: "Hora"
+        label: "Hora",
+        formatar: formatarHora
     },
 
     {
@@ -47,3 +48,13 @@ export const COLUNAS_LANCAMENTOS = [
     }
 
 ];
+
+function formatarHora(valor) {
+
+    if (!valor) return "";
+
+    return valor
+        .toString()
+        .substring(0,5);
+
+}
