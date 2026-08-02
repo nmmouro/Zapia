@@ -2,234 +2,81 @@
 // STATUS UI
 // Painel Frota
 // Arquivo: js/ui/status.js
-//
-// Responsável pela padronização visual dos status
+// Responsável pela renderização visual dos status.
 // ============================================================================
 
-
-
 // ============================================================================
-// CONFIGURAÇÃO DOS STATUS
+// RENDERIZAR STATUS
 // ============================================================================
 
+export function renderStatus(status = "") {
 
-const STATUS = {
+    const texto =
 
+        String(status)
+            .trim()
+            .toUpperCase();
 
-    AGENDADO: {
+    const classe =
 
-        classe: "status-agendado",
+        obterClasse(texto);
 
-        icone: "📅"
+    return `
 
-    },
+        <span class="status ${classe}">
 
+            ${texto || "-"}
 
-    "EM ANDAMENTO": {
+        </span>
 
-        classe: "status-andamento",
-
-        icone: "🚗"
-
-    },
-
-
-    CONCLUIDO: {
-
-        classe: "status-concluido",
-
-        icone: "✅"
-
-    },
-
-
-    CANCELADO: {
-
-        classe: "status-cancelado",
-
-        icone: "❌"
-
-    },
-
-
-    MANUTENCAO: {
-
-        classe: "status-manutencao",
-
-        icone: "🔧"
-
-    },
-
-
-    LIVRE: {
-
-        classe: "status-livre",
-
-        icone: "🟢"
-
-    },
-
-
-    OCUPADO: {
-
-        classe: "status-ocupado",
-
-        icone: "🔴"
-
-    },
-
-
-    VIAGEM: {
-
-        classe: "status-viagem",
-
-        icone: "✈️"
-
-    },
-
-
-    DEFAULT: {
-
-        classe: "status-default",
-
-        icone: "⚪"
-
-    }
-
-
-};
-
-
-
-
-// ============================================================================
-// NORMALIZAÇÃO
-// ============================================================================
-
-
-function normalizar(status = "") {
-
-
-    return String(status)
-
-        .normalize("NFD")
-
-        .replace(
-
-            /[\u0300-\u036f]/g,
-
-            ""
-
-        )
-
-        .trim()
-
-        .toUpperCase();
-
+    `;
 
 }
-
-
-
-
-// ============================================================================
-// BUSCAR STATUS
-// ============================================================================
-
-
-export function getStatus(status){
-
-
-    const chave =
-    normalizar(status);
-
-
-
-    return STATUS[chave]
-
-        ||
-
-    STATUS.DEFAULT;
-
-
-}
-
-
-
 
 // ============================================================================
 // CLASSE CSS
 // ============================================================================
 
+function obterClasse(status) {
 
-export function getStatusClass(status){
+    switch (status) {
 
+        case "ATIVO":
+            return "status-success";
 
-    return getStatus(status)
+        case "EM USO":
+            return "status-success";
 
-        .classe;
+        case "DISPONÍVEL":
+            return "status-success";
 
+        case "CONCLUÍDO":
+            return "status-success";
 
-}
+        case "PENDENTE":
+            return "status-warning";
 
+        case "AGENDADO":
+            return "status-warning";
 
+        case "EM MANUTENÇÃO":
+            return "status-warning";
 
+        case "FÉRIAS":
+            return "status-info";
 
-// ============================================================================
-// ÍCONE
-// ============================================================================
+        case "AFASTADO":
+            return "status-info";
 
+        case "INATIVO":
+            return "status-danger";
 
-export function getStatusIcon(status){
+        case "CANCELADO":
+            return "status-danger";
 
+        default:
+            return "status-default";
 
-    return getStatus(status)
-
-        .icone;
-
-
-}
-
-
-
-
-// ============================================================================
-// COMPONENTE BADGE
-// ============================================================================
-
-
-export function renderStatus(status){
-
-
-    const item =
-    getStatus(status);
-
-
-
-    return `
-
-
-        <span class="status ${item.classe}">
-
-
-            <span class="status-icon">
-
-                ${item.icone}
-
-            </span>
-
-
-            <span class="status-text">
-
-                ${status}
-
-            </span>
-
-
-        </span>
-
-
-    `;
-
+    }
 
 }
