@@ -1,82 +1,156 @@
 // ============================================================================
-// LOADING
+// LANÇAMENTOS - CAMPOS
 // Painel Frota
-// Arquivo: js/ui/loading.js
-// Responsável por exibir e ocultar o indicador de carregamento.
+// Arquivo: js/controllers/lancamentos.fields.js
+// Responsável pela leitura, preenchimento e limpeza do formulário.
 // ============================================================================
 
+import {
+
+    campoData,
+    campoHora,
+    selectEmpregado,
+    selectVeiculo,
+    selectStatus
+
+} from "./lancamentos.state.js";
+
 // ============================================================================
-// ELEMENTO
+// OBTER DADOS DO FORMULÁRIO
 // ============================================================================
 
-const ID = "loading";
+export function obterDadosFormulario(formulario) {
 
-// ============================================================================
-// MOSTRAR
-// ============================================================================
+    return {
 
-export function mostrarLoading() {
+        Data:
 
-    let loading = document.getElementById(ID);
+            campoData.value,
 
-    if (!loading) {
+        Hora:
 
-        loading = criarLoading();
+            campoHora.value,
 
-        document.body.appendChild(loading);
+        "Empregado / Matrícula":
 
-    }
+            selectEmpregado.value,
 
-    loading.hidden = false;
+        Veículo:
+
+            selectVeiculo.value,
+
+        "Passageiro / Setor / Motivo":
+
+            [
+
+                formulario.passageiro?.value,
+
+                formulario.setor?.value,
+
+                formulario.motivo?.value
+
+            ]
+
+            .filter(Boolean)
+
+            .join(" / "),
+
+        Itinerário:
+
+            formulario.itinerario?.value ?? "",
+
+        Status:
+
+            selectStatus.value
+
+    };
 
 }
 
 // ============================================================================
-// ESCONDER
+// PREENCHER FORMULÁRIO
 // ============================================================================
 
-export function esconderLoading() {
+export function preencherFormulario(
 
-    const loading = document.getElementById(ID);
+    formulario,
 
-    if (!loading) {
+    registro
 
-        return;
+) {
+
+    if (!registro) return;
+
+    campoData.value =
+
+        registro.Data ?? "";
+
+    campoHora.value =
+
+        registro.Hora ?? "";
+
+    selectEmpregado.value =
+
+        registro["Empregado / Matrícula"] ?? "";
+
+    selectVeiculo.value =
+
+        registro["Veículo"] ?? "";
+
+    selectStatus.value =
+
+        registro.Status ?? "";
+
+    const partes =
+
+        String(
+
+            registro["Passageiro / Setor / Motivo"] ?? ""
+
+        ).split(" / ");
+
+    if (formulario.passageiro) {
+
+        formulario.passageiro.value =
+
+            partes[0] ?? "";
 
     }
 
-    loading.hidden = true;
+    if (formulario.setor) {
+
+        formulario.setor.value =
+
+            partes[1] ?? "";
+
+    }
+
+    if (formulario.motivo) {
+
+        formulario.motivo.value =
+
+            partes[2] ?? "";
+
+    }
+
+    if (formulario.itinerario) {
+
+        formulario.itinerario.value =
+
+            registro["Itinerário"] ?? "";
+
+    }
 
 }
 
 // ============================================================================
-// CRIAR
+// LIMPAR FORMULÁRIO
 // ============================================================================
 
-function criarLoading() {
+export function limparFormulario(formulario) {
 
-    const overlay = document.createElement("div");
+    formulario.reset();
 
-    overlay.id = ID;
-
-    overlay.className = "loading";
-
-    overlay.innerHTML = `
-
-        <div class="loading-content">
-
-            <div class="loading-spinner"></div>
-
-            <div class="loading-text">
-
-                Carregando...
-
-            </div>
-
-        </div>
-
-    `;
-
-    return overlay;
+    campoData.focus();
 
 }
