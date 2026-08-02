@@ -2,22 +2,10 @@
 // API
 // Painel Frota
 // Arquivo: js/api/api.js
-//
-// Responsável pela comunicação HTTP com Google Apps Script
+// Responsável pela comunicação com o Google Apps Script.
 // ============================================================================
 
-// ============================================================================
-// IMPORTS
-// ============================================================================
-
-import {
-
-    CONFIG
-
-} from "../config/config.js";
-
-
-import Validator from "../validators/validator.js";
+import { CONFIG } from "../config/config.js";
 
 // ============================================================================
 // REQUEST
@@ -25,45 +13,60 @@ import Validator from "../validators/validator.js";
 
 async function request(url, options = {}) {
 
-    const resposta =
-        await fetch(
-            url,
-            options
-        );
+    const resposta = await fetch(
+
+        url,
+
+        options
+
+    );
 
     if (!resposta.ok) {
 
         throw new Error(
+
             `Erro HTTP ${resposta.status}`
+
         );
 
     }
 
-    const json =
-        await resposta.json();
- 
+    const json = await resposta.json();
+
+    console.log("Resposta API:", json);
+
     if (
+
         !json ||
+
         typeof json !== "object"
+
     ) {
 
         throw new Error(
+
             "Resposta inválida da API."
+
         );
 
     }
 
     if (
+
         json.success === false ||
+
         json.sucesso === false
+
     ) {
 
         throw new Error(
 
             json.message ||
+
             json.erro ||
-            "Erro desconhecido na API."
-            
+
+            "Erro retornado pela API."
+
         );
 
     }
@@ -86,10 +89,7 @@ async function get(
 
 ) {
 
-    const params =
-
-        new URLSearchParams();
-
+    const params = new URLSearchParams();
 
     params.append(
 
@@ -99,7 +99,6 @@ async function get(
 
     );
 
-
     params.append(
 
         "aba",
@@ -107,7 +106,6 @@ async function get(
         aba
 
     );
-
 
     if (
 
@@ -127,15 +125,9 @@ async function get(
 
     }
 
-
-    const url =
-
-        `${CONFIG.API_URL}?${params.toString()}`;
-
-
     return request(
 
-        url
+        `${CONFIG.API_URL}?${params.toString()}`
 
     );
 
@@ -163,10 +155,7 @@ async function post(
 
         {
 
-            method:
-
-                "POST",
-
+            method: "POST",
 
             headers: {
 
@@ -176,20 +165,17 @@ async function post(
 
             },
 
+            body: JSON.stringify({
 
-            body:
+                acao,
 
-                JSON.stringify({
+                aba,
 
-                    acao,
+                id,
 
-                    aba,
+                dados
 
-                    id,
-
-                    dados
-
-                })
+            })
 
         }
 
@@ -201,11 +187,7 @@ async function post(
 // LISTAR
 // ============================================================================
 
-export function listar(
-
-    aba
-
-) {
+export function listar(aba) {
 
     return get(
 
