@@ -15,6 +15,14 @@ import {
 
 } from "./lancamentos.state.js";
 
+import {
+
+    dataParaInput,
+
+    horaParaInput
+
+} from "../utils/datas.js";
+
 // ============================================================================
 // OBTER DADOS DO FORMULÁRIO
 // ============================================================================
@@ -83,11 +91,19 @@ export function preencherFormulario(
 
     campoData.value =
 
-        registro.Data ?? "";
+        dataParaInput(
+
+        registro.Data
+
+    );
 
     campoHora.value =
 
-        registro.Hora ?? "";
+        horaParaInput(
+
+        registro.Hora
+
+    );
 
     selectEmpregado.value =
 
