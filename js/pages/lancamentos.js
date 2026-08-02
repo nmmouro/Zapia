@@ -1,40 +1,70 @@
 // ============================================================================
 // LANÇAMENTOS
+// Painel Frota
 // Arquivo: js/pages/lancamentos.js
+// Responsável apenas pela inicialização da página.
 // ============================================================================
+
+import { mostrarLoading, esconderLoading } from "../ui/loading.js";
+
+import { inicializarFormulario } from "../controllers/lancamentos.form.js";
 
 import {
     carregarTabela,
-    carregarVeiculos,
-    carregarEmpregados
-} from "../controllers/lancamentos.controller.js";
+    carregarEmpregados,
+    carregarVeiculos
+} from "../controllers/lancamentos.helpers.js";
 
+// ============================================================================
+// INIT
+// ============================================================================
 
-import {
-    salvarFormulario,
-    novoFormulario
-} from "../forms/lancamentos.form.js";
+document.addEventListener(
 
+    "DOMContentLoaded",
 
-    document.addEventListener("DOMContentLoaded", async () => {
+    inicializar
 
-    const formulario = document.querySelector("#formlancamento");
-    const btnNovo = document.querySelector("#btnNovo");
+);
 
-    formulario.addEventListener("submit", (evento) => {
+// ============================================================================
+// INICIALIZAÇÃO
+// ============================================================================
 
-    salvarFormulario(evento, formulario);
+async function inicializar() {
 
-});
+    try {
 
-btnNovo.addEventListener("click", () => {
+        mostrarLoading();
 
-    novoFormulario(formulario);
+        inicializarFormulario();
 
-});
+        await carregarEmpregados();
 
-    await carregarTabela();
-    await carregarVeiculos();
-    await carregarEmpregados();
+        await carregarVeiculos();
 
-});
+        await carregarTabela();
+
+    }
+
+    catch (erro) {
+
+        console.error(erro);
+
+        alert(
+
+            erro.message ||
+
+            "Erro ao inicializar lançamentos."
+
+        );
+
+    }
+
+    finally {
+
+        esconderLoading();
+
+    }
+
+}
