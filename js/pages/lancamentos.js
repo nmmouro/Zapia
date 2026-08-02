@@ -2,18 +2,42 @@
 // LANÇAMENTOS
 // Painel Frota
 // Arquivo: js/pages/lancamentos.js
-// Responsável apenas pela inicialização da página.
+// Responsável pela inicialização da página.
 // ============================================================================
 
-import { mostrarLoading, esconderLoading } from "../ui/loading.js";
+import {
 
-import { inicializarFormulario } from "../controllers/lancamentos.form.js";
+    formulario,
+    btnNovo
+
+} from "../controllers/lancamentos.state.js";
 
 import {
+
+    registrarEventos
+
+} from "../controllers/lancamentos.events.js";
+
+import {
+
     carregarTabela,
     carregarEmpregados,
     carregarVeiculos
+
 } from "../controllers/lancamentos.helpers.js";
+
+import {
+
+    mostrarLoading,
+    esconderLoading
+
+} from "../ui/loading.js";
+
+import {
+
+    tratarErro
+
+} from "../utils/errors.js";
 
 // ============================================================================
 // INIT
@@ -37,7 +61,13 @@ async function inicializar() {
 
         mostrarLoading();
 
-        inicializarFormulario();
+        registrarEventos(
+
+            formulario,
+
+            btnNovo
+
+        );
 
         await carregarEmpregados();
 
@@ -49,15 +79,7 @@ async function inicializar() {
 
     catch (erro) {
 
-        console.error(erro);
-
-        alert(
-
-            erro.message ||
-
-            "Erro ao inicializar lançamentos."
-
-        );
+        tratarErro(erro);
 
     }
 
