@@ -1,46 +1,108 @@
 // ============================================================================
-// SERVICES / EMPREGADOS
+// EMPREGADOS SERVICE
+// Painel Frota
 // Arquivo: js/services/empregados.js
+// Responsável pela comunicação com a API de Empregados.
 // ============================================================================
-
-import { criarCrud } from "./crudService.js";
 
 import {
-    ABAS
-} from "../config/config.js";
 
+    listar,
+    buscar,
+    salvar,
+    editar,
+    excluir
 
-// ============================================================================
-// CRUD DE EMPREGADOS
-// ============================================================================
-
-const empregados = criarCrud(ABAS.EMPREGADOS);
-
+} from "../api/api.js";
 
 // ============================================================================
-// API PÚBLICA
+// CONSTANTES
 // ============================================================================
 
-const ABA = ABAS.EMPREGADOS;
+const ABA = "EMPREGADOS";
 
+// ============================================================================
+// LISTAR
+// ============================================================================
 
 export function obterEmpregados() {
-    return empregados.listar();
+
+    return listar(
+
+        ABA
+
+    );
+
 }
+
+// ============================================================================
+// BUSCAR
+// ============================================================================
 
 export function obterEmpregado(id) {
-    return empregados.buscar(id);
+
+    return buscar(
+
+        ABA,
+
+        id
+
+    );
+
 }
+
+// ============================================================================
+// SALVAR
+// ============================================================================
 
 export function salvarEmpregado(dados) {
-    return empregados.salvar(dados);
+
+    return salvar(
+
+        ABA,
+
+        dados
+
+    );
+
 }
 
-export function atualizarEmpregado(id, dados) {
-    return empregados.editar(id, dados);
+// ============================================================================
+// ATUALIZAR
+// ============================================================================
+
+export function atualizarEmpregado(
+
+    id,
+
+    dados
+
+) {
+
+    return editar(
+
+        ABA,
+
+        id,
+
+        dados
+
+    );
+
 }
+
+// ============================================================================
+// EXCLUIR
+// ============================================================================
 
 export function excluirEmpregado(id) {
 
-    return empregados.excluir(id);
+    return excluir(
+
+        ABA,
+
+        id
+
+    );
+
 }
