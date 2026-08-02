@@ -1,0 +1,226 @@
+/* ==========================================================================
+   TABLE
+   Painel Frota
+   Arquivo: css/table.css
+   ========================================================================== */
+
+/* ==========================================================================
+   CONTAINER
+   ========================================================================== */
+
+.table-container {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+}
+
+/* ==========================================================================
+   TABELA
+   ========================================================================== */
+
+.table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: #fff;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+}
+
+/* ==========================================================================
+   CABEÇALHO
+   ========================================================================== */
+
+.table thead {
+
+    background: #0d6efd;
+
+}
+
+.table th {
+
+    padding: 12px 16px;
+
+    color: #fff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-align: left;
+
+    white-space: nowrap;
+
+}
+
+/* ==========================================================================
+   CORPO
+   ========================================================================== */
+
+.table td {
+
+    padding: 12px 16px;
+
+    border-bottom: 1px solid #e9ecef;
+
+    font-size: 14px;
+
+    color: #333;
+
+    vertical-align: middle;
+
+}
+
+.table tbody tr {
+
+    transition: background-color .2s;
+
+}
+
+.table tbody tr:hover {
+
+    background: #f8f9fa;
+
+}
+
+.table tbody tr:last-child td {
+
+    border-bottom: none;
+
+}
+
+/* ==========================================================================
+   LINHA VAZIA
+   ========================================================================== */
+
+.table-empty {
+
+    text-align: center;
+
+    padding: 24px;
+
+    color: #6c757d;
+
+    font-style: italic;
+
+}
+
+/* ==========================================================================
+   AÇÕES
+   ========================================================================== */
+
+.table-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+}
+
+/* ==========================================================================
+   BOTÕES
+   ========================================================================== */
+
+.table-actions button {
+
+    padding: 6px 12px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: .2s;
+
+}
+
+.table-actions button:hover {
+
+    opacity: .90;
+
+}
+
+.btn-edit {
+
+    background: #ffc107;
+
+    color: #212529;
+
+}
+
+.btn-delete {
+
+    background: #dc3545;
+
+    color: #fff;
+
+}
+
+.btn-view {
+
+    background: #0dcaf0;
+
+    color: #fff;
+
+}
+
+.btn-print {
+
+    background: #6c757d;
+
+    color: #fff;
+
+}
+
+/* ==========================================================================
+   ALINHAMENTO
+   ========================================================================== */
+
+.table td.text-center,
+.table th.text-center {
+
+    text-align: center;
+
+}
+
+.table td.text-right,
+.table th.text-right {
+
+    text-align: right;
+
+}
+
+.table td.text-left,
+.table th.text-left {
+
+    text-align: left;
+
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+    .table {
+
+        min-width: 700px;
+
+    }
+
+}
