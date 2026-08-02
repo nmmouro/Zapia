@@ -18,6 +18,14 @@ import {
 
 } from "./veiculos.state.js";
 
+import {
+
+    dataParaInput,
+
+    horaParaInput
+
+} from "../utils/datas.js";
+
 // ============================================================================
 // OBTER DADOS DO FORMULÁRIO
 // ============================================================================
@@ -78,7 +86,20 @@ export function preencherFormulario(registro) {
 
     campoData.value =
 
-        registro.Data ?? "";
+        dataParaInput(
+
+        registro.Data
+
+    );
+
+    campoHora.value =
+
+        horaParaInput(
+
+        registro.Hora
+
+    );
+
 
     campoPlaca.value =
 
