@@ -1,256 +1,107 @@
 // ============================================================================
-// TABLE COMPONENT
-// Arquivo: js/components/table.js
+// LANÇAMENTOS SERVICE
+// Painel Frota
+// Arquivo: js/services/lancamentos.js
+// Responsável pela comunicação com a API de Lançamentos
 // ============================================================================
 
-import { renderStatus } from "../ui/status.js";
+import {
+
+    listar,
+    buscar,
+    salvar,
+    editar,
+    excluir
+
+} from "../api/api.js";
 
 // ============================================================================
-// CRIAR TABELA
+// CONSTANTES
 // ============================================================================
 
-export function createTable({
+const ABA = "LANCAMENTOS";
 
-    columns = [],
+// ============================================================================
+// LISTAR
+// ============================================================================
 
-    data = [],
+export function obterLancamentos() {
 
-    actions = []
+    return listar(
 
-} = {}) {
-
-    const table = document.createElement("table");
-
-    table.className = "table";
-
-    table.append(
-
-        createHeader(columns, actions),
-
-        createBody(columns, data, actions)
+        ABA
 
     );
 
-    return table;
+}
+
+// ============================================================================
+// BUSCAR
+// ============================================================================
+
+export function obterLancamento(id) {
+
+    return buscar(
+
+        ABA,
+
+        id
+
+    );
 
 }
 
 // ============================================================================
-// CABEÇALHO
+// SALVAR
 // ============================================================================
 
-function createHeader(columns, actions) {
+export function salvarLancamento(dados) {
 
-    const thead = document.createElement("thead");
+    return salvar(
 
-    const tr = document.createElement("tr");
+        ABA,
 
-    columns.forEach(col => {
+        dados
 
-        const th = document.createElement("th");
-
-        th.textContent = col.label ?? col.field;
-
-        tr.appendChild(th);
-
-    });
-
-    if (actions.length) {
-
-        const th = document.createElement("th");
-
-        th.textContent = "Ações";
-
-        tr.appendChild(th);
-
-    }
-
-    thead.appendChild(tr);
-
-    return thead;
+    );
 
 }
 
 // ============================================================================
-// CORPO
+// EDITAR
 // ============================================================================
 
-function createBody(columns, data, actions) {
+export function atualizarLancamento(
 
-    const tbody = document.createElement("tbody");
+    id,
 
-    if (!Array.isArray(data) || data.length === 0) {
+    dados
 
-        tbody.appendChild(
+) {
 
-            createEmptyRow(
+    return editar(
 
-                columns.length + (actions.length ? 1 : 0)
+        ABA,
 
-            )
+        id,
 
-        );
+        dados
 
-        return tbody;
-
-    }
-
-    data.forEach(item => {
-
-        tbody.appendChild(
-
-            createRow(item, columns, actions)
-
-        );
-
-    });
-
-    return tbody;
+    );
 
 }
 
 // ============================================================================
-// LINHA
+// EXCLUIR
 // ============================================================================
 
-function createRow(item, columns, actions) {
+export function excluirLancamento(id) {
 
-    const tr = document.createElement("tr");
+    return excluir(
 
-    columns.forEach(col => {
+        ABA,
 
-        const td = document.createElement("td");
-
-        const value = getValue(item, col.field);
-
-        if (col.type === "status") {
-
-            td.innerHTML = renderStatus(value);
-
-        }
-
-        else if (typeof col.render === "function") {
-
-            td.innerHTML = col.render(value, item);
-
-        }
-
-        else {
-
-            td.textContent = value ?? "";
-
-        }
-
-        tr.appendChild(td);
-
-    });
-
-    if (actions.length) {
-
-        tr.appendChild(
-
-            createActions(item, actions)
-
-        );
-
-    }
-
-    return tr;
-
-}
-
-// ============================================================================
-// BOTÕES
-// ============================================================================
-
-function createActions(item, actions) {
-
-    const td = document.createElement("td");
-
-    td.className = "table-actions";
-
-    actions.forEach(action => {
-
-        const button = document.createElement("button");
-
-        button.type = "button";
-
-        button.className = action.className ?? "";
-
-        button.textContent = action.label;
-
-        button.addEventListener(
-
-            "click",
-
-            () => action.onClick(item)
-
-        );
-
-        td.appendChild(button);
-
-    });
-
-    return td;
-
-}
-
-// ============================================================================
-// SEM DADOS
-// ============================================================================
-
-function createEmptyRow(colspan) {
-
-    const tr = document.createElement("tr");
-
-    const td = document.createElement("td");
-
-    td.colSpan = colspan;
-
-    td.className = "table-empty";
-
-    td.textContent = "Nenhum registro encontrado.";
-
-    tr.appendChild(td);
-
-    return tr;
-
-}
-
-// ============================================================================
-// OBTER VALOR
-// Suporta campos aninhados: "cliente.nome"
-// ============================================================================
-
-function getValue(obj, path) {
-
-    if (!path) return "";
-
-    return path
-
-        .split(".")
-
-        .reduce(
-
-            (acc, key) => acc?.[key],
-
-            obj
-
-        );
-
-}
-
-// ============================================================================
-// RENDER
-// ============================================================================
-
-export function renderTable(container, options) {
-
-    if (!container) return;
-
-    container.replaceChildren(
-
-        createTable(options)
+        id
 
     );
 
