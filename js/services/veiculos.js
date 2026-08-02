@@ -1,39 +1,108 @@
 // ============================================================================
-// SERVICES / VEICULOS
+// VEÍCULOS SERVICE
+// Painel Frota
 // Arquivo: js/services/veiculos.js
+// Responsável pela comunicação com a API de Veículos.
 // ============================================================================
 
-import { criarCrud } from "./crudService.js";
+import {
 
-import {ABAS} from "../config/config.js";
+    listar,
+    buscar,
+    salvar,
+    editar,
+    excluir
 
-
-// ============================================================================
-// CRUD DE LANÇAMENTOS
-// ============================================================================
-
-const veiculos = criarCrud(ABAS.VEICULOS);
-
+} from "../api/api.js";
 
 // ============================================================================
+// CONSTANTES
+// ============================================================================
 
+const ABA = "VEICULOS";
 
-export async function obterVeiculos() {
-    return veiculos.listar();
+// ============================================================================
+// LISTAR
+// ============================================================================
+
+export function obterVeiculos() {
+
+    return listar(
+
+        ABA
+
+    );
+
 }
 
-export async function obterVeiculo(id) {
-    return veiculos.buscar(id);
+// ============================================================================
+// BUSCAR
+// ============================================================================
+
+export function obterVeiculo(id) {
+
+    return buscar(
+
+        ABA,
+
+        id
+
+    );
+
 }
 
-export async function salvarVeiculo(dados) {
-    return veiculos.salvar(dados);
+// ============================================================================
+// SALVAR
+// ============================================================================
+
+export function salvarVeiculo(dados) {
+
+    return salvar(
+
+        ABA,
+
+        dados
+
+    );
+
 }
 
-export async function atualizarVeiculo(id, dados) {
-    return veiculos.editar(id, dados);
+// ============================================================================
+// ATUALIZAR
+// ============================================================================
+
+export function atualizarVeiculo(
+
+    id,
+
+    dados
+
+) {
+
+    return editar(
+
+        ABA,
+
+        id,
+
+        dados
+
+    );
+
 }
 
-export async function excluirVeiculo(id) {
-    return veiculos.excluir(id);
+// ============================================================================
+// EXCLUIR
+// ============================================================================
+
+export function excluirVeiculo(id) {
+
+    return excluir(
+
+        ABA,
+
+        id
+
+    );
+
 }
