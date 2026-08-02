@@ -73,6 +73,13 @@ export async function editarEmpregado(id) {
 
         preencherFormulario(registro);
 
+        setRegistroEditando(
+
+            registro.ID
+
+        );
+
+
         if (tituloFormulario) {
 
            setRegistroEditando(
