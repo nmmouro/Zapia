@@ -6,6 +6,9 @@
 // Responsável pelos elementos do formulário de empregados.
 // ============================================================================
 
+export let registros = [];
+
+export let registroEditando = null;
 
 // ============================================================================
 // ELEMENTOS DO FORMULÁRIO
@@ -16,18 +19,22 @@ export const formulario =
 
     document.querySelector("#formEmpregado");
 
+export const tabela =
+    document.querySelector("#tabelaEmpregados");
 
+export const btnNovo =
+    document.querySelector("#btnNovo");
+
+export const tituloFormulario =
+    document.querySelector("#tituloFormulario");
+
+// ============================================================================
+// CAMPOS
+// ============================================================================
 
 export const campoData =
 
     document.querySelector("#data");
-
-
-
-export const campoHora =
-
-    document.querySelector("#hora");
-
 
 
 export const campoFoto =
@@ -75,3 +82,43 @@ export const campoCondicao =
 export const campoStatus =
 
     document.querySelector("#status");
+
+// ============================================================================
+// GETTERS / SETTERS
+// ============================================================================
+
+export function getRegistros() {
+
+    return registros;
+
+}
+
+export function setRegistros(lista) {
+
+    registros = lista ?? [];
+
+}
+
+export function getRegistroEditando() {
+
+    return registroEditando;
+
+}
+
+export function setRegistroEditando(id) {
+
+    registroEditando = id;
+
+}
+
+// ============================================================================
+// LIMPAR ESTADO
+// ============================================================================
+
+export function limparEstado() {
+
+    registros = [];
+
+    registroEditando = null;
+
+}
