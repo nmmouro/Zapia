@@ -1,5 +1,11 @@
 /* ==========================================================================
    LOADING
+   Painel Frota
+   Arquivo: css/loading.css
+   ========================================================================== */
+
+/* ==========================================================================
+   OVERLAY
    ========================================================================== */
 
 .loading {
@@ -14,7 +20,7 @@
 
     align-items: center;
 
-    background: rgba(255,255,255,.65);
+    background: rgba(255,255,255,.70);
 
     backdrop-filter: blur(2px);
 
@@ -22,55 +28,91 @@
 
 }
 
-.loading[hidden]{
+/* ==========================================================================
+   OCULTO
+   ========================================================================== */
 
-    display:none;
+.loading[hidden] {
 
-}
-
-.loading-content{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:12px;
+    display: none;
 
 }
 
-.loading-spinner{
+/* ==========================================================================
+   CONTEÚDO
+   ========================================================================== */
 
-    width:42px;
+.loading-content {
 
-    height:42px;
+    display: flex;
 
-    border:4px solid #ddd;
+    flex-direction: column;
 
-    border-top-color:#1976d2;
+    align-items: center;
 
-    border-radius:50%;
+    gap: 16px;
 
-    animation:loading-spin .8s linear infinite;
+    padding: 24px 32px;
 
-}
+    background: #ffffff;
 
-.loading-text{
+    border-radius: 10px;
 
-    font-size:14px;
-
-    font-weight:600;
-
-    color:#444;
+    box-shadow: 0 6px 18px rgba(0,0,0,.18);
 
 }
 
-@keyframes loading-spin{
+/* ==========================================================================
+   SPINNER
+   ========================================================================== */
 
-    to{
+.loading-spinner {
 
-        transform:rotate(360deg);
+    width: 48px;
+
+    height: 48px;
+
+    border: 5px solid #d9d9d9;
+
+    border-top-color: #0d6efd;
+
+    border-radius: 50%;
+
+    animation: loading-spin .8s linear infinite;
+
+}
+
+/* ==========================================================================
+   TEXTO
+   ========================================================================== */
+
+.loading-text {
+
+    font-size: .95rem;
+
+    font-weight: 600;
+
+    color: #555;
+
+    letter-spacing: .3px;
+
+}
+
+/* ==========================================================================
+   ANIMAÇÃO
+   ========================================================================== */
+
+@keyframes loading-spin {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
 
     }
 
