@@ -1,36 +1,86 @@
 // ============================================================================
 // VEÍCULOS
+// Painel Frota
 // Arquivo: js/pages/veiculos.js
+// Responsável pela inicialização da página.
 // ============================================================================
 
 import {
-    carregarTabela
-} from "../controllers/veiculos.controller.js";
 
+    formulario,
+    btnNovo
+
+} from "../controllers/veiculos.state.js";
 
 import {
-    salvarFormulario,
-    novoFormulario
-} from "../forms/veiculos.form.js";
 
+    registrarEventos
 
-    document.addEventListener("DOMContentLoaded", async () => {
+} from "../controllers/veiculos.events.js";
 
-    const formulario = document.querySelector("#formveiculo");
-    const btnNovo = document.querySelector("#btnNovo");
+import {
 
-    formulario.addEventListener("submit", (evento) => {
+    carregarTabela
 
-    salvarFormulario(evento, formulario);
+} from "../controllers/veiculos.helpers.js";
 
-});
+import {
 
-btnNovo.addEventListener("click", () => {
+    mostrarLoading,
+    esconderLoading
 
-    novoFormulario(formulario);
+} from "../ui/loading.js";
 
-});
+import {
 
-    await carregarTabela();
+    tratarErro
 
-});
+} from "../utils/errors.js";
+
+// ============================================================================
+// INICIALIZAÇÃO
+// ============================================================================
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    init
+
+);
+
+// ============================================================================
+// INIT
+// ============================================================================
+
+async function init() {
+
+    try {
+
+        mostrarLoading();
+
+        registrarEventos(
+
+            formulario,
+
+            btnNovo
+
+        );
+
+        await carregarTabela();
+
+    }
+
+    catch (erro) {
+
+        tratarErro(erro);
+
+    }
+
+    finally {
+
+        esconderLoading();
+
+    }
+
+}
