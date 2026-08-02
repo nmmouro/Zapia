@@ -25,9 +25,9 @@ const ABA = "VEICULOS";
 // LISTAR
 // ============================================================================
 
-export function obterVeiculos() {
+export async function obterVeiculos() {
 
-    return listar(
+    return await listar(
 
         ABA
 
@@ -39,9 +39,9 @@ export function obterVeiculos() {
 // BUSCAR
 // ============================================================================
 
-export function obterVeiculo(id) {
+export async function obterVeiculo(id) {
 
-    return buscar(
+    return await buscar(
 
         ABA,
 
@@ -55,9 +55,9 @@ export function obterVeiculo(id) {
 // SALVAR
 // ============================================================================
 
-export function salvarVeiculo(dados) {
+export async function salvarVeiculo(dados) {
 
-    return salvar(
+    return await salvar(
 
         ABA,
 
@@ -71,7 +71,7 @@ export function salvarVeiculo(dados) {
 // ATUALIZAR
 // ============================================================================
 
-export function atualizarVeiculo(
+export async function atualizarVeiculo(
 
     id,
 
@@ -79,7 +79,7 @@ export function atualizarVeiculo(
 
 ) {
 
-    return editar(
+    return await editar(
 
         ABA,
 
@@ -95,9 +95,9 @@ export function atualizarVeiculo(
 // EXCLUIR
 // ============================================================================
 
-export function excluirVeiculo(id) {
+export async function excluirVeiculo(id) {
 
-    return excluir(
+    return await excluir(
 
         ABA,
 
