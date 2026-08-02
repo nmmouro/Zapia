@@ -92,15 +92,6 @@ export function preencherFormulario(registro) {
 
     );
 
-    campoHora.value =
-
-        horaParaInput(
-
-        registro.Hora
-
-    );
-
-
     campoPlaca.value =
 
         registro.Placa ?? "";
