@@ -1,152 +1,82 @@
 // ============================================================================
-// LOADING UI
+// LOADING
 // Painel Frota
 // Arquivo: js/ui/loading.js
-//
-// Controle global do indicador de carregamento
+// Responsável por exibir e ocultar o indicador de carregamento.
 // ============================================================================
-
-
 
 // ============================================================================
 // ELEMENTO
 // ============================================================================
 
-
-function getLoadingElement(){
-
-
-    return document.querySelector(
-
-        "#loading"
-
-    );
-
-
-}
-
-
-
+const ID = "loading";
 
 // ============================================================================
-// MOSTRAR LOADING
+// MOSTRAR
 // ============================================================================
 
+export function mostrarLoading() {
 
-export function mostrarLoading(){
+    let loading = document.getElementById(ID);
 
+    if (!loading) {
 
-    const loading =
-    getLoadingElement();
+        loading = criarLoading();
 
+        document.body.appendChild(loading);
 
-
-    if(!loading) return;
-
-
+    }
 
     loading.hidden = false;
 
-
-
 }
 
-
-
-
 // ============================================================================
-// ESCONDER LOADING
+// ESCONDER
 // ============================================================================
 
+export function esconderLoading() {
 
-export function esconderLoading(){
+    const loading = document.getElementById(ID);
 
+    if (!loading) {
 
-    const loading =
-    getLoadingElement();
+        return;
 
-
-
-    if(!loading) return;
-
-
+    }
 
     loading.hidden = true;
 
-
-
 }
 
-
-
-
 // ============================================================================
-// ALTERAR ESTADO
+// CRIAR
 // ============================================================================
 
+function criarLoading() {
 
-export function toggleLoading(ativo){
+    const overlay = document.createElement("div");
 
+    overlay.id = ID;
 
-    if(ativo){
+    overlay.className = "loading";
 
+    overlay.innerHTML = `
 
-        mostrarLoading();
+        <div class="loading-content">
 
+            <div class="loading-spinner"></div>
 
-    }
-    else{
+            <div class="loading-text">
 
+                Carregando...
 
-        esconderLoading();
+            </div>
 
+        </div>
 
-    }
+    `;
 
-
-}
-
-
-
-
-// ============================================================================
-// EXECUTAR COM LOADING AUTOMÁTICO
-// ============================================================================
-
-
-export async function executarComLoading(
-
-    callback
-
-){
-
-
-    try{
-
-
-        mostrarLoading();
-
-
-
-        return await callback();
-
-
-
-    }
-    catch(erro){
-
-
-        throw erro;
-
-
-    }
-    finally{
-
-
-        esconderLoading();
-
-
-    }
-
+    return overlay;
 
 }
