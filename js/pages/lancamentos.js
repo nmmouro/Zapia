@@ -9,7 +9,7 @@ import {
     
     preencherDataHoraAtual
     
-} from "../utils/relogio.js";
+} from "../utils/datas.js";
 
 import {
 
@@ -74,9 +74,11 @@ async function inicializar() {
 
         mostrarLoading();
 
+        iniciarRelogio();
+
         iniciarFullscreen();
 
-        iniciarClock();
+        preencherDataHoraAtual();
 
        registrarEventos(
 
