@@ -5,6 +5,8 @@
 // Responsável pela inicialização da página.
 // ============================================================================
 
+import { iniciarRelogio } from "./utils/relogio.js";
+
 import {
 
     formulario,
