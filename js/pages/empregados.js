@@ -6,6 +6,12 @@
 // ============================================================================
 
 import {
+    
+    iniciarRelogio
+
+} from "../utils/relogio.js";
+
+import {
 
     formulario,
     btnNovo
@@ -66,6 +72,8 @@ async function init() {
         mostrarLoading();
 
         iniciarFullscreen();
+
+        iniciarRelogio();
 
         registrarEventos(
 
