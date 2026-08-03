@@ -39,6 +39,13 @@ import {
 
 } from "../utils/errors.js";
 
+import {
+
+    iniciarFullscreen
+
+} from "./utils/fullscreen.js";
+
+
 // ============================================================================
 // INIT
 // ============================================================================
@@ -48,6 +55,8 @@ document.addEventListener(
     "DOMContentLoaded",
 
     inicializar
+
+    iniciarFullscreen();
 
 );
 
