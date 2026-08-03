@@ -9,7 +9,7 @@ import {
 
     obterEmpregado,
     salvarEmpregado,
-    atualizaEmpregado
+    atualizarEmpregado
 
 } from "../services/empregados.js";
 
@@ -79,14 +79,6 @@ export async function editarEmpregado(id) {
 
         );
 
-
-        if (tituloFormulario) {
-
-           setRegistroEditando(
-
-            registro.ID
-
-        );
 
         if (tituloFormulario) {
 
