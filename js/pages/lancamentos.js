@@ -5,7 +5,12 @@
 // Responsável pela inicialização da página.
 // ============================================================================
 
+import {
 
+    data,
+    hora
+
+} from "../utils/datas.js";
 
 import {
 
@@ -78,9 +83,9 @@ async function inicializar() {
 
         preencherDataHoraAtual(
 
-    campoData,
+  data,
 
-    campoHora
+  hora
 
 );
 
