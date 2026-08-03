@@ -46,7 +46,9 @@ import {
 } from "../utils/fullscreen.js";
 
 import {
-    imputData
+    
+    preencherDataHoraAtual
+    
 } from "../utils/datas.js";
 
 // ============================================================================
