@@ -7,9 +7,9 @@
 
 import {
 
-    preencherDataHoraAtual
+    iniciarRelogio
 
-} from "../utils/datas.js";
+} from "../utils/relogio.js";
 
 import {
 
@@ -73,13 +73,7 @@ async function init() {
 
         iniciarFullscreen();
 
-        preencherDataHoraAtual(
-
-            campoData,
-
-            campoHora
-
-        );
+        iniciarRelogio();
 
         registrarEventos(
 
