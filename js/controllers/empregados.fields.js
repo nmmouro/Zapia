@@ -38,10 +38,6 @@ export function obterDadosFormulario() {
 
             campoData.value,
 
-        Hora:
-
-            campoHora.value,
-
         Foto:
 
             campoFoto.value
@@ -104,15 +100,7 @@ export function preencherFormulario(registro) {
             registro.Data
 
         );
-
-    campoHora.value =
-
-        horaParaInput(
-
-            registro.Hora
-
-        );
-
+    
     campoFoto.value =
 
         registro.Foto ?? "";
