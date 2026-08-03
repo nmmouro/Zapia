@@ -80,7 +80,13 @@ async function inicializar() {
 
         iniciarFullscreen();
 
-        preencherDataHoraAtual();
+        preencherDataHoraAtual(
+
+    campoData,
+
+    campoHora
+
+);
 
        registrarEventos(
 
