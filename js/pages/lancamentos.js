@@ -9,7 +9,7 @@ import {
 
     preencherDataHoraAtual
 
-} from "./utils/datas.js";
+} from "../utils/datas.js";
 
 import { iniciarRelogio } from "../utils/relogio.js";
 
