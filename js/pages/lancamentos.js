@@ -34,6 +34,12 @@ import {
 } from "../ui/loading.js";
 
 import {
+
+    tratarErro
+
+} from "../utils/errors.js";
+
+import {
     
     iniciarFullscreen
 
