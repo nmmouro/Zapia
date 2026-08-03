@@ -33,6 +33,12 @@ import {
 
 } from "../ui/loading.js";
 
+import {
+    
+    iniciarFullscreen
+
+} from "../utils/fullscreen.js";
+
 // ============================================================================
 // INIT
 // ============================================================================
@@ -54,6 +60,8 @@ async function inicializar() {
     try {
 
         mostrarLoading();
+
+        iniciarFullscreen();
 
        registrarEventos(
 
