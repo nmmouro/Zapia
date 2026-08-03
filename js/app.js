@@ -9,9 +9,9 @@
 
 import {
 
-    preencherDataHoraAtual
+    iniciarRelogio
 
-} from "./utils/datas.js";
+} from "./utils/relogio.js";
 
 import {
 
@@ -40,13 +40,5 @@ function iniciarAplicacao(){
 
 
     iniciarFullscreen();
-
-
-    console.log(
-
-        "Painel Frota iniciado."
-
-    );
-
 
 }
