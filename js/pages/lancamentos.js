@@ -68,11 +68,11 @@ async function inicializar() {
 
         mostrarLoading();
 
-        
+        iniciarRelogio();
 
         iniciarFullscreen();
 
-        
+        preencherDataHoraAtual();
 
        registrarEventos(
 
