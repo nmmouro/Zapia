@@ -2,16 +2,11 @@
 
 <html lang="pt-BR">
 
-
 <head>
-
 
 <meta charset="UTF-8">
 
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
 
 <title>
 
@@ -19,484 +14,289 @@ Painel Frota
 
 </title>
 
-
-
 <!-- =====================================================================
 CSS GLOBAL
 ===================================================================== -->
-
 
 <link rel="stylesheet" href="css/style.css">
 
 <link rel="stylesheet" href="css/components.css">
 
-
-
 </head>
 
-
-
 <body>
-
-
 
 <!-- =====================================================================
 HEADER GLOBAL
 ===================================================================== -->
 
-
 <header class="header">
+  
 
+<div class="header-logo"><img
 
-<div class="header-logo">
+      src="assets/img/logo.png"
 
-
-<img
-
-src="assets/img/logo.png"
-
-alt="Logo Painel Frota"
-
->
-
+      alt="Logo Painel Frota">
 
 </div>
 
+      <div class="header-title">
 
-
-
-
-<div class="header-title">
-
-
-<h1>
-
-PAINEL FROTA
-
-</h1>
-
+      <h1> PAINEL FROTA </h1>
 
 </div>
-
-
-
-
-
 
 <div class="header-info">
 
+      <div id="clock"
 
-
-<div
-
-id="clock"
-
-class="clock"
-
-aria-label="Relógio">
+      class="clock"  aria-label="Relógio">
 
 </div>
-
-
-
-
 
 <button
 
-id="btnFullscreen"
+      id="btnFullscreen"
 
-class="btn-icon"
+      class="btn-icon"  aria-label="Tela cheia">
 
-aria-label="Tela cheia"
-
->
-
-⛶
+      ⛶
 
 </button>
 
-
-
 </div>
 
-
-
 </header>
-
-
-
-
-
-
 
 <!-- =====================================================================
 MENU PRINCIPAL
 ===================================================================== -->
-
 
 <main class="home-container">
 
 
 <section
 
-class="menu-grid"
+      class="menu-grid"
 
-aria-label="Menu principal"
+      aria-label="Menu principal">
+  
 
->
-
-
-
-
-
-
-<!-- DASHBOARD -->
-
-
-<a
+<!-- DASHBOARD --><a
 
 href="dashboard.html"
 
-class="menu-card"
+      class="menu-card">
 
->
+      <span class="menu-icon">
 
-
-<span class="menu-icon">
-
-📊
+      📊
 
 </span>
 
-
 <h2>
 
-Dashboard
+      Dashboard
 
 </h2>
 
-
 <p>
 
-Visualização da operação
+      Visualização da operação
 
-</p>
+</p></a>
+  
 
+<!-- LANÇAMENTOS --><a
 
-</a>
+      href="lancamentos.html"
 
+      class="menu-card">
 
+      <span class="menu-icon">
 
-
-
-
-
-<!-- LANÇAMENTOS -->
-
-
-<a
-
-href="lancamentos.html"
-
-class="menu-card"
-
->
-
-
-<span class="menu-icon">
-
-📝
+      📝
 
 </span>
 
-
 <h2>
 
-Lançamentos
+      Lançamentos
 
 </h2>
 
-
 <p>
 
-Registrar movimentações
+      Registrar utilização dos veículos
 
-</p>
+</p></a>
 
+<!-- CADASTRO --><a
 
-</a>
+      href="cadastro.html"
 
+      class="menu-card">
 
+      <span class="menu-icon">
 
-
-
-
-
-<!-- CADASTRO -->
-
-
-<a
-
-href="cadastro.html"
-
-class="menu-card"
-
->
-
-
-<span class="menu-icon">
-
-➕
+      ➕
 
 </span>
 
-
 <h2>
 
-Cadastro
+      Cadastro
 
 </h2>
 
-
 <p>
 
-Cadastros gerais
+      Cadastros gerais
 
 </p>
 
-
 </a>
 
+<!-- VEÍCULOS --><a
 
+      href="veiculos.html"
 
+      class="menu-card">
 
+      <span class="menu-icon">
 
-
-
-<!-- VEÍCULOS -->
-
-
-<a
-
-href="veiculos.html"
-
-class="menu-card"
-
->
-
-
-<span class="menu-icon">
-
-🚙
+      🚙
 
 </span>
 
-
 <h2>
 
-Veículos
+      Veículos
 
 </h2>
 
-
 <p>
 
-Controle da frota
+      Controle da frota
 
 </p>
 
-
 </a>
 
+<!-- EMPREGADOS --><a
 
+      href="empregados.html"
 
+      class="menu-card">
 
+      <span class="menu-icon">
 
-
-
-<!-- EMPREGADOS -->
-
-
-<a
-
-href="empregados.html"
-
-class="menu-card"
-
->
-
-
-<span class="menu-icon">
-
-👨‍✈️
+      👨‍✈️
 
 </span>
 
-
 <h2>
 
-EMPREGADOS
+      EMPREGADOS
 
 </h2>
 
-
 <p>
 
-Cadastro e disponibilidade
+      Cadastro e disponibilidade
 
 </p>
 
-
 </a>
 
+<!-- AGENDA --><a
 
+      href="agenda.html"
 
+      class="menu-card">
 
+      <span class="menu-icon">
 
-
-
-<!-- AGENDA -->
-
-
-<a
-
-href="agenda.html"
-
-class="menu-card"
-
->
-
-
-<span class="menu-icon">
-
-📅
+      📅
 
 </span>
 
-
 <h2>
 
-Agenda
+      Agenda
 
 </h2>
 
-
 <p>
 
-Programação diária
+      Programação diária
 
 </p>
 
-
 </a>
 
+<!-- ABASTECIMENTOS --><a
 
+      href="abastecimentos.html"
 
+      class="menu-card">
 
+      <span class="menu-icon">
 
-
-
-<!-- ABASTECIMENTOS -->
-
-
-<a
-
-href="abastecimentos.html"
-
-class="menu-card"
-
->
-
-
-<span class="menu-icon">
-
-⛽
+      ⛽
 
 </span>
 
-
 <h2>
 
-Abastecimentos
+      Abastecimentos
 
 </h2>
 
-
 <p>
 
-Controle de combustível
+      Controle de combustível
 
 </p>
 
-
 </a>
 
+<!-- MANUTENÇÕES --><a
 
+      href="manutencoes.html"
 
+      class="menu-card">
 
+      <span class="menu-icon">
 
-
-
-<!-- MANUTENÇÕES -->
-
-
-<a
-
-href="manutencoes.html"
-
-class="menu-card"
-
->
-
-
-<span class="menu-icon">
-
-🔧
+      🔧
 
 </span>
 
-
 <h2>
 
-Manutenções
+      Manutenções
 
 </h2>
 
-
 <p>
 
-Controle mecânico
+      Controle mecânico
 
 </p>
 
-
 </a>
-
-
-
-
-
 
 </section>
 
-
-
 </main>
-
-
-
-
-
-
-
 
 <!-- =====================================================================
 FOOTER
 ===================================================================== -->
 
-
 <footer class="footer">
-
 
 <p>
 
@@ -504,20 +304,11 @@ Painel Frota © 2026
 
 </p>
 
-
 </footer>
-
-
-
-
-
-
-
 
 <!-- =====================================================================
 JAVASCRIPT GLOBAL
 ===================================================================== -->
-
 
 <script
 
@@ -527,9 +318,6 @@ src="js/app.js">
 
 </script>
 
-
-
 </body>
-
 
 </html>
