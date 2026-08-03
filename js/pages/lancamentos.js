@@ -6,6 +6,12 @@
 // ============================================================================
 
 import {
+    
+    preencherDataHoraAtual
+    
+} from "../utils/datas.js";
+
+import {
 
     formulario,
     btnNovo
@@ -45,11 +51,6 @@ import {
 
 } from "../utils/fullscreen.js";
 
-import {
-    
-    dataInput
-    
-} from "../utils/datas.js";
 
 // ============================================================================
 // INIT
@@ -75,7 +76,12 @@ async function inicializar() {
 
         iniciarFullscreen();
 
-        preencherDataHoraAtual();
+        preencherDataHoraAtual(
+            
+            formulario.elements["data"],
+
+            formulario.elements["hora"]
+        );
 
        registrarEventos(
 
