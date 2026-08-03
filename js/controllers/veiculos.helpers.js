@@ -33,7 +33,8 @@ import {
 import {
 
     tabela,
-    setRegistros
+    setRegistros,
+    getRegistros
 
 } from "./veiculos.state.js";
 
@@ -185,9 +186,3 @@ function requireRegistros() {
     return getRegistros();
 
 }
-
-import {
-
-    getRegistros
-
-} from "./veiculos.state.js";
