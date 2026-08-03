@@ -1,390 +1,769 @@
 /* ==========================================================================
    PAINEL FROTA
+   CSS GLOBAL
    Arquivo: css/style.css
-   ========================================================================== */
+========================================================================== */
+
 
 /* ==========================================================================
    RESET
-   ========================================================================== */
+========================================================================== */
 
-*,
-*::before,
-*::after{
+* {
 
-    margin:0;
+    margin: 0;
 
-    padding:0;
+    padding: 0;
 
-    box-sizing:border-box;
+    box-sizing: border-box;
 
 }
 
-html{
 
-    font-size:16px;
+html {
 
-}
+    width: 100%;
 
-body{
-
-    font-family:Arial,Helvetica,sans-serif;
-
-    background:#f4f6f9;
-
-    color:#333;
-
-    line-height:1.5;
+    height: 100%;
 
 }
 
-/* ==========================================================================
-   LAYOUT
-   ========================================================================== */
 
-.container{
+body {
 
-    width:min(1200px,95%);
+    min-height: 100vh;
 
-    margin:24px auto;
+    width: 100%;
 
-}
+    font-family:
 
-.page-header{
+        "Inter",
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
-    background:#0d6efd;
+    background:
 
-    color:#fff;
+        #0f172a;
 
-    padding:18px 24px;
+    color:
 
-    box-shadow:0 2px 6px rgba(0,0,0,.15);
+        #e5e7eb;
 
-}
-
-.page-header h1{
-
-    font-size:1.8rem;
+    overflow-x: hidden;
 
 }
 
 /* ==========================================================================
-   LOGO
-   ========================================================================== */
+   VARIÁVEIS
+========================================================================== */
 
-.page-header {
+:root {
 
-    display: flex;
+    /* Fundo */
 
-    align-items: center;
+    --bg-primary:
 
-    gap: 20px;
+        #0f172a;
 
-}
+   
+    --bg-secondary:
+
+        #111827;
 
 
-.logo {
 
-    width: 80px;
+    --bg-card:
 
-    height: auto;
+        #1e293b;
 
-    object-fit: contain;
+
+
+    /* Cores */
+
+
+    --primary:
+
+        #22c55e;
+
+
+
+    --primary-dark:
+
+        #16a34a;
+
+
+
+    --danger:
+
+        #ef4444;
+
+
+
+    --warning:
+
+        #f59e0b;
+
+
+
+    --info:
+
+        #38bdf8;
+
+
+
+    --text:
+
+        #e5e7eb;
+
+
+
+    --text-muted:
+
+        #94a3b8;
+
+
+
+    --border:
+
+        rgba(255,255,255,.08);
+
+
+
+    /* Layout */
+
+
+    --header-height:
+
+        70px;
+
+
+
+    --radius:
+
+        12px;
+
+
+    --shadow:
+
+        0 10px 30px rgba(0,0,0,.25);
 
 }
 
 /* ==========================================================================
-   CARD
-   ========================================================================== */
+   HEADER GLOBAL
+========================================================================== */
 
-.card{
+.header {
 
-    background:#fff;
+    height:
 
-    border-radius:8px;
+        var(--header-height);
 
-    padding:20px;
+    width:
 
-    margin-bottom:24px;
+        100%;
 
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+    display:
+
+        grid;
+
+
+    grid-template-columns:
+
+        180px 1fr 260px;
+
+
+    align-items:
+
+        center;
+
+
+    padding:
+
+        0 20px;
+
+
+    background:
+
+        #020617;
+
+
+    border-bottom:
+
+        1px solid var(--border);
+
+
+    position:
+
+        sticky;
+
+
+    top:
+
+        0;
+
+
+    z-index:
+
+        1000;
 
 }
 
-.card h2{
 
-    margin-bottom:20px;
+/* LOGO */
 
-    color:#0d6efd;
+.header-logo {
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
 
 }
+
+
+.header-logo img {
+
+    max-height:
+
+        50px;
+
+
+    max-width:
+
+        150px;
+
+
+    object-fit:
+
+        contain;
+
+}
+
+
+/* TÍTULO */
+
+.header-title {
+
+    text-align:
+
+        center;
+
+}
+
+
+.header-title h1 {
+
+    font-size:
+
+        1.6rem;
+
+
+    font-weight:
+
+        700;
+
+
+    letter-spacing:
+
+        1px;
+
+
+    color:
+
+        #ffffff;
+
+}
+
+
+/* INFORMAÇÕES */
+
+.header-info {
+
+
+    display:
+
+        flex;
+
+
+    justify-content:
+
+        flex-end;
+
+
+    align-items:
+
+        center;
+
+   
+    gap:
+
+        12px;
+
+}
+
+
+.clock {
+
+    font-size:
+
+        .95rem;
+
+
+    color:
+
+        var(--primary);
+
+
+    font-weight:
+
+        600;
+
+
+    white-space:
+
+        nowrap;
+
+}
+
+/* ==========================================================================
+   BOTÕES GLOBAIS
+========================================================================== */
+
+button {
+
+    border:
+
+        none;
+
+
+    cursor:
+
+        pointer;
+
+
+    font-family:
+
+        inherit;
+
+}
+
+
+.btn-icon {
+
+    width:
+
+        40px;
+
+
+    height:
+
+        40px;
+
+
+    border-radius:
+
+        50%;
+
+
+    background:
+
+        var(--bg-card);
+
+
+    color:
+
+        white;
+
+
+    font-size:
+
+        18px;
+
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    justify-content:
+
+        center;
+
+
+    transition:
+
+        .2s;
+
+}
+
+
+.btn-icon:hover {
+
+    background:
+
+        var(--primary);
+
+
+    color:
+
+        #000;
+
+}
+
+
+/* ==========================================================================
+   CONTAINERS
+========================================================================== */
+
+.page-container {
+
+    width:
+
+        100%;
+
+
+    min-height:
+
+        calc(100vh - var(--header-height));
+
+
+    padding:
+
+        20px;
+
+}
+
+
+.home-container {
+
+    min-height:
+
+        calc(100vh - var(--header-height));
+
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    justify-content:
+
+        center;
+
+
+    padding:
+
+        30px;
+
+}
+
+
+/* ==========================================================================
+   CARD BASE
+========================================================================== */
+
+.card {
+
+    background:
+
+        var(--bg-card);
+
+
+    border:
+
+        1px solid var(--border);
+
+
+    border-radius:
+
+        var(--radius);
+
+
+    box-shadow:
+
+        var(--shadow);
+
+
+    padding:
+
+        20px;
+
+}
+
+
+.card h2 {
+
+    margin-bottom:
+
+        15px;
+
+
+    font-size:
+
+        1.1rem;
+
+
+    color:
+
+        #ffffff;
+
+
+    border-bottom:
+
+        1px solid var(--border);
+
+
+    padding-bottom:
+
+        10px;
+
+}
+
 
 /* ==========================================================================
    FORMULÁRIOS
-   ========================================================================== */
+========================================================================== */
 
-.grid{
+.form-grid {
 
-    display:grid;
+    display:
 
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+        grid;
 
-    gap:18px;
 
-}
+    grid-template-columns:
 
-.field{
+        repeat(auto-fit,minmax(220px,1fr));
 
-    display:flex;
 
-    flex-direction:column;
+    gap:
 
-}
-
-.field label{
-
-    margin-bottom:6px;
-
-    font-weight:600;
+        15px;
 
 }
 
-.field input,
 
-.field select,
+.form-group {
 
-.field textarea{
+    display:
 
-    width:100%;
+        flex;
 
-    padding:10px;
 
-    border:1px solid #ced4da;
+    flex-direction:
 
-    border-radius:6px;
+        column;
 
-    font-size:14px;
 
-    transition:.2s;
+    gap:
 
-}
-
-.field textarea{
-
-    resize:vertical;
+        6px;
 
 }
 
-.field input:focus,
 
-.field select:focus,
+.form-group label {
 
-.field textarea:focus{
+    color:
 
-    outline:none;
+        var(--text-muted);
 
-    border-color:#0d6efd;
 
-    box-shadow:0 0 0 3px rgba(13,110,253,.15);
+    font-size:
+
+        .85rem;
 
 }
+
+
+input,
+select,
+textarea {
+
+    width:
+
+        100%;
+
+
+    background:
+
+        #020617;
+
+
+    color:
+
+        white;
+
+
+    border:
+
+        1px solid var(--border);
+
+
+    border-radius:
+
+        8px;
+
+
+    padding:
+
+        10px;
+
+
+    outline:
+
+        none;
+
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+
+    border-color:
+
+        var(--primary);
+
+}
+
+
+.full {
+
+    grid-column:
+
+        1 / -1;
+
+}
+
 
 /* ==========================================================================
-   BOTÕES
-   ========================================================================== */
+   AÇÕES
+========================================================================== */
 
-.buttons{
+.form-actions {
 
-    display:flex;
+    grid-column:
 
-    gap:12px;
+        1 / -1;
 
-    margin-top:24px;
 
-}
+    display:
 
-.btn{
+        flex;
 
-    border:none;
 
-    cursor:pointer;
+    gap:
 
-    border-radius:6px;
-
-    padding:10px 18px;
-
-    font-size:14px;
-
-    transition:.2s;
+        10px;
 
 }
 
-.btn:hover{
 
-    opacity:.9;
+.btn-primary {
 
-}
+    background:
 
-.btn-primary{
+        var(--primary);
 
-    background:#0d6efd;
 
-    color:#fff;
+    color:
 
-}
+        #052e16;
 
-.btn-secondary{
 
-    background:#6c757d;
+    padding:
 
-    color:#fff;
+        12px 25px;
 
-}
 
-.btn-success{
+    border-radius:
 
-    background:#198754;
+        8px;
 
-    color:#fff;
 
-}
+    font-weight:
 
-.btn-danger{
-
-    background:#dc3545;
-
-    color:#fff;
+        700;
 
 }
 
-/* ==========================================================================
-   TABELA
-   ========================================================================== */
 
-.table{
+.btn-primary:hover {
 
-    width:100%;
+    background:
 
-    border-collapse:collapse;
+        var(--primary-dark);
 
-}
 
-.table th{
+    color:
 
-    background:#0d6efd;
-
-    color:#fff;
-
-    text-align:left;
-
-    padding:12px;
+        white;
 
 }
 
-.table td{
 
-    padding:10px 12px;
+.btn-secondary {
 
-    border-bottom:1px solid #dee2e6;
+    background:
 
-}
+        #334155;
 
-.table tbody tr:hover{
 
-    background:#f8f9fa;
+    color:
 
-}
+        white;
 
-.table-actions{
 
-    display:flex;
+    padding:
 
-    gap:8px;
+        12px 25px;
 
-}
 
-.table-empty{
+    border-radius:
 
-    text-align:center;
-
-    padding:20px;
-
-    color:#6c757d;
+        8px;
 
 }
 
-/* ==========================================================================
-   BOTÕES DA TABELA
-   ========================================================================== */
-
-.btn-edit{
-
-    background:#ffc107;
-
-    color:#212529;
-
-    border:none;
-
-    padding:6px 12px;
-
-    border-radius:4px;
-
-    cursor:pointer;
-
-}
-
-.btn-delete{
-
-    background:#dc3545;
-
-    color:#fff;
-
-    border:none;
-
-    padding:6px 12px;
-
-    border-radius:4px;
-
-    cursor:pointer;
-
-}
-
-.btn-edit:hover,
-
-.btn-delete:hover{
-
-    opacity:.9;
-
-}
-
-/* ==========================================================================
-   MODO EDIÇÃO
-   ========================================================================== */
-
-.modo-edicao #tituloFormulario{
-
-    color:#dc3545;
-
-}
 
 /* ==========================================================================
    RESPONSIVO
-   ========================================================================== */
+========================================================================== */
 
-@media (max-width:768px){
+@media(max-width:900px){
 
-    .buttons{
+    .header {
 
-        flex-direction:column;
+        grid-template-columns:
+
+            80px 1fr 120px;
 
     }
 
-    .table{
 
-        display:block;
+    .header-title h1 {
 
-        overflow-x:auto;
+        font-size:
 
-        white-space:nowrap;
+            1rem;
 
     }
 
