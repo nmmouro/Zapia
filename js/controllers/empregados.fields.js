@@ -8,7 +8,6 @@
 import {
 
     campoData,
-    campoHora,
     campoFoto,
     campoEmpregado,
     campoMatricula,
