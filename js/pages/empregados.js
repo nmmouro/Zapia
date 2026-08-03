@@ -37,6 +37,12 @@ import {
 
 } from "../utils/errors.js";
 
+import {
+    
+    iniciarFullscreen
+
+} from "../utils/fullscreen.js";
+
 // ============================================================================
 // INICIALIZAÇÃO
 // ============================================================================
@@ -58,6 +64,8 @@ async function init() {
     try {
 
         mostrarLoading();
+
+        iniciarFullscreen();
 
         registrarEventos(
 
