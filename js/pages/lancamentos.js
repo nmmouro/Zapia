@@ -5,18 +5,14 @@
 // Responsável pela inicialização da página.
 // ============================================================================
 
-import {
 
-    preencherDataHoraAtual
-
-} from "../utils/datas.js";
-
-import { iniciarRelogio } from "../utils/relogio.js";
 
 import {
 
     formulario,
-    btnNovo
+    btnNovo,
+    campoData,
+    campoHora
 
 } from "../controllers/lancamentos.state.js";
 
@@ -76,7 +72,7 @@ async function inicializar() {
 
         mostrarLoading();
 
-        iniciarRelogio();
+       
 
         iniciarFullscreen();
 
