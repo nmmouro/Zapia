@@ -6,12 +6,6 @@
 // ============================================================================
 
 import {
-    
-    preencherDataHoraAtual
-    
-} from "../utils/datas.js";
-
-import {
 
     formulario,
     btnNovo
@@ -74,11 +68,11 @@ async function inicializar() {
 
         mostrarLoading();
 
-        iniciarRelogio();
+        
 
         iniciarFullscreen();
 
-        preencherDataHoraAtual();
+        
 
        registrarEventos(
 
