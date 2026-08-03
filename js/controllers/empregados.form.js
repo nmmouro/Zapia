@@ -42,8 +42,8 @@ import {
 
 import {
 
-    registroEditando,
-    definirRegistroEditando,
+    getRegistroEditando,
+    setRegistroEditando,
     tituloFormulario
 
 } from "./empregados.state.js";
