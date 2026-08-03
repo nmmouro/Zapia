@@ -7,6 +7,12 @@
 
 import {
 
+    preencherDataHoraAtual
+
+} from "../utils/datas.js";
+
+import {
+
     data,
     hora
 
@@ -77,17 +83,15 @@ async function inicializar() {
 
         mostrarLoading();
 
-       
-
         iniciarFullscreen();
 
         preencherDataHoraAtual(
 
-  data,
+            campoData,
 
-  hora
+            campoHora
 
-);
+        );
 
        registrarEventos(
 
