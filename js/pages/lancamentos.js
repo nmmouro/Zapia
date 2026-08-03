@@ -45,6 +45,10 @@ import {
 
 } from "../utils/fullscreen.js";
 
+import {
+    imputData
+} from "../utils/datas.js";
+
 // ============================================================================
 // INIT
 // ============================================================================
@@ -68,6 +72,8 @@ async function inicializar() {
         mostrarLoading();
 
         iniciarFullscreen();
+
+        preencherDataHoraAtual();
 
        registrarEventos(
 
