@@ -33,7 +33,8 @@ import {
 import {
 
     tabela,
-    setRegistros
+    setRegistros,
+    getRegistros
 
 } from "./empregados.state.js";
 
@@ -186,9 +187,3 @@ function requireRegistros() {
     return getRegistros();
 
 }
-
-import {
-
-    getRegistros
-
-} from "./empregados.state.js";
