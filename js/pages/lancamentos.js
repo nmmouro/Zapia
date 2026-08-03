@@ -11,12 +11,6 @@ import {
 
 } from "../utils/datas.js";
 
-import {
-
-    data,
-    hora
-
-} from "../utils/datas.js";
 
 import {
 
