@@ -5,6 +5,12 @@
 // Responsável pela inicialização da página.
 // ============================================================================
 
+import {
+
+    preencherDataHoraAtual
+
+} from "./utils/datas.js";
+
 import { iniciarRelogio } from "../utils/relogio.js";
 
 import {
