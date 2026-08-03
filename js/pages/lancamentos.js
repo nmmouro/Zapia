@@ -76,7 +76,7 @@ async function inicializar() {
 
         iniciarFullscreen();
 
-        
+        iniciarClock();
 
        registrarEventos(
 
