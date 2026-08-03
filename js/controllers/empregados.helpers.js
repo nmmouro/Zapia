@@ -47,11 +47,7 @@ export async function carregarTabela() {
 
         await obterEmpregados();
 
-    setRegistros(
-
-        lista
-
-    );
+    setRegistros(lista);
 
     renderizarTabela();
 
@@ -64,9 +60,9 @@ export async function carregarTabela() {
 export function renderizarTabela() {
 
     renderTable(
-
+       
         tabela,
-
+        
         {
 
             columns:
@@ -137,11 +133,7 @@ export async function removerEmpregado(id) {
 
     }
 
-    await excluirEmpregado(
-
-        id
-
-    );
+    await excluirEmpregado(id);
 
     await carregarTabela();
 
@@ -185,11 +177,7 @@ function __registros() {
 
     // evita alterar diretamente o estado
 
-    return [
-
-        ...requireRegistros()
-
-    ];
+    return [...requireRegistros()];
 
 }
 
