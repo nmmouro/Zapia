@@ -9,9 +9,9 @@
 
 import {
 
-    iniciarRelogio
+    preencherDataHoraAtual
 
-} from "./utils/relogio.js";
+} from "./utils/datas.js";
 
 import {
 
