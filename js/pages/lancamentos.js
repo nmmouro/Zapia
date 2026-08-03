@@ -55,9 +55,7 @@ document.addEventListener(
     "DOMContentLoaded",
 
     inicializar
-
-    iniciarFullscreen();
-
+    
 );
 
 // ============================================================================
@@ -69,6 +67,8 @@ async function inicializar() {
     try {
 
         mostrarLoading();
+
+        iniciarFullscreen();
 
         registrarEventos(
 
