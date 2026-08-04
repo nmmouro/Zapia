@@ -1,10 +1,9 @@
 // ============================================================================
-// SERVICES / DASHBOARD
+// DASHBOARD - SERVICES
+// Painel Frota
 // Arquivo: js/services/dashboard.js
+// Responsável pelas chamadas da API.
 // ============================================================================
-
-
-// ================= IMPORTS =================
 
 import {
 
@@ -12,100 +11,24 @@ import {
 
 } from "../api/api.js";
 
-import {
+// ============================================================================
+// CONSTANTE
+// ============================================================================
 
-    ABAS
+const ABA =
 
-} from "../config/config.js";
+    "DASHBOARD";
 
+// ============================================================================
+// OBTER DASHBOARD
+// ============================================================================
 
-// ================= CONSULTAS =================
-
-export async function obterPainel() {
-
-    return await listar(
-
-        ABAS.LANCAMENTOS
-
-    );
-
-}
-
-
-export async function obterVeiculos() {
+export async function obterDashboard() {
 
     return await listar(
 
-        ABAS.VEICULOS
+        ABA
 
     );
-
-}
-
-
-export async function obterMotoristas() {
-
-    return await listar(
-
-        ABAS.EMPREGADOS
-
-    );
-
-}
-
-
-export async function obterAgenda() {
-
-    return await listar(
-
-        ABAS.AGENDA
-
-    );
-
-}
-
-
-export async function obterAgendaSocial() {
-
-    return await listar(
-
-        ABAS.SOCIAL
-
-    );
-
-}
-
-
-// ================= DASHBOARD =================
-
-export async function carregarDashboard() {
-
-    const [
-
-        painel,
-        veiculos,
-        empregados,
-        agenda,
-        social
-
-    ] = await Promise.all([
-
-        obterPainel(),
-        obterVeiculos(),
-        obterEmpregados(),
-        obterAgenda(),
-        obterAgendaSocial()
-
-    ]);
-
-    return {
-
-        painel,
-        veiculos,
-        empregados,
-        agenda,
-        social
-
-    };
 
 }
