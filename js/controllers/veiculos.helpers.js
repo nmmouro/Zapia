@@ -45,7 +45,7 @@ import {
 export async function carregarTabela() {
 
     const resposta =
-        await obterEmpregados();
+        await obterVeiculos();
 
     const lista =
         resposta?.data ??
