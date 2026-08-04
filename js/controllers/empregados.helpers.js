@@ -44,9 +44,13 @@ import {
 
 export async function carregarTabela() {
 
-    const lista =
-
+    const resposta =
         await obterEmpregados();
+
+    const lista =
+        resposta?.data ??
+        resposta?.dados ??
+        resposta;
 
     if (!Array.isArray(lista)) {
 
