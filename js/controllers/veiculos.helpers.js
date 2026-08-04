@@ -45,7 +45,15 @@ import {
 export async function carregarTabela() {
 
     const lista =
+        
         await obterVeiculos();
+
+    if (!Array.isArray(lista)) {
+
+        throw new Error(
+            "Resposta inválida ao carregar empregados."
+        );
+    }
 
     setRegistros(lista);
 
