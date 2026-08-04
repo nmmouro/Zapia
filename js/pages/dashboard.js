@@ -1,27 +1,33 @@
 // ============================================================================
 // DASHBOARD
+// Painel Frota
 // Arquivo: js/pages/dashboard.js
+// Responsável pela inicialização da página.
 // ============================================================================
 
-// ================= IMPORTS =================
+import {
+
+    iniciarRelogio
+
+} from "../utils/relogio.js";
+
+import {
+
+    iniciarFullscreen
+
+} from "../utils/fullscreen.js";
 
 import {
 
     carregarDashboard
 
-} from "../services/dashboard.js";
+} from "../controllers/dashboard.helpers.js";
 
 import {
 
-    renderCards
+    registrarEventos
 
-} from "../ui/cards.js";
-
-import {
-
-    renderTable
-
-} from "../ui/table.js";
+} from "../controllers/dashboard.events.js";
 
 import {
 
@@ -32,58 +38,49 @@ import {
 
 import {
 
-    REFRESH
+    tratarErro
 
-} from "../config/config.js";
+} from "../utils/errors.js";
 
-// ================= ELEMENTOS =================
-
-const cardVeiculos =
-    document.querySelector("#veiculosData");
-
-const cardMotoristas =
-    document.querySelector("#empregadosData");
-
-const tabelaPainel =
-    document.querySelector("#painelData");
-
-const tabelaAgenda =
-    document.querySelector("#agendaData");
-
-const tabelaSocial =
-    document.querySelector("#socialData");
-
-// ================= VARIÁVEIS =================
-
-let timer = null;
-
-// ================= EVENTOS =================
+// ============================================================================
+// INIT
+// ============================================================================
 
 document.addEventListener(
 
     "DOMContentLoaded",
 
-    init
+    inicializar
 
 );
 
-// ================= INIT =================
+// ============================================================================
+// INICIALIZAÇÃO
+// ============================================================================
 
-async function init() {
+async function inicializar() {
 
     try {
 
         mostrarLoading();
 
-        await atualizarDashboard();
+        iniciarRelogio();
 
-        iniciarAtualizacaoAutomatica();
+        iniciarFullscreen();
+
+        registrarEventos();
+
+        await carregarDashboard();
 
     }
 
     catch (erro) {
 
-        tratarErro(erro);
+        tratarErro(
+
+            erro
+
+        );
 
     }
 
@@ -92,83 +89,5 @@ async function init() {
         esconderLoading();
 
     }
-
-}
-
-// ================= DADOS =================
-
-async function atualizarDashboard() {
-
-    const dados = await carregarDashboard();
-
-    renderizarDashboard(dados);
-
-}
-
-// ================= RENDER =================
-
-function renderizarDashboard(dados) {
-
-    renderCards(
-
-        cardVeiculos,
-
-        dados.veiculos
-
-    );
-
-    renderCards(
-
-        cardEmpregados,
-
-        dados.empregados
-
-    );
-
-    renderTable(
-
-        tabelaPainel,
-
-        dados.painel
-
-    );
-
-    renderTable(
-
-        tabelaAgenda,
-
-        dados.agenda
-
-    );
-
-    renderTable(
-
-        tabelaSocial,
-
-        dados.social
-
-    );
-
-}
-
-// ================= ATUALIZAÇÃO =================
-
-function iniciarAtualizacaoAutomatica() {
-
-    timer = setInterval(
-
-        atualizarDashboard,
-
-        REFRESH.DASHBOARD
-
-    );
-
-}
-
-// ================= ERROS =================
-
-function tratarErro(erro) {
-
-    console.error(erro);
 
 }
