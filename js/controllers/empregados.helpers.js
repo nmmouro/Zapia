@@ -48,6 +48,13 @@ export async function carregarTabela() {
 
         await obterEmpregados();
 
+    if (!Array.isArray(lista)) {
+
+        throw new Error(
+            "Resposta inválida ao carregar empregados."
+        );
+    }
+
     setRegistros(lista);
 
     renderizarTabela();
