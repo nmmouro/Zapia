@@ -72,7 +72,7 @@ export function renderizarTabela() {
 
             data:
 
-                obterRegistros(),
+                getRegistros(),
 
             actions: [
 
