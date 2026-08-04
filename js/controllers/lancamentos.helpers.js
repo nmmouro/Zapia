@@ -115,7 +115,7 @@ export async function carregarEmpregados() {
         const option =
             document.createElement("option");
 
-        option.value = valor;
+        option.value = item.ID; //value
         option.textContent = valor;
 
         select.appendChild(option);
@@ -165,7 +165,7 @@ export async function carregarVeiculos() {
         const option =
             document.createElement("option");
 
-        option.value = placa;
+        option.value = item.ID; //placa
         option.textContent =
             `${placa} - ${modelo}`;
 
