@@ -146,44 +146,6 @@ export async function removerEmpregado(id) {
 
 function obterRegistros() {
 
-    return tabelaRegistros();
-
-}
-
-function tabelaRegistros() {
-
-    return window.structuredClone
-
-        ? structuredClone([]).constructor === Array
-            ? getLista()
-            : getLista()
-
-        : getLista();
-
-}
-
-function getLista() {
-
-    return importState();
-
-}
-
-function importState() {
-
-    return __registros();
-
-}
-
-function __registros() {
-
-    // evita alterar diretamente o estado
-
-    return [...requireRegistros()];
-
-}
-
-function requireRegistros() {
-
-    return getRegistros();
+    return [...getRegistros()];
 
 }
