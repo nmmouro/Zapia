@@ -29,6 +29,12 @@ import {
 
 export function obterDadosFormulario(formulario) {
 
+    const empregadoSelecionado =
+        selectEmpregado.selectedOptions[0];
+
+    const veiculoSelecionado =
+        selectVeiculo.selectedOptions[0];
+
     return {
 
         Data:
