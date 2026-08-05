@@ -59,6 +59,7 @@ export async function carregarDashboard() {
     const resposta =
 
         await obterDashboard();
+                                                    console.log("Dashboard:", resposta);
 
     const dados =
 
