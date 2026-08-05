@@ -154,11 +154,11 @@ export function preencherFormulario(
 
     selectEmpregado.value =
 
-        registro["Empregado / Matrícula"] ?? "";
+        registro["ID Empregado"] ?? "";//registro["Empregado / Matrícula"] ?? "";
 
     selectVeiculo.value =
 
-        registro["Veículo"] ?? "";
+        registro["ID Veículo"] ?? "";//registro["Veículo"] ?? "";
 
     selectStatus.value =
 
