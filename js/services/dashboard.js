@@ -2,12 +2,11 @@
 // DASHBOARD SERVICE
 // Painel Frota
 // Arquivo: js/services/dashboard.js
-// Responsável pela comunicação com a API do Dashboard.
 // ============================================================================
 
 import {
 
-    get
+    dashboard
 
 } from "../api/api.js";
 
@@ -17,12 +16,6 @@ import {
 
 export function obterDashboard() {
 
-    return get({
-
-        acao:
-
-            "dashboard"
-
-    });
+    return dashboard();
 
 }
