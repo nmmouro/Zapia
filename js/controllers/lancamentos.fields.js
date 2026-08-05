@@ -74,7 +74,7 @@ const empregadoOption =
         empregado,
 
     "Veículo":
-        Veiculo,
+        veiculo,
 
         //"ID Empregado":
         //empregadoSelecionado?.dataset.id ?? "",
