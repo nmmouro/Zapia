@@ -1,5 +1,5 @@
 // ============================================================================
-// DASHBOARD - EMPREGADOS
+// DASHBOARD - TABELA EMPREGADOS
 // Painel Frota
 // Arquivo: js/config/tabelas/dashboard.empregados.js
 // ============================================================================
@@ -7,19 +7,39 @@
 export const COLUNAS_DASHBOARD_EMPREGADOS = [
 
     {
-
-        key: "Empregado",
-
+        field: "Empregado",
         label: "Empregado"
-
     },
 
     {
+        field: "Matrícula",
+        label: "Matrícula"
+    },
 
-        key: "Status",
+    {
+        field: "Diretoria",
+        label: "Diretoria"
+    },
 
-        label: "Status"
+    {
+        field: "Setor",
+        label: "Setor"
+    },
 
+    {
+        field: "Veículo",
+        label: "Veículo"
+    },
+
+    {
+        field: "Destino",
+        label: "Destino"
+    },
+
+    {
+        field: "Status",
+        label: "Status",
+        type: "status"
     }
 
 ];
