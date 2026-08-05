@@ -33,7 +33,7 @@ async function request(url, options = {}) {
 
     const json = await resposta.json();
 
-    console.log("Resposta API:", json);
+                                                    console.log("Resposta API:", json);
 
     if (
 
@@ -311,11 +311,7 @@ export function excluir(
 
 export function dashboard() {
 
-    console.log("Dashboard", {
-        acao: "dashboard",
-        aba: "DASHBOARD"
-    });
-
+    
     return get(
 
         "dashboard",
