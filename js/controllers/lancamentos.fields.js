@@ -47,7 +47,7 @@ const empregadoOption =
     //const idVeiculo =
     //    veiculoOption?.dataset.id ?? "";
 
-    const idVeiculo =
+    const idveiculo =
         veiculoOption?.value ?? "";
 
     const veiculo =
