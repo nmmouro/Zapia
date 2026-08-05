@@ -35,17 +35,23 @@ const empregadoOption =
     const veiculoOption =
         selectVeiculo.selectedOptions[0];
 
-    const idEmpregado =
-        empregadoOption?.dataset.id ?? "";
+   // const idEmpregado =
+   //     empregadoOption?.dataset.id ?? "";
 
-    const empregado =
+    const idempregado =
         empregadoOption?.value ?? "";
 
+    const empregado =
+        empregadoOption?.textContent ?? "";
+
+    //const idVeiculo =
+    //    veiculoOption?.dataset.id ?? "";
+
     const idVeiculo =
-        veiculoOption?.dataset.id ?? "";
+        veiculoOption?.value ?? "";
 
     const veiculo =
-        veiculoOption?.value ?? "";
+        veiculoOption?.textContent ?? "";
 
     //const empregadoSelecionado =
         //selectEmpregado.selectedOptions[0];
