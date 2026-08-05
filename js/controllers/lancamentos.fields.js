@@ -29,11 +29,29 @@ import {
 
 export function obterDadosFormulario(formulario) {
 
-    const empregadoSelecionado =
+    const empregadoOption =
         selectEmpregado.selectedOptions[0];
 
-    const veiculoSelecionado =
+    const veiculoOption =
         selectVeiculo.selectedOptions[0];
+
+    const idEmpregado =
+        empregadoOption?.dataset.id ?? "";
+
+    const empregado =
+        empregadoOption?.value ?? "";
+
+    const idVeiculo =
+        veiculoOption?.dataset.id ?? "";
+
+    const veiculo =
+        veiculoOption?.value ?? "";
+
+    //const empregadoSelecionado =
+        //selectEmpregado.selectedOptions[0];
+
+    //const veiculoSelecionado =
+        //selectVeiculo.selectedOptions[0];
 
     return {
 
