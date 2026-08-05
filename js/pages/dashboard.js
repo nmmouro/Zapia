@@ -83,13 +83,9 @@ async function inicializar() {
 
     try {
 
-       await carregarDashboard();
+       mostrarLoading();
 
-        renderizarVeiculos();
-
-        renderizarEmpregados();
-
-        renderizarOcorrencias();
+        await carregarDashboard();
 
         registrarEventos();
 
