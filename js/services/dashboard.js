@@ -1,34 +1,28 @@
 // ============================================================================
-// DASHBOARD - SERVICES
+// DASHBOARD SERVICE
 // Painel Frota
 // Arquivo: js/services/dashboard.js
-// Responsável pelas chamadas da API.
+// Responsável pela comunicação com a API do Dashboard.
 // ============================================================================
 
 import {
 
-    listar
+    get
 
 } from "../api/api.js";
 
 // ============================================================================
-// CONSTANTE
+// DASHBOARD
 // ============================================================================
 
-const ABA =
+export function obterDashboard() {
 
-    "DASHBOARD";
+    return get({
 
-// ============================================================================
-// OBTER DASHBOARD
-// ============================================================================
+        acao:
 
-export async function obterDashboard() {
+            "dashboard"
 
-    return await listar(
-
-        ABA
-
-    );
+    });
 
 }
