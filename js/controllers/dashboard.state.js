@@ -15,20 +15,37 @@ export let empregados = [];
 export let ocorrencias = [];
 
 // ============================================================================
+// CONTROLE DE RENDERIZAÇÃO
+// ============================================================================
+
+let renderizado = {
+
+    veiculos: false,
+
+    empregados: false,
+
+    ocorrencias: false
+
+};
+
+// ============================================================================
 // ELEMENTOS
 // ============================================================================
 
 export const tabelaVeiculos =
+
     document.querySelector("#tabelaVeiculos");
 
 export const tabelaEmpregados =
+
     document.querySelector("#tabelaEmpregados");
 
 export const tabelaOcorrencias =
+
     document.querySelector("#tabelaOcorrencias");
 
 // ============================================================================
-// GETTERS / SETTERS
+// DADOS
 // ============================================================================
 
 export function setVeiculos(lista) {
@@ -68,7 +85,23 @@ export function getOcorrencias() {
 }
 
 // ============================================================================
-// LIMPAR ESTADO
+// CONTROLE DE RENDERIZAÇÃO
+// ============================================================================
+
+export function foiRenderizado(nome) {
+
+    return renderizado[nome];
+
+}
+
+export function marcarRenderizado(nome) {
+
+    renderizado[nome] = true;
+
+}
+
+// ============================================================================
+// LIMPAR
 // ============================================================================
 
 export function limparEstado() {
@@ -78,5 +111,15 @@ export function limparEstado() {
     empregados = [];
 
     ocorrencias = [];
+
+    renderizado = {
+
+        veiculos: false,
+
+        empregados: false,
+
+        ocorrencias: false
+
+    };
 
 }
