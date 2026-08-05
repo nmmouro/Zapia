@@ -1,5 +1,5 @@
 // ============================================================================
-// DASHBOARD - VEÍCULOS
+// DASHBOARD - TABELA VEÍCULOS
 // Painel Frota
 // Arquivo: js/config/tabelas/dashboard.veiculos.js
 // ============================================================================
@@ -7,35 +7,44 @@
 export const COLUNAS_DASHBOARD_VEICULOS = [
 
     {
-
-        key: "Placa",
-
+        field: "Placa",
         label: "Placa"
-
     },
 
     {
-
-        key: "Status",
-
-        label: "Status"
-
+        field: "Modelo",
+        label: "Modelo"
     },
 
     {
-
-        key: "KM Atual",
-
-        label: "KM Atual"
-
+        field: "Marca",
+        label: "Marca"
     },
 
     {
+        field: "Motorista",
+        label: "Motorista"
+    },
 
-        key: "Combustível",
+    {
+        field: "Destino",
+        label: "Destino"
+    },
 
-        label: "Combustível"
+    {
+        field: "Km Atual",
+        label: "KM"
+    },
 
+    {
+        field: "Combustível",
+        label: "Comb."
+    },
+
+    {
+        field: "Status",
+        label: "Status",
+        type: "status"
     }
 
 ];
