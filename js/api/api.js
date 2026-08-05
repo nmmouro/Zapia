@@ -305,13 +305,23 @@ export function excluir(
 // DASHBOARD
 // ============================================================================
 
+// ============================================================================
+// DASHBOARD
+// ============================================================================
+
 export function dashboard() {
 
-    return get({
+    console.log("Dashboard", {
+        acao: "dashboard",
+        aba: "DASHBOARD"
+    });
 
-       console.log("Dashboard", {
-    acao: "dashboard",
-    aba: "DASHBOARD"
-});
+    return get(
+
+        "dashboard",
+
+        "DASHBOARD"
+
+    );
 
 }
