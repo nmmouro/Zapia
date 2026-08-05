@@ -168,9 +168,9 @@ export async function carregarVeiculos() {
         const option =
             document.createElement("option");
 
-        option.value = item.ID;
+        option.value = valor;
 
-       // option.dataset.id = item.ID;
+        option.dataset.id = item.ID;
         
         option.textContent =
             `${placa} - ${modelo}`;
