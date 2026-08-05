@@ -50,8 +50,6 @@ export async function salvarFormulario(evento, formulario) {
         const dados =
             obterDadosFormulario(formulario);
 
-                                                                            console.log(dados);
-
         const id =
             getRegistroEditando();
 
