@@ -37,21 +37,31 @@ import {
 import {
 
     tabelaVeiculos,
+
     tabelaEmpregados,
+
     tabelaOcorrencias,
 
     setVeiculos,
+
     setEmpregados,
+
     setOcorrencias,
 
     getVeiculos,
+
     getEmpregados,
-    getOcorrencias
+
+    getOcorrencias,
+
+    foiRenderizado,
+
+    marcarRenderizado
 
 } from "./dashboard.state.js";
 
 // ============================================================================
-// CARREGAR DASHBOARD
+// CARREGAR
 // ============================================================================
 
 export async function carregarDashboard() {
@@ -59,18 +69,21 @@ export async function carregarDashboard() {
     const resposta =
 
         await obterDashboard();
-                                                    console.log("Dashboard:", resposta);
 
     const dados =
 
         resposta?.data ??
+
         resposta?.dados ??
+
         resposta;
 
     if (!dados) {
 
         throw new Error(
-            "Resposta inválida ao carregar Dashboard."
+
+            "Resposta inválida."
+
         );
 
     }
@@ -93,21 +106,21 @@ export async function carregarDashboard() {
 
     );
 
-    renderizarDashboard();
+    atualizarDashboard();
 
 }
 
 // ============================================================================
-// RENDERIZAR DASHBOARD
+// ATUALIZA
 // ============================================================================
 
-export function renderizarDashboard() {
+export function atualizarDashboard() {
 
-    renderizarVeiculos();
+    atualizarVeiculos();
 
-    renderizarEmpregados();
+    atualizarEmpregados();
 
-    renderizarOcorrencias();
+    atualizarOcorrencias();
 
 }
 
@@ -115,23 +128,43 @@ export function renderizarDashboard() {
 // VEÍCULOS
 // ============================================================================
 
-export function renderizarVeiculos() {
+function atualizarVeiculos() {
 
-    renderTable(
+    if (!foiRenderizado("veiculos")) {
+
+        renderTable(
+
+            tabelaVeiculos,
+
+            {
+
+                columns:
+
+                    COLUNAS_DASHBOARD_VEICULOS,
+
+                data:
+
+                    getVeiculos()
+
+            }
+
+        );
+
+        marcarRenderizado(
+
+            "veiculos"
+
+        );
+
+        return;
+
+    }
+
+    atualizarTabela(
 
         tabelaVeiculos,
 
-        {
-
-            columns:
-
-                COLUNAS_DASHBOARD_VEICULOS,
-
-            data:
-
-                getVeiculos()
-
-        }
+        getVeiculos()
 
     );
 
@@ -141,23 +174,43 @@ export function renderizarVeiculos() {
 // EMPREGADOS
 // ============================================================================
 
-export function renderizarEmpregados() {
+function atualizarEmpregados() {
 
-    renderTable(
+    if (!foiRenderizado("empregados")) {
+
+        renderTable(
+
+            tabelaEmpregados,
+
+            {
+
+                columns:
+
+                    COLUNAS_DASHBOARD_EMPREGADOS,
+
+                data:
+
+                    getEmpregados()
+
+            }
+
+        );
+
+        marcarRenderizado(
+
+            "empregados"
+
+        );
+
+        return;
+
+    }
+
+    atualizarTabela(
 
         tabelaEmpregados,
 
-        {
-
-            columns:
-
-                COLUNAS_DASHBOARD_EMPREGADOS,
-
-            data:
-
-                getEmpregados()
-
-        }
+        getEmpregados()
 
     );
 
@@ -167,23 +220,43 @@ export function renderizarEmpregados() {
 // OCORRÊNCIAS
 // ============================================================================
 
-export function renderizarOcorrencias() {
+function atualizarOcorrencias() {
 
-    renderTable(
+    if (!foiRenderizado("ocorrencias")) {
+
+        renderTable(
+
+            tabelaOcorrencias,
+
+            {
+
+                columns:
+
+                    COLUNAS_DASHBOARD_OCORRENCIAS,
+
+                data:
+
+                    getOcorrencias()
+
+            }
+
+        );
+
+        marcarRenderizado(
+
+            "ocorrencias"
+
+        );
+
+        return;
+
+    }
+
+    atualizarTabela(
 
         tabelaOcorrencias,
 
-        {
-
-            columns:
-
-                COLUNAS_DASHBOARD_OCORRENCIAS,
-
-            data:
-
-                getOcorrencias()
-
-        }
+        getOcorrencias()
 
     );
 
