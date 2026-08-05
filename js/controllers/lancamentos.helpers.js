@@ -171,7 +171,7 @@ export async function carregarVeiculos() {
         const option =
             document.createElement("option");
 
-        option.value = item.IDr;
+        option.value = item.ID;
 
         //option.dataset.id = item.ID;
         
