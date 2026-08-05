@@ -18,6 +18,18 @@ import {
 } from "../utils/fullscreen.js";
 
 import {
+    COLUNAS_DASHBOARD_OCORRENCIAS
+} from "../config/tabelas/dashboard.ocorrencias.js";
+
+import {
+    COLUNAS_DASHBOARD_VEICULOS
+} from "../config/tabelas/dashboard.veiculos.js";
+
+import {
+    COLUNAS_DASHBOARD_EMPREGADOS
+} from "../config/tabelas/dashboard.empregados.js";
+
+import {
 
     carregarDashboard
 
