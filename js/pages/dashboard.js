@@ -27,7 +27,7 @@ import {
 
     registrarEventos
 
-} from "../controllers/dashboard.events.js";
+} from "../controllers/dashboard.ocorrencias.js";
 
 import {
 
@@ -62,15 +62,15 @@ async function inicializar() {
 
     try {
 
-        mostrarLoading();
+       await carregarDashboard();
 
-        iniciarRelogio();
+        renderizarVeiculos();
 
-        iniciarFullscreen();
+        renderizarEmpregados();
+
+        renderizarOcorrencias();
 
         registrarEventos();
-
-        await carregarDashboard();
 
     }
 
