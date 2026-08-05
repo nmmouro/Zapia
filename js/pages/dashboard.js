@@ -56,7 +56,6 @@ import {
 
 import {
 
-    carregarDashboard,
     renderizarVeiculos,
     renderizarEmpregados,
     renderizarOcorrencias
