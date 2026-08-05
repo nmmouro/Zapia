@@ -309,9 +309,9 @@ export function dashboard() {
 
     return get({
 
-        acao: "dashboard",
-        aba: "DASHBOARD"
-
-    });
+       console.log("Dashboard", {
+    acao: "dashboard",
+    aba: "DASHBOARD"
+});
 
 }
