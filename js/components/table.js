@@ -25,7 +25,7 @@ export function createTable({
 
     columns = [],
 
-    data = [],
+    
 
     actions = []
 
@@ -58,21 +58,7 @@ export function createTable({
         tbody
 
     );
-
-    atualizarBody(
-
-        tbody,
-
-        columns,
-
-        data,
-
-        actions,
-
-        new Map()
-
-    );
-
+   
     return {
 
         table,
