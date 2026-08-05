@@ -39,7 +39,7 @@ import {
 
     registrarEventos
 
-} from "../controllers/dashboard.ocorrencias.js";
+} from "../controllers/dashboard.events.js";
 
 import {
 
@@ -53,6 +53,15 @@ import {
     tratarErro
 
 } from "../utils/errors.js";
+
+import {
+
+    carregarDashboard,
+    renderizarVeiculos,
+    renderizarEmpregados,
+    renderizarOcorrencias
+
+} from "../controllers/dashboard.helpers.js";
 
 // ============================================================================
 // INIT
