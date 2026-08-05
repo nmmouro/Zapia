@@ -56,9 +56,23 @@ import {
 
 export async function carregarDashboard() {
 
-    const dados =
+    const resposta =
 
         await obterDashboard();
+
+    const dados =
+
+        resposta?.data ??
+        resposta?.dados ??
+        resposta;
+
+    if (!dados) {
+
+        throw new Error(
+            "Resposta inválida ao carregar Dashboard."
+        );
+
+    }
 
     setVeiculos(
 
@@ -88,6 +102,20 @@ export async function carregarDashboard() {
 
 export function renderizarDashboard() {
 
+    renderizarVeiculos();
+
+    renderizarEmpregados();
+
+    renderizarOcorrencias();
+
+}
+
+// ============================================================================
+// VEÍCULOS
+// ============================================================================
+
+export function renderizarVeiculos() {
+
     renderTable(
 
         tabelaVeiculos,
@@ -106,6 +134,14 @@ export function renderizarDashboard() {
 
     );
 
+}
+
+// ============================================================================
+// EMPREGADOS
+// ============================================================================
+
+export function renderizarEmpregados() {
+
     renderTable(
 
         tabelaEmpregados,
@@ -123,6 +159,14 @@ export function renderizarDashboard() {
         }
 
     );
+
+}
+
+// ============================================================================
+// OCORRÊNCIAS
+// ============================================================================
+
+export function renderizarOcorrencias() {
 
     renderTable(
 
