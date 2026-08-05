@@ -5,7 +5,17 @@
 // Responsável pela renderização de tabelas.
 // ============================================================================
 
-import { renderStatus } from "../ui/status.js";
+import {
+
+    renderStatus
+
+} from "../ui/status.js";
+
+// ============================================================================
+// CACHE
+// ============================================================================
+
+const tabelas = new WeakMap();
 
 // ============================================================================
 // CRIAR TABELA
@@ -21,26 +31,59 @@ export function createTable({
 
 } = {}) {
 
-    const table = document.createElement("table");
+    const table =
+
+        document.createElement("table");
 
     table.className = "table";
 
-    table.append(
+    const thead =
 
         createHeader(
-            columns,
-            actions
-        ),
 
-        createBody(
             columns,
-            data,
+
             actions
-        )
+
+        );
+
+    const tbody =
+
+        document.createElement("tbody");
+
+    table.append(
+
+        thead,
+
+        tbody
 
     );
 
-    return table;
+    atualizarBody(
+
+        tbody,
+
+        columns,
+
+        data,
+
+        actions,
+
+        new Map()
+
+    );
+
+    return {
+
+        table,
+
+        tbody,
+
+        rows:
+
+            new Map()
+
+    };
 
 }
 
@@ -56,17 +99,24 @@ function createHeader(
 
 ) {
 
-    const thead = document.createElement("thead");
+    const thead =
 
-    const tr = document.createElement("tr");
+        document.createElement("thead");
+
+    const tr =
+
+        document.createElement("tr");
 
     columns.forEach(col => {
 
-        const th = document.createElement("th");
+        const th =
+
+            document.createElement("th");
 
         th.textContent =
 
             col.label ??
+
             col.field;
 
         tr.appendChild(th);
@@ -75,9 +125,13 @@ function createHeader(
 
     if (actions.length) {
 
-        const th = document.createElement("th");
+        const th =
 
-        th.textContent = "Ações";
+            document.createElement("th");
+
+        th.textContent =
+
+            "Ações";
 
         tr.appendChild(th);
 
@@ -90,20 +144,22 @@ function createHeader(
 }
 
 // ============================================================================
-// CORPO
+// ATUALIZAR CORPO
 // ============================================================================
 
-function createBody(
+function atualizarBody(
+
+    tbody,
 
     columns,
 
     data,
 
-    actions
+    actions,
+
+    rows
 
 ) {
-
-    const tbody = document.createElement("tbody");
 
     if (
 
@@ -113,7 +169,7 @@ function createBody(
 
     ) {
 
-        tbody.appendChild(
+        tbody.replaceChildren(
 
             createEmptyRow(
 
@@ -125,34 +181,96 @@ function createBody(
 
         );
 
-        return tbody;
+        rows.clear();
+
+        return;
 
     }
 
+    const existentes =
+
+        new Set();
+
     data.forEach(item => {
 
-        tbody.appendChild(
+        const id =
 
-            createRow(
+            item.ID;
+
+        existentes.add(id);
+
+        if (
+
+            rows.has(id)
+
+        ) {
+
+            atualizarLinha(
+
+                rows.get(id),
 
                 item,
 
-                columns,
+                columns
 
-                actions
+            );
 
-            )
+        }
 
-        );
+        else {
+
+            const linha =
+
+                createRow(
+
+                    item,
+
+                    columns,
+
+                    actions
+
+                );
+
+            tbody.appendChild(
+
+                linha
+
+            );
+
+            rows.set(
+
+                id,
+
+                linha
+
+            );
+
+        }
 
     });
 
-    return tbody;
+    [...rows.keys()].forEach(id => {
+
+        if (
+
+            existentes.has(id)
+
+        ) {
+
+            return;
+
+        }
+
+        rows.get(id).remove();
+
+        rows.delete(id);
+
+    });
 
 }
 
 // ============================================================================
-// LINHA
+// CRIAR LINHA
 // ============================================================================
 
 function createRow(
@@ -165,63 +283,29 @@ function createRow(
 
 ) {
 
-    const tr = document.createElement("tr");
+    const tr =
+
+        document.createElement("tr");
+
+    tr.dataset.id =
+
+        item.ID;
 
     columns.forEach(col => {
 
-        const td = document.createElement("td");
+        const td =
 
-        const value =
+            document.createElement("td");
 
-            getValue(
+        preencherCelula(
 
-                item,
+            td,
 
-                col.field
+            item,
 
-            );
+            col
 
-        if (
-
-            typeof col.render === "function"
-
-        ) {
-
-            td.innerHTML =
-
-                col.render(
-
-                    value,
-
-                    item
-
-                );
-
-        }
-
-        else if (
-
-            col.type === "status"
-
-        ) {
-
-            td.innerHTML =
-
-                renderStatus(
-
-                    value
-
-                );
-
-        }
-
-        else {
-
-            td.textContent =
-
-                value ?? "";
-
-        }
+        );
 
         tr.appendChild(td);
 
@@ -248,6 +332,112 @@ function createRow(
 }
 
 // ============================================================================
+// ATUALIZAR LINHA
+// ============================================================================
+
+function atualizarLinha(
+
+    tr,
+
+    item,
+
+    columns
+
+) {
+
+    columns.forEach(
+
+        (col, indice) => {
+
+            preencherCelula(
+
+                tr.children[indice],
+
+                item,
+
+                col
+
+            );
+
+        }
+
+    );
+
+}
+
+// ============================================================================
+// PREENCHER CÉLULA
+// ============================================================================
+
+function preencherCelula(
+
+    td,
+
+    item,
+
+    col
+
+) {
+
+    const valor =
+
+        getValue(
+
+            item,
+
+            col.field
+
+        );
+
+    if (
+
+        typeof col.render ===
+
+        "function"
+
+    ) {
+
+        td.innerHTML =
+
+            col.render(
+
+                valor,
+
+                item
+
+            );
+
+    }
+
+    else if (
+
+        col.type ===
+
+        "status"
+
+    ) {
+
+        td.innerHTML =
+
+            renderStatus(
+
+                valor
+
+            );
+
+    }
+
+    else {
+
+        td.textContent =
+
+            valor ?? "";
+
+    }
+
+}
+
+// ============================================================================
 // AÇÕES
 // ============================================================================
 
@@ -259,9 +449,13 @@ function createActions(
 
 ) {
 
-    const td = document.createElement("td");
+    const td =
 
-    td.className = "table-actions";
+        document.createElement("td");
+
+    td.className =
+
+        "table-actions";
 
     actions.forEach(action => {
 
@@ -269,7 +463,9 @@ function createActions(
 
             document.createElement("button");
 
-        button.type = "button";
+        button.type =
+
+            "button";
 
         button.className =
 
@@ -283,7 +479,9 @@ function createActions(
 
             "click",
 
-            () => action.onClick(item)
+            () =>
+
+                action.onClick(item)
 
         );
 
@@ -305,13 +503,21 @@ function createEmptyRow(
 
 ) {
 
-    const tr = document.createElement("tr");
+    const tr =
 
-    const td = document.createElement("td");
+        document.createElement("tr");
 
-    td.colSpan = colspan;
+    const td =
 
-    td.className = "table-empty";
+        document.createElement("td");
+
+    td.colSpan =
+
+        colspan;
+
+    td.className =
+
+        "table-empty";
 
     td.textContent =
 
@@ -325,8 +531,6 @@ function createEmptyRow(
 
 // ============================================================================
 // OBTER VALOR
-// Suporta propriedades aninhadas:
-// exemplo: "veiculo.placa"
 // ============================================================================
 
 function getValue(
@@ -377,9 +581,43 @@ export function renderTable(
 
     }
 
-    container.replaceChildren(
+    let tabela =
 
-        createTable(options)
+        tabelas.get(container);
+
+    if (!tabela) {
+
+        tabela =
+
+            createTable(options);
+
+        tabelas.set(
+
+            container,
+
+            tabela
+
+        );
+
+        container.replaceChildren(
+
+            tabela.table
+
+        );
+
+    }
+
+    atualizarBody(
+
+        tabela.tbody,
+
+        options.columns,
+
+        options.data,
+
+        options.actions ?? [],
+
+        tabela.rows
 
     );
 
