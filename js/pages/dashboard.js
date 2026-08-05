@@ -54,13 +54,6 @@ import {
 
 } from "../utils/errors.js";
 
-import {
-
-    renderizarVeiculos,
-    renderizarEmpregados,
-    renderizarOcorrencias
-
-} from "../controllers/dashboard.helpers.js";
 
 // ============================================================================
 // INIT
