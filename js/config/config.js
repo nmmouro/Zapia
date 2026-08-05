@@ -12,7 +12,7 @@ export const CONFIG = Object.freeze({
     // ========================================================================
 
     API_URL:
-        "https://script.google.com/macros/s/AKfycbxrIKh4f2Dw2MSkExF-Fu-Xs-DXh6pGwZCcEGAsBTNcV0gkkCd2bPE-_5N9fIZYvzSDAQ/exec",
+        "https://script.google.com/macros/s/AKfycbx-I1kO6wl_1R19AJEolpRJOh7O7FaWYpbhgIaiPI3-reNR2_vdMF6zOOAmBYZNxXh2cQ/exec",
 
     // ========================================================================
     // APLICAÇÃO
