@@ -29,7 +29,7 @@ import {
 
 export function obterDadosFormulario(formulario) {
 
-    const empregadoOption =
+const empregadoOption =
         selectEmpregado.selectedOptions[0];
 
     const veiculoOption =
@@ -61,12 +61,7 @@ export function obterDadosFormulario(formulario) {
     "ID Veículo":
         idVeiculo,
 
-    "Empregado / Matrícula":
-        nomeEmpregado,
-
-    "Veículo":
-        descricaoVeiculo,
-
+    
         Data:
 
             campoData.value,
@@ -74,6 +69,12 @@ export function obterDadosFormulario(formulario) {
         Hora:
 
             campoHora.value,
+
+        "Empregado / Matrícula":
+        empregado,
+
+    "Veículo":
+        Veiculo,
 
         //"ID Empregado":
         //empregadoSelecionado?.dataset.id ?? "",
