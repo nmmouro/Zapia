@@ -37,6 +37,18 @@ export function obterDadosFormulario(formulario) {
 
     return {
 
+        "ID Empregado":
+        idEmpregado,
+
+    "ID Veículo":
+        idVeiculo,
+
+    "Empregado / Matrícula":
+        nomeEmpregado,
+
+    "Veículo":
+        descricaoVeiculo,
+
         Data:
 
             campoData.value,
@@ -45,17 +57,17 @@ export function obterDadosFormulario(formulario) {
 
             campoHora.value,
 
-        "ID Empregado":
-        empregadoSelecionado?.dataset.id ?? "",
+        //"ID Empregado":
+        //empregadoSelecionado?.dataset.id ?? "",
 
-    "Empregado / Matrícula":
-        selectEmpregado.value,
+    //"Empregado / Matrícula":
+        //selectEmpregado.value,
 
-    "ID Veículo":
-        veiculoSelecionado?.dataset.id ?? "",
+    //"ID Veículo":
+        //veiculoSelecionado?.dataset.id ?? "",
 
-    "Veículo":
-        selectVeiculo.value,
+    //"Veículo":
+        //selectVeiculo.value,
 
         "Passageiro / Setor / Motivo":
 
