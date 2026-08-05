@@ -1,5 +1,5 @@
 // ============================================================================
-// DASHBOARD - OCORRÊNCIAS
+// DASHBOARD - TABELA OCORRÊNCIAS
 // Painel Frota
 // Arquivo: js/config/tabelas/dashboard.ocorrencias.js
 // ============================================================================
@@ -7,59 +7,39 @@
 export const COLUNAS_DASHBOARD_OCORRENCIAS = [
 
     {
-
-        key: "Data",
-
+        field: "Data",
         label: "Data"
-
     },
 
     {
-
-        key: "Hora Inicial",
-
+        field: "Hora Inicial",
         label: "Hora"
-
     },
 
     {
+        field: "Empregado",
+        label: "Motorista"
+    },
 
-        key: "Veículo",
-
+    {
+        field: "Veículo",
         label: "Veículo"
-
     },
 
     {
-
-        key: "Empregado",
-
-        label: "Empregado"
-
-    },
-
-    {
-
-        key: "Destino",
-
+        field: "Destino",
         label: "Destino"
-
     },
 
     {
-
-        key: "Tempo",
-
+        field: "Tempo",
         label: "Tempo"
-
     },
 
     {
-
-        key: "Status",
-
-        label: "Status"
-
+        field: "Status",
+        label: "Status",
+        type: "status"
     }
 
 ];
