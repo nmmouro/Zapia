@@ -75,7 +75,11 @@ async function inicializar() {
 
     try {
 
-       mostrarLoading();
+        mostrarLoading();
+
+        iniciarRelogio();
+
+        iniciarFullscreen();
 
         await carregarDashboard();
 
