@@ -17,17 +17,6 @@ import {
 
 } from "../utils/fullscreen.js";
 
-import {
-    COLUNAS_DASHBOARD_OCORRENCIAS
-} from "../config/tabelas/dashboard.ocorrencias.js";
-
-import {
-    COLUNAS_DASHBOARD_VEICULOS
-} from "../config/tabelas/dashboard.veiculos.js";
-
-import {
-    COLUNAS_DASHBOARD_EMPREGADOS
-} from "../config/tabelas/dashboard.empregados.js";
 
 import {
 
@@ -53,6 +42,12 @@ import {
     tratarErro
 
 } from "../utils/errors.js";
+
+// ============================================================================
+// CONFIGURAÇÕES
+// ============================================================================
+
+const INTERVALO_ATUALIZACAO = 5000;
 
 
 // ============================================================================
@@ -85,6 +80,8 @@ async function inicializar() {
 
         registrarEventos();
 
+        iniciarAtualizacaoAutomatica();
+
     }
 
     catch (erro) {
@@ -104,3 +101,71 @@ async function inicializar() {
     }
 
 }
+
+// ============================================================================
+// ATUALIZAR DASHBOARD
+// ============================================================================
+
+async function atualizarDashboard() {
+
+    if (document.hidden) {
+
+        return;
+
+    }
+
+    try {
+
+        await carregarDashboard();
+
+    }
+
+    catch (erro) {
+
+        console.error(erro);
+
+    }
+
+}
+
+// ============================================================================
+// ATUALIZAÇÃO AUTOMÁTICA
+// ============================================================================
+
+function iniciarAtualizacaoAutomatica() {
+
+    if (timerAtualizacao) {
+
+        clearInterval(timerAtualizacao);
+
+    }
+
+    timerAtualizacao = setInterval(
+
+        atualizarDashboard,
+
+        INTERVALO_ATUALIZACAO
+
+    );
+
+}
+
+// ============================================================================
+// VISIBILIDADE DA PÁGINA
+// ============================================================================
+
+document.addEventListener(
+
+    "visibilitychange",
+
+    () => {
+
+        if (!document.hidden) {
+
+            atualizarDashboard();
+
+        }
+
+    }
+
+);
