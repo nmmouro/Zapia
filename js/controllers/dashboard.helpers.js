@@ -54,9 +54,7 @@ import {
 
     getOcorrencias,
 
-    foiRenderizado,
-
-    marcarRenderizado
+    
 
 } from "./dashboard.state.js";
 
@@ -130,41 +128,21 @@ export function atualizarDashboard() {
 
 function atualizarVeiculos() {
 
-    if (!foiRenderizado("veiculos")) {
-
-        renderTable(
-
-            tabelaVeiculos,
-
-            {
-
-                columns:
-
-                    COLUNAS_DASHBOARD_VEICULOS,
-
-                data:
-
-                    getVeiculos()
-
-            }
-
-        );
-
-        marcarRenderizado(
-
-            "veiculos"
-
-        );
-
-        return;
-
-    }
-
-    atualizarTabela(
+    renderTable(
 
         tabelaVeiculos,
 
-        getVeiculos()
+        {
+
+            columns:
+
+                COLUNAS_DASHBOARD_VEICULOS,
+
+            data:
+
+                getVeiculos()
+
+        }
 
     );
 
@@ -176,41 +154,21 @@ function atualizarVeiculos() {
 
 function atualizarEmpregados() {
 
-    if (!foiRenderizado("empregados")) {
-
-        renderTable(
-
-            tabelaEmpregados,
-
-            {
-
-                columns:
-
-                    COLUNAS_DASHBOARD_EMPREGADOS,
-
-                data:
-
-                    getEmpregados()
-
-            }
-
-        );
-
-        marcarRenderizado(
-
-            "empregados"
-
-        );
-
-        return;
-
-    }
-
-    atualizarTabela(
+    renderTable(
 
         tabelaEmpregados,
 
-        getEmpregados()
+        {
+
+            columns:
+
+                COLUNAS_DASHBOARD_EMPREGADOS,
+
+            data:
+
+                getEmpregados()
+
+        }
 
     );
 
@@ -222,41 +180,21 @@ function atualizarEmpregados() {
 
 function atualizarOcorrencias() {
 
-    if (!foiRenderizado("ocorrencias")) {
-
-        renderTable(
-
-            tabelaOcorrencias,
-
-            {
-
-                columns:
-
-                    COLUNAS_DASHBOARD_OCORRENCIAS,
-
-                data:
-
-                    getOcorrencias()
-
-            }
-
-        );
-
-        marcarRenderizado(
-
-            "ocorrencias"
-
-        );
-
-        return;
-
-    }
-
-    atualizarTabela(
+    renderTable(
 
         tabelaOcorrencias,
 
-        getOcorrencias()
+        {
+
+            columns:
+
+                COLUNAS_DASHBOARD_OCORRENCIAS,
+
+            data:
+
+                getOcorrencias()
+
+        }
 
     );
 
