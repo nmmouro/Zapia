@@ -49,6 +49,7 @@ import {
 
 const INTERVALO_ATUALIZACAO = 5000;
 
+let timerAtualizacao = null;
 
 // ============================================================================
 // INIT
